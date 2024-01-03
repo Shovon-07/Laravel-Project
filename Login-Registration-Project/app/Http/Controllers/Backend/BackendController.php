@@ -49,4 +49,5 @@ class BackendController extends Controller
     {
         return redirect('/admin/')->cookie('token', null, time() - 60 * 60);
     }
+
 }
