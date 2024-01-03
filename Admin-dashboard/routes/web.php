@@ -21,9 +21,17 @@ Route::get('/', function () {
 //___ Admin Dashboard ___//
 Route::prefix('/admin')->group(function () {
     Route::controller(BackendController::class)->group(function () {
+        //_ Login _//
         Route::view('/', 'BackEnd.Pages.Login')->name('login.view');
+        Route::post('/userLogin', 'Login');
 
+        //_ Registration _//
         Route::view('/registration', 'BackEnd.Pages.Register')->name('regester.view');
         Route::post('/userRegistration', 'Register');
+
+        Route::middleware(['tokenVerify'])->group(function () {
+            //_ Pages _//
+            Route::view('/home', 'BackEnd.Pages.Home');
+        });
     });
 });

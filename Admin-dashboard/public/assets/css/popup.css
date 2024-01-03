@@ -1,0 +1,43 @@
+:root {
+    --light: #fff;
+    --light-2: #bebebe;
+    --light-3: rgb(255, 245, 217);
+    --dark: #5e5e5e;
+    --blue: #7f69ff;
+}
+
+/*___ Pop Up ___*/
+.popup {
+    background: var(--light-3);
+    width: 30%;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 10px var(--light-2), -1px -1px 10px var(--light-2);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s;
+    z-index: 400000;
+}
+.popup p {
+    color: var(--dark);
+    line-height: 30px;
+    font-size: 20px;
+}
+.popup button {
+    background: var(--blue);
+    color: var(--light);
+    padding: 10px;
+    width: 30%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 12px;
+}
+
+.hidePopUp {
+    display: none;
+}

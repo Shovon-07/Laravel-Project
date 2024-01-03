@@ -1,6 +1,7 @@
 {{-- Css Plugins --}}
 <link rel="stylesheet" href="{{asset('assets/css/bootstrap_css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/Loader.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/popup.css')}}">
 {{-- Css --}}
 <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
@@ -13,6 +14,7 @@
 <script src="{{asset('assets/js/axios.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap_js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/Loader.js')}}"></script>
+<script src="{{asset('assets/js/popup.js')}}"></script>
 
 {{-- Script --}}
 <script src="{{asset('assets/js/app.js')}}"></script>
