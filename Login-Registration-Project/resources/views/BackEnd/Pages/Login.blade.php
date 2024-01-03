@@ -1,17 +1,11 @@
 @extends('BackEnd.Layouts.Links')
+<title>Login</title>
 
 {{-- <!--=== Loader ===--> --}}
-<div id="loader" class="LoadingOverlay d-none">
-    <div class="Line-Progress">
-        <div class="indeterminate"></div>
-    </div>
-</div>
+@include('BackEnd.Components.Loader')
 
 {{-- <!--=== Pop Up ===--> --}}
-<div id="popup" class="popup hidePopUp">
-    <p id="popUpMsg"></p>
-    <button id="closePopUp" onclick="closePopUp()">Ok</button>
-</div>
+@include('BackEnd.Components.PopUp')
 
 {{-- <!--=== Login form ===--> --}}
 <div class="card w-50 m-auto mt-5 pt-3 px-5">

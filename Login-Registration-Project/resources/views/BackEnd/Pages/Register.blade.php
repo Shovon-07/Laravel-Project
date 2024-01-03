@@ -1,13 +1,13 @@
-@include('BackEnd.Layouts.Links')
+@extends('BackEnd.Layouts.Links')
+<title>Registration</title>
 
-<!--=== Loader ===-->
-<div id="loader" class="LoadingOverlay d-none">
-    <div class="Line-Progress">
-        <div class="indeterminate"></div>
-    </div>
-</div>
+{{-- <!--=== Loader ===--> --}}
+@include('BackEnd.Components.Loader')
 
-<!--=== Registration Form ===-->
+{{-- <!--=== Pop Up ===--> --}}
+@include('BackEnd.Components.PopUp')
+
+{{-- <!--=== Registration Form ===--> --}}
 <div id="loader" class="LoadingOverlay d-none">
     <div class="Line-Progress">
         <div class="indeterminate"></div>
@@ -34,6 +34,7 @@
 
 <script>
     async function save() {
+        let msg = '';
         let name = document.querySelector('#name').value;
         let email = document.querySelector('#email').value;
         let password = document.querySelector('#password').value;
@@ -49,10 +50,12 @@
         hideLoader();
 
         if(res.data['status']==='Success') {
-            alert(res.data['message']);
+            msg = res.data['message'];
+            showPopUp(msg);
             window.location.href="/admin/"
         } else {
-            alert(res.data['message']);
+            msg = res.data['message'];
+            showPopUp(msg);
         }
     }
 </script>

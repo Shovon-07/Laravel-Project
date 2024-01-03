@@ -16,7 +16,7 @@ class BackendController extends Controller
             User::create($request->input());
             return response()->json(['status' => 'Success', 'message' => 'User create successfully']);
         } catch (Exception $exception) {
-            return response()->json(['status' => 'Failed', 'message' => $exception->getMessage()]);
+            return response()->json(['status' => 'Failed', 'message' => "Incorrect attempt"]);
         }
     }
 
@@ -34,7 +34,7 @@ class BackendController extends Controller
             }
 
         } catch (Exception $exception) {
-            return response()->json(['status' => "Failed", 'message' => $exception->getMessage()]);
+            return response()->json(['status' => "Failed", 'message' => 'User not found']);
         }
     }
 }
