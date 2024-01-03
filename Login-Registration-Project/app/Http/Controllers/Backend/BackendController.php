@@ -37,4 +37,16 @@ class BackendController extends Controller
             return response()->json(['status' => "Failed", 'message' => 'User not found']);
         }
     }
+
+    function ViewProfile(Request $request)
+    {
+        $userId = $request->header('id');
+        $data = User::where('id', $userId)->select('id', 'name', 'email')->first();
+        return $data;
+    }
+
+    function Logout()
+    {
+        return redirect('/admin/')->cookie('token', null, time() - 60 * 60);
+    }
 }

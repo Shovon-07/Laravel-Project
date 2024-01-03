@@ -32,6 +32,9 @@ Route::prefix('/admin')->group(function () {
         Route::middleware(['tokenVerify'])->group(function () {
             //_ Pages _//
             Route::view('/home', 'BackEnd.Pages.Home');
+
+            Route::get('/viewProfile', 'ViewProfile');
+            Route::get('/logout', 'Logout')->name('log.out');
         });
     });
 });

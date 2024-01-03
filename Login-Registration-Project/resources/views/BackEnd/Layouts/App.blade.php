@@ -17,19 +17,12 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
         {{-- <!--=== Loader ===--> --}}
-        <div id="loader" class="LoadingOverlay d-none">
-            <div class="Line-Progress">
-                <div class="indeterminate"></div>
-            </div>
-        </div>
+        @include('BackEnd.Components.Loader')
 
         {{-- <!--=== Pop Up ===--> --}}
-        <div id="popup" class="popup hidePopUp">
-            <p id="popUpMsg">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore, sunt omnis. Sunt, laborum minima neque praesentium similique quidem. Eum aliquam eos consequatur hic voluptatibus natus, fugit vel officiis praesentium dolore?</p>
-            <button id="closePopUp" onclick="closePopUp()">Ok</button>
-        </div>
+        @include('BackEnd.Components.PopUp')
         
         {{-- <!--=== Header ===--> --}}
         @include('BackEnd.Components.Header')
@@ -53,6 +46,19 @@
     {{-- Script --}}
     <script src="{{asset('assets/js/app.js')}}"></script>
 
+
+<script>
+    async function ViewProfile() {
+        showLoader();
+        let res = await axios.get("/admin/viewProfile");
+        let name = res.data['name'];
+        hideLoader();
+  
+        document.getElementById('userName').innerHTML = name;
+    }
+  
+    ViewProfile();
+  </script>
 </body>
 
 </html>
