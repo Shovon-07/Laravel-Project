@@ -1,11 +1,12 @@
 /*________________ Variables start ________________*/
 :root {
-  --blue: #287bff;
   --light: #fff;
   --light-2: #bebebe;
   --light-3: rgb(255, 245, 217);
-  --dark: #222;
+  --dark: #5e5e5e;
+  --blue: #7f69ff;
 
+  --box-shadow: 1px 1px 10px var(--light-2), -1px -1px 10px var(--light-2);
   --trans: 0.5s all;
   --font-family: "Ubuntu", sans-serif;
 }
