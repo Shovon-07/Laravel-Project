@@ -1,0 +1,23 @@
+//_______________ Image uploade start _______________//
+
+//___ Single image uploade ___//
+$img = $req->file('image');
+if ($img != null) {
+    $imgOriginalName = $img->getClientOriginalName();
+    $imgOriginalExt = $img->getClientOriginalExtension();
+    $imgName = 'Photo-' . md5(uniqid()) . '-' . time() . '-' . md5($imgOriginalName) . '.' . $imgOriginalExt;
+    $img->move(public_path('Uploaded_images'), $imgName);
+}
+--------------------------------------------------------
+//___ Multiple image uploade ___//
+$img = $req->file('images');
+if ($img != null) {
+    foreach ($img as $imgs) {
+        $imgOriginalName = $imgs->getClientOriginalName();
+        $imgExt = $imgs->getClientOriginalExtension();
+        $imgName = "Multiple_photo-" . md5(uniqid()) . '-' . time() . '-' . $imgOriginalName . '.' . $imgExt;
+        $imgs->move(public_path('Uploaded_images'), $imgName);
+    }
+}
+
+//_______________ Image uploade end _______________//
