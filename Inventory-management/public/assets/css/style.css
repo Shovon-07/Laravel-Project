@@ -1,0 +1,11 @@
+/*___ Login Registration Page ___*/
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.login-container .card {
+    box-shadow: var(--box-shadow);
+}
