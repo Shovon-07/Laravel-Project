@@ -66,7 +66,7 @@ class UserController extends Controller
             Mail::to($email)->send(new OTPMail($otp));
 
             // Update otp table in database
-            User::where('email', '=', '$email')->Update(['otp' => $otp]);
+            User::where('email', '=', $email)->Update(['otp' => $otp]);
 
             return response()->json([
                 'status' => 'success',
@@ -77,6 +77,52 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Email not valid'
+            ]);
+        }
+    }
+
+    public function VerifyOtp(Request $request)
+    {
+        $email = $request->input('email');
+        $otp = $request->input('otp');
+        $count = User::where('email', '=', $request->email)->where('otp', '=', $otp)->count();
+
+        if ($count > 0) {
+            // Databse otp table update
+            User::where('email', '=', $email)->update(['otp' => '0']);
+
+            // Create token for reset password
+            $token = JWTHelper::CreateTokenForPassReset($email);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Otp verification successfull.',
+                'token' => $token
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Incorrect otp !'
+            ]);
+        }
+    }
+
+    public function ResetPassword(Request $request)
+    {
+        try {
+            $email = $request->header('email');
+            $password = $request->input('password');
+            $count = User::where('email', '=', $email)->update(['password' => $password]);
+            if ($count) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Password reset successfull'
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Somethings went wrond !'
             ]);
         }
     }

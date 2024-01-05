@@ -4,9 +4,11 @@
   --light-2: #bebebe;
   --light-3: rgb(255, 245, 217);
   --dark: #5e5e5e;
+  --dark-2:#6d6d6d;
+  --main: #f804f8;
   --blue: #7f69ff;
 
-  --box-shadow: 1px 1px 10px var(--light-2), -1px -1px 10px var(--light-2);
+  --box-shadow: 1px 1px 8px var(--light-2), -1px -1px 8px var(--light-2);
   --trans: 0.5s all;
   --font-family: "Ubuntu", sans-serif;
 }
@@ -30,7 +32,7 @@ html {
 body {
   font-family: var(--font-family);
   overflow-x: hidden;
-  background: rgb(247, 243, 221);
+  /* background: rgb(247, 243, 221); */
 }
 
 /*________________ Edite bootstrap property start ________________*/
@@ -49,11 +51,29 @@ a {
 p {
   margin-bottom: 0rem !important;
 }
+button {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background-color: var(--main);
+  font-size: 20px;
+  color: var(--light);
+  font-weight: bold;
+}
+button:hover {
+  background-color:#f02ff0;
+}
+hr {
+  background: var(--dark);
+}
 .form-control:focus,
 .form-select:focus {
   border-color: none;
   outline: 0;
   box-shadow: none !important;
+}
+.title {
+  color: var(--dark);
 }
 /*________________ Edite bootstrap property end ________________*/
 /*________________ Common style end ________________*/

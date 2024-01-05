@@ -19,7 +19,20 @@ class JWTHelper
         return JWT::encode($payload, $key, 'HS256');
     }
 
-    function verifyToken($token): string
+    public static function CreateTokenForPassReset($email): string
+    {
+        $key = env('JWT_key');
+        $payload = [
+            'iss' => env('APP_NAME'),
+            'iat' => time(),
+            'exp' => time() + 60 * 5,
+            'userEmail' => $email,
+        ];
+        return JWT::encode($payload, $key, 'HS256');
+
+    }
+
+    public static function verifyToken($token): string
     {
         try {
             $key = env('JWT_Key');
