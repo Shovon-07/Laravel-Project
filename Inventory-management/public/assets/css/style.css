@@ -32,13 +32,16 @@
     width: 100%;
     color: var(--dark);
 }
+.form-container .form input:focus {
+    border: 1px solid var(--main);
+}
 .form-container .form .buttonDiv {
     width: 100%;
     text-align: center;
 }
 .form-container .form button[type="submit"] {
     padding: 8px 0;
-    font-size: 18px;
+    font-size: 15px;
     width: 60%;
     margin-top: 15px;
 }

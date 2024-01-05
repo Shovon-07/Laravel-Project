@@ -45,8 +45,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Login successfull',
-                'token' => $token
-            ]);
+            ])->cookie('token', $token, time() + 60 * 60 * 0 * 0);
         } else {
             return response()->json([
                 'status' => 'failed',
@@ -96,8 +95,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Otp verification successfull.',
-                'token' => $token
-            ]);
+            ])->cookie('token', $token, time() + 60 * 60 * 0 * 0);
 
         } else {
             return response()->json([

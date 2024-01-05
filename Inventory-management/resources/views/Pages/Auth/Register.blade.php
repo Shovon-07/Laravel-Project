@@ -39,10 +39,51 @@
             </div>
         </div>
         <div class="buttonDiv">
-            <button type="submit" id="login">NEXT</button>
+            <button type="submit" onclick="register()">COMPLEATE</button>
         </div>
         <div class="formBottom">
             <span>Already have an account ?</span><a href="{{route('login.view')}}">Sign In</a>
         </div>
     </div>
 </div>
+
+<script>
+    async function register() {
+        const firstName = document.querySelector("#firstName").value;
+        const lastName = document.querySelector("#lastName").value;
+        const email = document.querySelector("#email").value;
+        const mobile = document.querySelector("#mobile").value;
+        const password = document.querySelector("#password").value;
+
+        if(firstName === 0) {
+            showTost("Please enter first name");
+        } else if(lastName === 0) {
+            showTost("Please enter last name");
+        } else if(email === 0) {
+            showTost("Please enter email address");
+        } else if(mobile === 0) {
+            showTost("Please enter mobile number");
+        } else if(password === 0) {
+            showTost("Please enter password");
+        } else {
+            showLoader();
+            let res = await axios.post("/registration", {
+                "firstName" : firstName,
+                "lastName" : lastName,
+                "email" : email,
+                "mobile" : mobile,
+                "password" : password
+            });
+            hideLoader();
+
+            if(res.data['status'] === 'success') {
+                showTost(res.data['message']);
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1000);
+            } else {
+                showTost(res.data['message']);
+            }
+        }
+    }
+</script>

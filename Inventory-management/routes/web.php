@@ -24,6 +24,8 @@ Route::controller(UserController::class)->group(function () {
     Route::view('/signup', 'Pages.Auth.Register')->name('signup.view');
     Route::view('/forgot-password', 'Pages.Auth.ForgotPass')->name('forgotpass.view');
     Route::view('/otp', 'Pages.Auth.Otp')->name('otp.view');
+    Route::view('/update-password', 'Pages.Auth.UpdatePass')->name('otp.view');
+    Route::view('dashboard', 'Pages.Dashboard');
 
     Route::post('/registration', 'Registration');
     Route::post('/login', 'Login');

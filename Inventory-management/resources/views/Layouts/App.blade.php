@@ -15,25 +15,26 @@
     {{-- Css --}}
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/navigation.css')}}">
 </head>
 
 <body>
     <div class="container">
         {{-- <!--=== Loader ===--> --}}
-        @include('BackEnd.Components.Loader')
+        @include('Components.Loader')
 
         {{-- <!--=== Pop Up ===--> --}}
-        @include('BackEnd.Components.PopUp')
+        @include('Components.PopUp')
         
         {{-- <!--=== Header ===--> --}}
-        @include('BackEnd.Components.Header')
+        @include('Components.Header')
         
         <div class="main-panel">
             @yield('content')
         </div>
 
         {{-- <!-- === Footer === --> --}}
-        {{-- @include('BackEnd.Components.Footer') --}}
+        {{-- @include('Components.Footer') --}}
 
     </div>
 
@@ -47,20 +48,6 @@
 
     {{-- Script --}}
     <script src="{{asset('assets/js/app.js')}}"></script>
-
-
-<script>
-    async function ViewProfile() {
-        showLoader();
-        let res = await axios.get("/admin/viewProfile");
-        let name = res.data['name'];
-        hideLoader();
-  
-        document.getElementById('userName').innerHTML = name;
-    }
-  
-    ViewProfile();
-  </script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-@extends('BackEnd.Layouts.App')
+@extends('Layouts.App')
 
 @section('content')
 <div>

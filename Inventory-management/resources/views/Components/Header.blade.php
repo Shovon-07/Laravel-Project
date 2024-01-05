@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('log.out')}}">Log out</a>
+                <a class="nav-link" href="">Log out</a>
               </li>
             </ul>
             <form class="d-flex">

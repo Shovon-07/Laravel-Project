@@ -21,10 +21,37 @@
             <input type="password" id="password" placeholder="Enter your password">
         </div>
         <div class="buttonDiv">
-            <button type="submit" id="login">NEXT</button>
+            <button type="submit" id="login" onclick="login()">NEXT</button>
         </div>
         <div class="formBottom">
             <a href="{{route('signup.view')}}">Sign Up</a> <span>|</span> <a href="{{route('forgotpass.view')}}">Forgot password</a>
         </div>
     </div>
 </div>
+
+<script>
+    async function login() {
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        
+        if(email == 0) {
+            showTost("Please enter email address");
+        } else if(password == 0) {
+            showTost("Please enter password");
+        } else {
+            showLoader();
+            let res = await axios.post('/login',{
+                "email" : email,
+                "password" : password
+            });
+            hideLoader();
+
+            if(res.data['status'] === 'success') {
+                window.location.href = "/dashboard";
+            } else {
+                showTost(res.data['message']);
+            }
+
+        }
+    }
+</script>

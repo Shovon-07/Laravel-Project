@@ -17,7 +17,7 @@
     background-color: rgba(255, 255, 255, 0.4);
 }
 .Line-Progress .indeterminate {
-    background-color: #198754;
+    background-color: var(--main);
 }
 .Line-Progress .indeterminate:before {
        z-index: -100 !important;
