@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    $life = time();
+    $lifeTime = time() + 1;
+    return view('Frontend.Index', ['life' => $life, 'time' => $lifeTime]);
+});
 
-Route::controller(UserController::class)->group(function () {
-    //___ View ___//
-    Route::view('/', 'Pages.Auth.Login')->name('login.view');
-    Route::view('/signup', 'Pages.Auth.Register')->name('signup.view');
-    Route::view('/forgot-password', 'Pages.Auth.ForgotPass')->name('forgotpass.view');
-    Route::view('/otp', 'Pages.Auth.Otp')->name('otp.view');
-    Route::view('/update-password', 'Pages.Auth.UpdatePass')->name('otp.view');
-    Route::view('dashboard', 'Pages.Dashboard');
+//___ Admin Panel ___//
+Route::prefix('/admin')->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::view('/', 'Backend.Pages.Auth.Login')->name('login.view');
+        Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
+        Route::view('/recover-password', 'Backend.Pages.Auth.RecoverPass')->name('recoverpass.view');
+        Route::view('/otp', 'Backend.Pages.Auth.Otp')->name('otp.view');
+        Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
 
-    Route::post('/registration', 'Registration');
-    Route::post('/login', 'Login');
-    Route::post('/send-otp', 'SendOtpCode');
-    Route::post('/verify-otp', 'VerifyOtp');
+        // Protected route
+        Route::middleware(['TokenVerify'])->group(function () {
+            // View
+            Route::view('/update-password', 'Backend.Pages.Auth.UpdatePass');
+            Route::get('/dashboard', 'Dashboard')->name('home.view');
+        });
 
-    //___ Token verified routes ___//
-    Route::middleware(['tokenVerify'])->group(function () {
-        Route::post('/reset-password', 'ResetPassword');
+        // Post
+        Route::post('/sign-up', 'SignUp');
+        Route::post('/login', 'Login');
+        Route::post('/send-otp', 'SendOTP');
+        Route::post('/verify-otp', 'VerifyOTP');
+        Route::post('/update-password', 'UpdatePass');
+
+        Route::get('/logout', 'LogOut')->name('log.out');
     });
 });

@@ -8,7 +8,18 @@ function showTost(msg) {
         position: "center", // `left`, `center` or `right`
         stopOnHover: true, // Prevents dismissing of toast on hover
         style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
     }).showToast();
 }
+
+//___ Side nav ___//
+let dropParent = document.querySelectorAll("#dropParent");
+let dropdownMenu = document.querySelector(".dropdown");
+
+dropParent.forEach((itmes) => {
+    itmes.addEventListener("click", () => {
+        itmes.querySelector(".dropdown").classList.toggle("display");
+        itmes.querySelector(".rightIcon").classList.toggle("rotate");
+    });
+});

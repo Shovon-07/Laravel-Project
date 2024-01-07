@@ -16,10 +16,11 @@ class OTPMail extends Mailable
     /**
      * Create a new message instance.
      */
+    public $fullName;
     public $otp;
-
-    public function __construct($otp)
+    public function __construct($fullName, $otp)
     {
+        $this->fullName = $fullName;
         $this->otp = $otp;
     }
 
@@ -29,7 +30,7 @@ class OTPMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'O T P Mail',
+            subject: 'O T P verification mail',
         );
     }
 
@@ -39,7 +40,7 @@ class OTPMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'Emails.OTPMail',
+            view: 'Backend.Emails.OTPMail',
         );
     }
 
