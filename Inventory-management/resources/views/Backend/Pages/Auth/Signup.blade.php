@@ -8,34 +8,33 @@
 <div class="form-container">
     <div class="form">
         <h4 class="title">SIGN UP</h4>
-        <hr>
         <div class="d-flex">
             <div class="left">
                 <div>
-                    <label for="firstName">First name :</label> <br>
+                    {{-- <label for="firstName">First name :</label> <br> --}}
                     <input type="text" id="firstName" placeholder="Enter your first name">
                 </div>
                 <div>
-                    <label for="email">Email :</label> <br>
+                    {{-- <label for="email">Email :</label> <br> --}}
                     <input type="email" id="email" placeholder="Enter your email address">
                 </div>
                 <div>
-                    <label for="address">Address :</label> <br>
+                    {{-- <label for="address">Address :</label> <br> --}}
                     <input type="text" id="address" placeholder="Enter your address">
                 </div>
             </div>
             <div class="right">
                 <div>
-                    <label for="lastName">Last name :</label> <br>
+                    {{-- <label for="lastName">Last name :</label> <br> --}}
                     <input type="text" id="lastName" placeholder="Enter your last name">
                 </div>
                 <div>
-                    <label for="mobile">Mobile No :</label> <br>
+                    {{-- <label for="mobile">Mobile No :</label> <br> --}}
                     <input type="number" id="mobile" placeholder="Enter your mobile number">
                 </div>
                 <div>
-                    <label for="password">Password :</label> <br>
-                    <input type="password" id="password" placeholder="Enter your password">
+                    {{-- <label for="password">Password :</label> <br> --}}
+                    <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
                 </div>
             </div>
         </div>

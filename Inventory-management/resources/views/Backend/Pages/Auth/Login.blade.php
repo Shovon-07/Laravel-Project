@@ -8,19 +8,16 @@
 <div class="form-container">
     <div class="form">
         <h4 class="title">SIGN IN</h4>
-        <hr>
         <div>
-            <label for="email">Email :</label> <br>
             <input type="email" id="email" placeholder="Enter your email address">
         </div>
         <div>
-            <label for="password">Password :</label> <br>
-            <input type="password" id="password" placeholder="Enter your password">
+            <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
         </div>
         <div class="buttonDiv">
-            <button type="submit" class="button" id="login" onclick="login()">NEXT</button>
+             <button type="submit" class="button" id="login" onclick="login()">NEXT</button>
         </div>
-        <div class="formBottom">
+            <div class="formBottom">
             <a href="{{route('signup.view')}}">Sign Up</a> <span>|</span> <a href="{{route('recoverpass.view')}}">Forgot password</a>
         </div>
     </div>

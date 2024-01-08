@@ -8,9 +8,7 @@
 <div class="form-container">
     <div class="form">
         <h3 class="title">VERIFY OTP</h3>
-        <hr>
         <div>
-            <label for="otp">Otp :</label> <br>
             <input type="number" id="otp" maxlength="4" placeholder="Enter 6 digit otp">
         </div>
         <div class="buttonDiv">
