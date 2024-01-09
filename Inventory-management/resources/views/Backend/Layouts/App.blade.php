@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Dashboard</title>
+    <link rel="icon" href="{{asset('Uploaded_file/Img/user.png')}}">
     {{-- Plugins --}}
     {{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap_css/bootstrap.min.css')}}">
      --}}

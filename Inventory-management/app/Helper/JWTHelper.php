@@ -7,13 +7,14 @@ use Firebase\JWT\Key;
 
 class JWTHelper
 {
-    public static function createToken($userEmail)
+    public static function createToken($userId,$userEmail)
     {
         $key = env('JWT_KEY');
         $payload = [
             'iss' => env('APP_NAME'),
             'iat' => time(),
             'exp' => time() + 60 * 60,
+            'userId' => $userId,
             'userEmail' => $userEmail,
         ];
         return JWT::encode($payload, $key, 'HS256');
@@ -27,7 +28,7 @@ class JWTHelper
             } else {
                 $key = env('JWT_KEY');
                 $decode = JWT::decode($token, new Key($key, 'HS256'));
-                return $decode->userEmail;
+                return $decode;
             }
         } catch (Exception $e) {
             return 'Unauthorized';

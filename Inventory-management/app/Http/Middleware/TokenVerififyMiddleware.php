@@ -22,7 +22,8 @@ class TokenVerififyMiddleware
         if ($result === 'Unauthorized') {
             return redirect('/admin/');
         } else {
-            $request->headers->set('email', $result);
+            $request->headers->set('id', $result->userId);
+            $request->headers->set('email', $result->userEmail);
             return $next($request);
         }
     }

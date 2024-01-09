@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('address', 100);
             $table->string('password', 10);
             $table->string('otp', 10);
+            $table->string('Img');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

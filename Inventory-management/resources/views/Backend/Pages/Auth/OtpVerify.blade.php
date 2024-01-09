@@ -1,5 +1,7 @@
 @extends('Backend.Layouts.Links')
 <title>Verify Otp</title>
+{{-- Icon --}}
+<link rel="icon" href="{{asset('Uploaded_file/Img/user.png')}}">
 
 {{-- <!--=== Loader ===--> --}}
 @include('Backend.Components.Loader')

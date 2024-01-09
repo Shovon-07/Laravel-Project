@@ -32,9 +32,14 @@ class AuthController extends Controller
     public function Login(Request $request)
     {
         try {
-            $data = User::where('email', $request->input('email'))->where('password', $request->input('password'))->count();
+            $email = $request->input('email');
+            $password = $request->input('password');
+
+            $data = User::where('email', $email)->where('password', $password)->select('id')->first();
+            $userId = $data->id;
+
             if ($data != null) {
-                $token = JWTHelper::createToken($request->input('email'));
+                $token = JWTHelper::createToken($userId, $email);
                 return response()->json([
                     "status" => "success",
                     "message" => "Login succesfull",
@@ -48,7 +53,7 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'failed',
-                'message' => $e->getMessage(),
+                'message' => 'User not found !',
             ]);
         }
     }
@@ -149,12 +154,47 @@ class AuthController extends Controller
         return redirect('/admin/');
     }
 
-    public function Dashboard(Request $request)
+    //___ Profile page ___//
+    public function ProfilePage(Request $request)
     {
-        $email = $request->cookie('email');
-        $data = User::where('email', '=', $email)->select('firstName', 'lastName', 'email', 'mobile', );
+        return view('Backend.Pages.Dashboard.Profile');
+    }
+
+    public function UserProfile(Request $request)
+    {
+        $email = $request->headers->get('email');
+        $data = User::where('email', '=', $email)->first();
+
         if ($data != null) {
-            return view('Backend.Pages.Dashboard', ['data' => $data]);
+            // return view('Backend.Pages.Dashboard.Profile', ['data' => $data]);
+            return response()->json([
+                'status' => 'success',
+                'message' => "Founded",
+                'data' => $data
+            ]);
+        }
+    }
+
+    public function UserProfileUpdate(Request $request)
+    {
+        $email = $request->headers->get('email');
+        $update = User::where('email', '=', $email)->update([
+            'firstName' => $request->input('firstName'),
+            'lastName' => $request->input('lastName'),
+            'address' => $request->input('address'),
+            'password' => $request->input('password'),
+        ]);
+
+        if ($update == true) {
+            return response()->json([
+                'status' => 'success',
+                'message' => "Profile data updated",
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'failed',
+                'message' => "Something went wrong",
+            ]);
         }
     }
 }

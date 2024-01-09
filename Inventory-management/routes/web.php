@@ -33,10 +33,16 @@ Route::prefix('/admin')->group(function () {
         Route::middleware(['TokenVerify'])->group(function () {
             // View
             Route::view('/update-password', 'Backend.Pages.Auth.UpdatePass');
-            Route::get('/dashboard', 'Dashboard')->name('home.view');
+            Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
+
+            // Profile
+            Route::get('/profile', 'ProfilePage')->name('profile.view');
+            // // Web API route
+            Route::get('/profile-data', 'UserProfile');
+            Route::post('/update-profile', 'UserProfileUpdate');
         });
 
-        // Post
+        // Web API route
         Route::post('/sign-up', 'SignUp');
         Route::post('/login', 'Login');
         Route::post('/send-otp', 'SendOTP');

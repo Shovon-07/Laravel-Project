@@ -8,7 +8,8 @@
     --dark-2: #6d6d6d;
     --main: #fb0565;
     --blue: #7f69ff;
-    --gradient: linear-gradient(-192deg, #750297, #d4d3d3);
+    --btn-gradient: linear-gradient(-7deg, #52026a, #d8048b);
+    --boxGradient: linear-gradient(-35deg, #52026a, #fe09a5);
 
     --box-shadow: 1px 1px 8px rgb(214 214 214), -1px -1px 8px rgb(214 214 214);
     --trans: 0.5s all;
@@ -63,7 +64,7 @@ a {
     outline: none;
     border-radius: 8px;
     /* background-color: var(--main); */
-    background: var(--gradient);
+    background: var(--btn-gradient);
     font-size: 20px;
     color: var(--light);
     font-weight: bold;
@@ -71,7 +72,7 @@ a {
     transition: var(--trans);
 }
 .button:hover {
-    background: linear-gradient(-192deg, #5a0175, #d4d3d3);
+    background: linear-gradient(-7deg, #660385, #d8078b);
 }
 hr {
     background: var(--dark);
