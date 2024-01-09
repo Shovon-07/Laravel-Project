@@ -177,6 +177,12 @@ class AuthController extends Controller
 
     public function UserProfileUpdate(Request $request)
     {
+        // $img = $request->file('img');
+        // $imgOriginalName = $img->getClientOriginalName();
+        // $imgExt = $img->getClientOriginalExtension();
+
+        // $imgName = env('APP_NAME') . "_" . md5(uniqid() . rand(111, 999)) . "_" . time() . "_" . $imgOriginalName . "." . $imgExt;
+
         $email = $request->headers->get('email');
         $update = User::where('email', '=', $email)->update([
             'firstName' => $request->input('firstName'),
@@ -198,13 +204,3 @@ class AuthController extends Controller
         }
     }
 }
-
-
-// {
-//     "firstName": "Al jubair",
-//     "lastName": "Shovon",
-//     "email": "mman35230@gmail.com",
-//     "mobile": "01767692422",
-//     "address": "Horogram, Kashiadanga, Court-6201, Rajshahi",
-//     "password": "sho123"
-// }

@@ -68,14 +68,14 @@
     flex-direction: column;
 }
 .userImgContainer {
-    width: 90px;
-    height: 100px;
+    width: 100px;
+    height: 110px;
     margin: 40px auto;
     border-radius: 8px;
     cursor: pointer;
     position: relative;
 }
-.userImgContainer::after {
+.userImgContainer.overlay::after {
     content: '';
     background: #4b4b4b34;
     position: absolute;

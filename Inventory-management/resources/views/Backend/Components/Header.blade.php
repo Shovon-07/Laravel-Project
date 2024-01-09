@@ -45,7 +45,6 @@
       let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
       document.querySelector("#userImg").src = imgPath;
 
-
     } else {
       response.data['message'];
     }

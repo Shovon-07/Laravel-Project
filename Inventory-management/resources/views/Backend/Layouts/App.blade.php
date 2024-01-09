@@ -13,6 +13,7 @@
      --}}
     <link rel="stylesheet" href="{{asset('assets/css/Loader.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/toastify.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/popup.css')}}">
     {{-- Css --}}
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/sideNav.css')}}">
@@ -52,6 +53,7 @@
 
     {{-- Script --}}
     <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{asset('assets/js/popup.js')}}"></script>
     
 </body>
 

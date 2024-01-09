@@ -4,13 +4,16 @@
 {{-- <!--=== Loader ===--> --}}
 @include('Backend.Components.Loader')
 
+{{-- <!--=== Popup ===--> --}}
+{{-- @include('Backend.Components.Popup') --}}
+
 {{-- <!--=== Login form ===--> --}}
 <div class="form-container d-flex" style="margin: 50px 0">
     {{-- <img class="userImg" id="userImg" alt="profile pic"> --}}
     <div class="form">
         <h4 class="title">PROFILE</h4>
-        <div class="userImgContainer">
-            <img  src="{{asset('Uploaded_file/Img/user.png')}}" class="userImg" id="userImg" alt="profile pic">
+        <div class="userImgContainer overlay" onclick="showPopUp()">
+            <img src="{{asset('Uploaded_file/Img/user.png')}}" class="userImg" id="userImg" alt="profile pic">
             <i class="fa-solid fa-share-from-square shareIcon"></i>
         </div>
         <div class="d-flex">
@@ -42,12 +45,8 @@
         </div>
     </div>
 </div>
-{{-- 
-<li>{{ $data->firstName }}</li>
-    <li>{{ $data->email }}</li> --}}
 
 <script>
-    
     window.addEventListener('load', () => {
         getData();
     });

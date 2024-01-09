@@ -15,9 +15,7 @@ use App\Http\Controllers\Backend\AuthController;
 */
 
 Route::get('/', function () {
-    $life = time();
-    $lifeTime = time() + 1;
-    return view('Frontend.Index', ['life' => $life, 'time' => $lifeTime]);
+    return view('Frontend.Index');
 });
 
 //___ Admin Panel ___//
