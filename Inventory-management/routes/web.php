@@ -14,8 +14,9 @@ use App\Http\Controllers\Backend\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('Frontend.Index');
+//___ Front end ___//
+Route::prefix('/')->group(function () {
+    Route::view('/', 'Frontend.Pages.Index');
 });
 
 //___ Admin Panel ___//
