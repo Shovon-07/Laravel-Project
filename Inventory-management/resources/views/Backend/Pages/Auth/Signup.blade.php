@@ -1,7 +1,5 @@
 @extends('Backend.Layouts.Links')
 <title>Sign Up</title>
-{{-- Icon --}}
-<link rel="icon" href="{{asset('Uploaded_file/Img/user.png')}}">
 
 {{-- <!--=== Loader ===--> --}}
 @include('Backend.Components.Loader')

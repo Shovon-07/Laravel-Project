@@ -1,25 +1,34 @@
-{{-- Css Plugins --}}
-{{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap_css/bootstrap.min.css')}}"> --}}
-<link rel="stylesheet" href="{{asset('assets/css/Loader.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/toastify.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/popup.css')}}">
-{{-- Css --}}
-<link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/form.css')}}">
-{{-- Font awesome --}}
-<link rel="stylesheet" href="{{asset('assets/css/font_awesome/all.min.css')}}" />
-<link rel="stylesheet" href="{{asset('assets/css/font_awesome/fontawesome.min.css')}}" />
+{{-- <!-- bootstrap link --> --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/bootstrap_css/bootstrap.min.css">
+{{-- <!-- css link --> --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/sass.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/style.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/footer.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/responsive.css">
+{{-- <!-- font awesome link --> --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/font_awesome/all.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/font_awesome/regular.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/font_awesome/fontawesome.css">
+{{-- <!-- Google icon --> --}}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+{{-- <!-- OwlCarousel --> --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/owl_carousel/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/owl_carousel/owl.theme.default.min.css">
 
 {{--
     --}}
 
 {{-- Js Plugins --}}
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/axios.min.js')}}"></script>
-{{-- <script src="{{asset('assets/js/bootstrap_js/bootstrap.min.js')}}"></script> --}}
 <script src="{{asset('assets/js/Loader.js')}}"></script>
 <script src="{{asset('assets/js/toastify.js')}}"></script>
-<script src="{{asset('assets/js/popup.js')}}"></script>
+
+<script src="{{asset('assets/frontend')}}/js/jquery-v3.6.1.js"></script>
+<script src="{{asset('assets/frontend')}}/js/bootstrap_js/bootstrap.min.js"></script>
+<script src="{{asset('assets/frontend')}}/js/plugins/owl.carousel.min.js"></script>
 
 {{-- Script --}}
-<script src="{{asset('assets/js/app.js')}}"></script>
+<script src="{{asset('assets/frontend')}}/js/custome.js"></script>
+<script src="{{asset('assets/frontend')}}/js/custome_jquery.js"></script>
+<script src="{{asset('assets/frontend')}}/js/carousel.js"></script>
+<script src="{{asset('assets/js/popup.js')}}"></script>

@@ -7,21 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Dashboard</title>
-    <link rel="icon" href="{{asset('Uploaded_file/Img/user.png')}}">
+    <link rel="icon" href="{{asset('Uploaded_file/images/user.png')}}">
     {{-- Plugins --}}
-    {{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap_css/bootstrap.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('assets/backend/css/bootstrap_css/bootstrap.min.css')}}">
      --}}
-    <link rel="stylesheet" href="{{asset('assets/css/Loader.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/toastify.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/popup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/Loader.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/toastify.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/popup.css')}}">
     {{-- Css --}}
-    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/sideNav.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/header.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/summery.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/sideNav.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/header.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/summery.css')}}">
     {{-- Font awesome --}}
-    <link rel="stylesheet" href="{{asset('assets/css/font_awesome/all.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/font_awesome/fontawesome.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/backend/css/font_awesome/all.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/backend/css/font_awesome/fontawesome.min.css')}}" />
 </head>
 
 <body>
@@ -45,15 +45,15 @@
     </div>
 
     {{-- Js Plugins --}}
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/axios.min.js')}}"></script>
-    {{-- <script src="{{asset('assets/js/bootstrap_js/bootstrap.min.js')}}"></script> --}}
-    <script src="{{asset('assets/js/Loader.js')}}"></script>
-    <script src="{{asset('assets/js/toastify.js')}}"></script>
+    <script src="{{asset('assets/backend/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/backend/js/axios.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/backend/js/bootstrap_js/bootstrap.min.js')}}"></script> --}}
+    <script src="{{asset('assets/backend/js/Loader.js')}}"></script>
+    <script src="{{asset('assets/backend/js/toastify.js')}}"></script>
 
     {{-- Script --}}
-    <script src="{{asset('assets/js/app.js')}}"></script>
-    <script src="{{asset('assets/js/popup.js')}}"></script>
+    <script src="{{asset('assets/backend/js/app.js')}}"></script>
+    <script src="{{asset('assets/backend/js/popup.js')}}"></script>
     
 </body>
 

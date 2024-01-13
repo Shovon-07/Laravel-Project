@@ -63,27 +63,27 @@
                 <div class="owl-carousel owl-theme carousel-1">
                     <a href="">
                         <div class="item">
-                            <img src="{{asset('Frontend')}}/assets/images/banner_1.jpg">
+                            <img src="{{asset('assets/frontend')}}/images/banner_1.jpg">
                         </div>
                     </a>
                     <a href="">
                         <div class="item">
-                            <img src="{{asset('Frontend')}}/assets/images/banner_2.jpg">
+                            <img src="{{asset('assets/frontend')}}/images/banner_2.jpg">
                         </div>
                     </a>
                     <a href="">
                         <div class="item">
-                            <img src="{{asset('Frontend')}}/assets/images/banner_3.jpg">
+                            <img src="{{asset('assets/frontend')}}/images/banner_3.jpg">
                         </div>
                     </a>
                     <a href="">
                         <div class="item">
-                            <img src="{{asset('Frontend')}}/assets/images/banner_4.jpg">
+                            <img src="{{asset('assets/frontend')}}/images/banner_4.jpg">
                         </div>
                     </a>
                     <a href="">
                         <div class="item">
-                            <img src="{{asset('Frontend')}}/assets/images/banner_5.jpg">
+                            <img src="{{asset('assets/frontend')}}/images/banner_5.jpg">
                         </div>
                     </a>
                 </div>
@@ -98,7 +98,7 @@
                 <div class="item">
                     <div class="card card-hover">
                         <div class="d-flex align-items-center flex-column flex-sm-row">
-                            <img src="{{asset('Frontend')}}/assets/images/laptop.png">
+                            <img src="{{asset('assets/frontend')}}/images/laptop.png">
                             <div>
                                 <p>Catch Big <b class="bolded">Deals</b> On The Cameras</p>
                                 <a href="" class="bolded">Shop Now</a>
@@ -109,7 +109,7 @@
                 <div class="item">
                     <div class="card card-hover">
                         <div class="d-flex align-items-center flex-column flex-sm-row">
-                            <img src="{{asset('Frontend')}}/assets/images/laptop.png">
+                            <img src="{{asset('assets/frontend')}}/images/laptop.png">
                             <div>
                                 <p>Catch Big <b class="bolded">Deals</b> On The Cameras</p>
                                 <a href="" class="bolded">Shop Now</a>
@@ -120,7 +120,7 @@
                 <div class="item">
                     <div class="card card-hover">
                         <div class="d-flex align-items-center flex-column flex-sm-row">
-                            <img src="{{asset('Frontend')}}/assets/images/laptop.png">
+                            <img src="{{asset('assets/frontend')}}/images/laptop.png">
                             <div>
                                 <p>Catch Big <b class="bolded">Deals</b> On The Cameras</p>
                                 <a href="" class="bolded">Shop Now</a>
@@ -140,7 +140,7 @@
                     <div class="d-flex align-items-center justify-content-center">
                         <a href="" class="py-4 px-3 text-center">
                             <p class="fs-4 mb-5 text-start">Special Offer</p>
-                            <img src="{{asset('Frontend')}}/assets/images/laptop.png" class="img-fluid" style="width:300px;height:auto;">
+                            <img src="{{asset('assets/frontend')}}/images/laptop.png" class="img-fluid" style="width:300px;height:auto;">
                             <p class="product-title bolded my-4 blue">i5 12th generation, 8 gb ram, 1tb HDD, 128gb SSD</p>
                             <p class="text-center fs-3 my-4">$100.00</p>
                         </a>
@@ -159,7 +159,7 @@
                                     <div class="card m-2 p-4 card-hover">
                                         <p class="store-name aqua-deep">Shovon Enterprise</p>
                                         <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                        <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                        <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                         <p class="price fs-4">$200.00</p>
                                     </div>
                                 </a>
@@ -169,7 +169,7 @@
                                     <div class="card m-2 p-4 card-hover">
                                         <p class="store-name aqua-deep">Shovon Enterprise</p>
                                         <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                        <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                        <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                         <p class="price fs-4">$200.00</p>
                                     </div>
                                 </a>
@@ -179,7 +179,7 @@
                                     <div class="card m-2 p-4 card-hover">
                                         <p class="store-name aqua-deep">Shovon Enterprise</p>
                                         <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                        <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                        <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                         <p class="price fs-4">$200.00</p>
                                     </div>
                                 </a>
@@ -191,7 +191,7 @@
                                     <div class="card m-2 p-4 card-hover">
                                         <p class="store-name aqua-deep">Shovon Enterprise</p>
                                         <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                        <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                        <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                         <p class="price fs-4">$200.00</p>
                                     </div>
                                 </a>
@@ -201,7 +201,7 @@
                                     <div class="card m-2 p-4 card-hover">
                                         <p class="store-name aqua-deep">Shovon Enterprise</p>
                                         <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                        <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                        <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                         <p class="price fs-4">$200.00</p>
                                     </div>
                                 </a>
@@ -211,7 +211,7 @@
                                     <div class="card m-2 p-4 card-hover">
                                         <p class="store-name aqua-deep">Shovon Enterprise</p>
                                         <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                        <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                        <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                         <p class="price fs-4">$200.00</p>
                                     </div>
                                 </a>
@@ -241,7 +241,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -251,7 +251,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -261,7 +261,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -273,7 +273,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -283,7 +283,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -293,7 +293,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -310,27 +310,27 @@
             <div class="owl-carousel owl-theme carousel-2">
                 <div class="item">
                     <div class="card d-flex align-items-center justify-content-center" style="background:var(--light-80);">
-                        <img src="{{asset('Frontend')}}/assets/images/apple.png" style="height:40px !important;">
+                        <img src="{{asset('assets/frontend')}}/images/apple.png" style="height:40px !important;">
                     </div>
                 </div>
                 <div class="item">
                     <div class="card d-flex align-items-center justify-content-center" style="background:var(--light-80);">
-                        <img src="{{asset('Frontend')}}/assets/images/netflix.png" style="height:40px !important;">
+                        <img src="{{asset('assets/frontend')}}/images/netflix.png" style="height:40px !important;">
                     </div>
                 </div>
                 <div class="item">
                     <div class="card d-flex align-items-center justify-content-center" style="background:var(--light-80);">
-                        <img src="{{asset('Frontend')}}/assets/images/amazon.png" style="height:40px !important;">
+                        <img src="{{asset('assets/frontend')}}/images/amazon.png" style="height:40px !important;">
                     </div>
                 </div>
                 <div class="item">
                     <div class="card d-flex align-items-center justify-content-center" style="background:var(--light-80);">
-                        <img src="{{asset('Frontend')}}/assets/images/bkash.png" style="height:40px !important;">
+                        <img src="{{asset('assets/frontend')}}/images/bkash.png" style="height:40px !important;">
                     </div>
                 </div>
                 <div class="item">
                     <div class="card d-flex align-items-center justify-content-center" style="background:var(--light-80);">
-                        <img src="{{asset('Frontend')}}/assets/images/roket.png" style="height:40px !important;">
+                        <img src="{{asset('assets/frontend')}}/images/roket.png" style="height:40px !important;">
                     </div>
                 </div>
             </div>
@@ -361,7 +361,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -371,7 +371,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -381,7 +381,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -393,7 +393,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -403,7 +403,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
@@ -413,7 +413,7 @@
                             <div class="card m-2 p-4 card-hover">
                                 <p class="store-name aqua-deep">Shovon Enterprise</p>
                                 <p class="product-title bolded my-4 blue">Perfume, Alcohol>></p>
-                                <img src="{{asset('Frontend')}}/assets/images/perfume.jpg" class="img-fluid">
+                                <img src="{{asset('assets/frontend')}}/images/perfume.jpg" class="img-fluid">
                                 <p class="price fs-4">$200.00</p>
                             </div>
                         </a>
