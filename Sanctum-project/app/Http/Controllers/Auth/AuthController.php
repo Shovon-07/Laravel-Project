@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -66,6 +67,58 @@ class AuthController extends Controller
                 'message' => $e->getMessage()
             ]);
         }
+    }
+
+    public function UserProfile(Request $request)
+    {
+        try {
+            $data = Auth::user();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successfully',
+                'data' => $data
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function UpdateProfile(Request $request)
+    {
+        try {
+            $request->validate([
+                "name" => 'required|string|max:50',
+                "email" => 'required|string|email|max:50|unique:users,email',
+                "password" => 'required|string|min:3',
+            ]);
+
+            User::where('id', '=', Auth::id())->update([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => $request->input('password'),
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successfully',
+            ]);
+
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function Logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+        return redirect('/login');
     }
 }
 

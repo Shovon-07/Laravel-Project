@@ -16,10 +16,17 @@ use App\Http\Controllers\Auth\AuthController;
 
 Route::prefix('/')->group(function () {
     Route::view('/', 'welcome');
+    Route::view('/login', 'Login')->name('login');
 
     Route::controller(AuthController::class)->group(function () {
         //___ API ___//
         Route::post('/sign-up', 'SignUp');
         Route::post('/login', 'Login');
+
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::get('/user-profile', 'UserProfile')->name('user.profile');
+            Route::post('/update-profile', 'UpdateProfile')->name('update.profile');
+            Route::get('/logout', 'Logout')->name('log.out');
+        });
     });
 });
