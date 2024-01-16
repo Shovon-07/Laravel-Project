@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{asset('assets/backend/css/Loader.css')}}">
 <link rel="stylesheet" href="{{asset('assets/backend/css/toastify.css')}}">
 <link rel="stylesheet" href="{{asset('assets/backend/css/popup.css')}}">
-<link rel="stylesheet" href="{{asset('assets/backend/css/jquery.dataTables.min.css')}}">
 {{-- Css --}}
 <link rel="stylesheet" href="{{asset('assets/backend/css/app.css')}}">
 <link rel="stylesheet" href="{{asset('assets/backend/css/form.css')}}">
@@ -23,7 +22,6 @@
 <script src="{{asset('assets/backend/js/Loader.js')}}"></script>
 <script src="{{asset('assets/backend/js/toastify.js')}}"></script>
 <script src="{{asset('assets/backend/js/popup.js')}}"></script>
-<script src="{{asset('assets/backend/js/jquery.dataTables.min.js')}}"></script>
 
 {{-- Script --}}
 <script src="{{asset('assets/backend/js/app.js')}}"></script>

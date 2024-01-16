@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AuthController;
 
@@ -49,5 +50,13 @@ Route::prefix('/admin')->group(function () {
         Route::post('/update-password', 'UpdatePass');
 
         Route::get('/logout', 'LogOut')->name('log.out');
+    });
+
+    Route::controller(CategoryController::class)->group(function () {
+        Route::middleware(['TokenVerify'])->group(function () {
+            Route::get('/categories', 'CategoryList');
+            Route::post('/create-category', 'CreateCategory');
+            Route::delete('/delete-category', 'DeleteCategory');
+        });
     });
 });

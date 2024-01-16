@@ -9,6 +9,6 @@ class User extends Model
 {
     use HasFactory;
     protected $fillable = ['firstName', 'lastName', 'email', 'mobile', 'address', 'password', 'otp'];
-    protected $attributes = ['otp' => '0', 'Img' => 'user.png'];
+    protected $attributes = ['otp' => '0', 'Img' => 'avater.png'];
     protected $hidden = ['password', 'otp'];
 }

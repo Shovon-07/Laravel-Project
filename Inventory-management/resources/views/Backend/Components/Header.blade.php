@@ -14,7 +14,7 @@
             </div>
             <div id="dropParent" class="profileBox">
               <div class="profile">
-                <img src="{{asset('Uploaded_file/Img/user.png')}}" id="userImg" alt="profile pic">
+                <img src="{{asset('Uploaded_file/images/avater.png')}}" id="userImg" alt="profile pic">
                 <span id="userName"></span>
               </div>
               <ul class="dropdown display">
@@ -42,7 +42,7 @@
       document.querySelector("#userName").innerHTML = userData['lastName'];
       
       const img = userData['Img'];
-      let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
+      let imgPath = "{{asset('Uploaded_file/images')}}" + `/${img}`;
       document.querySelector("#userImg").src = imgPath;
 
     } else {

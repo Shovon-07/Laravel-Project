@@ -13,7 +13,7 @@
     <div class="form">
         <h4 class="title">PROFILE</h4>
         <div class="userImgContainer overlay" onclick="showPopUp()">
-            <img src="{{asset('Uploaded_file/images/user.png')}}" class="userImg" id="userImg" alt="profile pic">
+            <img src="{{asset('Uploaded_file/Img/user.png')}}" class="userImg" id="userImg" alt="profile pic">
             <i class="fa-solid fa-share-from-square shareIcon"></i>
         </div>
         <div class="d-flex">
@@ -67,7 +67,7 @@
             document.querySelector("#password").value = userData['password'];
 
             const img = userData['Img'];
-            let imgPath = "{{asset('Uploaded_file/images')}}" + `/${img}`;
+            let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
             document.querySelector("#userImg").src = imgPath;
         } else {
             response.data['message'];

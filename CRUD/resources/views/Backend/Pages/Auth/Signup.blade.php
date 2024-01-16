@@ -1,28 +1,20 @@
 @extends('Backend.Layouts.Links')
-<title>update profile</title>
+<title>Sign Up</title>
 
 {{-- <!--=== Loader ===--> --}}
 @include('Backend.Components.Loader')
 
-{{-- <!--=== Popup ===--> --}}
-{{-- @include('Backend.Components.Popup') --}}
-
 {{-- <!--=== Login form ===--> --}}
-<div class="form-container d-flex" style="margin: 50px 0">
-    {{-- <img class="userImg" id="userImg" alt="profile pic"> --}}
+<div class="form-container">
     <div class="form">
-        <h4 class="title">PROFILE</h4>
-        <div class="userImgContainer overlay" onclick="showPopUp()">
-            <img src="{{asset('Uploaded_file/images/user.png')}}" class="userImg" id="userImg" alt="profile pic">
-            <i class="fa-solid fa-share-from-square shareIcon"></i>
-        </div>
+        <h4 class="title">SIGN UP</h4>
         <div class="d-flex">
             <div class="left">
                 <div>
                     <input type="text" id="firstName" placeholder="Enter your first name">
                 </div>
                 <div>
-                    <input type="email" readonly id="email" placeholder="Enter your email address">
+                    <input type="email" id="email" placeholder="Enter your email address">
                 </div>
                 <div>
                     <input type="text" id="address" placeholder="Enter your address">
@@ -33,7 +25,7 @@
                     <input type="text" id="lastName" placeholder="Enter your last name">
                 </div>
                 <div>
-                    <input type="number" readonly id="mobile" placeholder="Enter your mobile number">
+                    <input type="number" id="mobile" placeholder="Enter your mobile number">
                 </div>
                 <div>
                     <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
@@ -41,40 +33,16 @@
             </div>
         </div>
         <div class="buttonDiv">
-            <button type="submit" class="button" onclick="updateProfile()">UPDATE</button>
+            <button type="submit" class="button" onclick="register()">COMPLEATE</button>
+        </div>
+        <div class="formBottom">
+            <span>Already have an account ?</span><a href="{{route('login.view')}}">Sign In</a>
         </div>
     </div>
 </div>
 
 <script>
-    window.addEventListener('load', () => {
-        getData();
-    });
-    
-    async function getData() {
-        showLoader();
-        const response = await axios.get("/admin/profile-data");
-        hideLoader();
-
-        if(response.data['status'] === 'success') {
-            userData = response.data['data'];
-            
-            document.querySelector("#firstName").value = userData['firstName'];
-            document.querySelector("#lastName").value = userData['lastName'];
-            document.querySelector("#email").value = userData['email'];
-            document.querySelector("#mobile").value = userData['mobile'];
-            document.querySelector("#address").value = userData['address'];
-            document.querySelector("#password").value = userData['password'];
-
-            const img = userData['Img'];
-            let imgPath = "{{asset('Uploaded_file/images')}}" + `/${img}`;
-            document.querySelector("#userImg").src = imgPath;
-        } else {
-            response.data['message'];
-        }
-    }
-
-    async function updateProfile() {
+    async function register() {
         const firstName = document.querySelector("#firstName").value;
         const lastName = document.querySelector("#lastName").value;
         const email = document.querySelector("#email").value;
@@ -86,29 +54,35 @@
             showTost("Please enter first name");
         } else if(lastName <= 0) {
             showTost("Please enter last name");
+        } else if(email <= 0) {
+            showTost("Please enter email address");
+        } else if(mobile <= 0) {
+            showTost("Please enter mobile number");
         } else if(address <= 0) {
             showTost("Please enter your address");
         } else if(password <= 0) {
             showTost("Please enter a strong password");
         } else {
             showLoader();
-            const response = await axios.post("/admin/update-profile",{
+            const response = await axios.post("/admin/sign-up",{
                 "firstName": firstName,
                 "lastName": lastName,
+                "email": email,
+                "mobile": mobile,
                 "address": address,
                 "password": password
             });
             hideLoader();
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
-                getData();
+                setTimeout(() => {
+                    window.location.href = "/admin/"
+                }, 1000);
             } else {
                 showTost(response.data['message']);
             }
         }
-    }
+        
 
-    // document.querySelector('.userImgContainer').addEventListener("click", () => {
-    //     alert("userImgContainer");
-    // })
+    }
 </script>
