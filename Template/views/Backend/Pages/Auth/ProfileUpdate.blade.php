@@ -8,14 +8,29 @@
 <div class="form-container">
     <div class="form">
         <h4 class="title">SIGN UP</h4>
-        <div>
-            <input type="text" id="name" placeholder="Enter user name">
-        </div>
-        <div>
-            <input type="email" id="email" placeholder="Enter your email address">
-        </div>
-        <div>
-            <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
+        <div class="d-flex">
+            <div class="left">
+                <div>
+                    <input type="text" id="firstName" placeholder="Enter your first name">
+                </div>
+                <div>
+                    <input type="email" id="email" placeholder="Enter your email address">
+                </div>
+                <div>
+                    <input type="text" id="address" placeholder="Enter your address">
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <input type="text" id="lastName" placeholder="Enter your last name">
+                </div>
+                <div>
+                    <input type="number" id="mobile" placeholder="Enter your mobile number">
+                </div>
+                <div>
+                    <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
+                </div>
+            </div>
         </div>
         <div class="buttonDiv">
             <button type="submit" class="button" onclick="register()">COMPLEATE</button>

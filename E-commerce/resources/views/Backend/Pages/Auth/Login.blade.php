@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     async function login() {
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
@@ -46,6 +46,35 @@
                 }, 1000);
             } else {
                 showTost(response.data['message']);
+            }
+        }
+    }
+</script> --}}
+
+<script>
+    async function login() {
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+
+        if(email.length === 0) {
+            showTost("Please enter email address");
+        } else if(password.length === 0) {
+            showTost("Please enter passward");
+        } else {
+            showLoader();
+            const res = await axios.post('/admin/login', {
+                'email' : email,
+                'password' : password
+            });
+            hideLoader();
+            
+            if(res.data['status'] === 'success') {
+                showTost(res.data['message']);
+                setTimeout(() => {
+                    window.location.href = "/dashboard";
+                }, 1000);
+            } else {
+                showTost(res.data['message']);
             }
         }
     }

@@ -18,12 +18,12 @@
              <button type="submit" class="button" id="login" onclick="login()">NEXT</button>
         </div>
             <div class="formBottom">
-            <a href="{{route('signup.view')}}">Sign Up</a> <span>|</span> <a href="{{route('recoverpass.view')}}">Forgot password</a>
+            <a href="{{route('signup.view')}}">Sign Up</a> <span>|</span> <a href="{{route('forgotpass.view')}}">Forgot password</a>
         </div>
     </div>
 </div>
 
-<script>
+{{-- <script>
     async function login() {
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
@@ -49,4 +49,4 @@
             }
         }
     }
-</script>
+</script> --}}
