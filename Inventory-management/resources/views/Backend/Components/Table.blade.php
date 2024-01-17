@@ -1,32 +1,16 @@
-<div>
-    <table id="tableData">
+<div data-bs-theme="dark" style="margin-top: 50px">
+    <table id="table">
         <thead>
             <tr>
-                <th>Sl</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
+                <th>Sl no</th>
+                <th>Category name</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="tableList">
-            <tr>
-                <td>1</td>
-                <td>Shovon</td>
-                <td>sho@</td>
-                <td>0123</td>
-                <td>
-                    <button class="edite">Edite</button> <span class="btnDevider">|</span>
-                    <button class="delete">Delete</button>
-                </td>
-            </tr>
+        <tbody id="tableData">
+            
         </tbody>
     </table>
-
-    <div class="paginate">
-        <button class="next">Next</button> <span></span>
-        <button class="prev">Prev</button>
-    </div>
 </div>
 
 <script>
@@ -34,18 +18,33 @@
 
     async function getData() {
         showLoader();
-        let res = await axios.get('/admin/categories');
+        let res = await axios.get("/admin/categories");
         hideLoader();
 
-        let tableData = document.querySelector("#tableData");
-        let tableList = document.querySelector("#tableList");
-        
-        res.data.forEach(function(items,index) {
+        let table = $("#table");
+        let tableData = $("#tableData");
+
+        table.DataTable().destroy();
+        tableData.empty();
+
+        let count = 1;
+        let data = res.data['categories'];
+        data.forEach(function (item, index) {
             let row = `<tr>
-                            <td></td>
-                        </tr>`
-        
-                        tableList.append(row);
+                <td>${count++}</td>
+                <td>${item['category_name']}</td>
+                <td>
+                    <button class="edite">Edite</button> <span class="btnDevider">|</span>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>`;
+
+            tableData.append(row);
+        });
+
+        new DataTable(table, {
+            order: [0, "desc"],
+            lengthMenu: [5,10,15],
         });
     }
 </script>

@@ -23,3 +23,4 @@ dropParent.forEach((itmes) => {
         itmes.querySelector(".rightIcon").classList.toggle("rotate");
     });
 });
+
