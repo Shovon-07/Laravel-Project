@@ -28,25 +28,25 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => {
-    getData();
-  });
+  // window.addEventListener('load', () => {
+  //   getData();
+  // });
 
-  async function getData() {
-    showLoader();
-    const response = await axios.get("/admin/profile-data");
-    hideLoader();
+  // async function getData() {
+  //   showLoader();
+  //   const response = await axios.get("/admin/profile-data");
+  //   hideLoader();
 
-    if(response.data['status'] === 'success') {
-      let userData = response.data['data'];
-      document.querySelector("#userName").innerHTML = userData['lastName'];
+  //   if(response.data['status'] === 'success') {
+  //     let userData = response.data['data'];
+  //     document.querySelector("#userName").innerHTML = userData['lastName'];
       
-      const img = userData['Img'];
-      let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
-      document.querySelector("#userImg").src = imgPath;
+  //     const img = userData['Img'];
+  //     let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
+  //     document.querySelector("#userImg").src = imgPath;
 
-    } else {
-      response.data['message'];
-    }
-  }
+  //   } else {
+  //     response.data['message'];
+  //   }
+  // }
 </script>

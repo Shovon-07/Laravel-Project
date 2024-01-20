@@ -47,68 +47,70 @@
 </div>
 
 <script>
-    window.addEventListener('load', () => {
-        getData();
-    });
-    
     async function getData() {
         showLoader();
-        const response = await axios.get("/admin/profile-data");
+        const res = await axios.get("/admin/profile", headerToken());
         hideLoader();
 
-        if(response.data['status'] === 'success') {
-            userData = response.data['data'];
+        console.log(res.data);
+    }
+
+
+    // async function getData() {
+    //     showLoader();
+    //     const response = await axios.get("/admin/profile-data", headerToken());
+    //     hideLoader();
+
+    //     if(response.data['status'] === 'success') {
+    //         userData = response.data['data'];
             
-            document.querySelector("#firstName").value = userData['firstName'];
-            document.querySelector("#lastName").value = userData['lastName'];
-            document.querySelector("#email").value = userData['email'];
-            document.querySelector("#mobile").value = userData['mobile'];
-            document.querySelector("#address").value = userData['address'];
-            document.querySelector("#password").value = userData['password'];
+    //         document.querySelector("#firstName").value = userData['firstName'];
+    //         document.querySelector("#lastName").value = userData['lastName'];
+    //         document.querySelector("#email").value = userData['email'];
+    //         document.querySelector("#mobile").value = userData['mobile'];
+    //         document.querySelector("#address").value = userData['address'];
+    //         document.querySelector("#password").value = userData['password'];
 
-            const img = userData['Img'];
-            let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
-            document.querySelector("#userImg").src = imgPath;
-        } else {
-            response.data['message'];
-        }
-    }
+    //         const img = userData['Img'];
+    //         let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
+    //         document.querySelector("#userImg").src = imgPath;
+    //     } else {
+    //         response.data['message'];
+    //         unAuthorized(response.status);
+    //     }
+    // }
 
-    async function updateProfile() {
-        const firstName = document.querySelector("#firstName").value;
-        const lastName = document.querySelector("#lastName").value;
-        const email = document.querySelector("#email").value;
-        const mobile = document.querySelector("#mobile").value;
-        const address = document.querySelector("#address").value;
-        const password = document.querySelector("#password").value;
+    // async function updateProfile() {
+    //     const firstName = document.querySelector("#firstName").value;
+    //     const lastName = document.querySelector("#lastName").value;
+    //     const email = document.querySelector("#email").value;
+    //     const mobile = document.querySelector("#mobile").value;
+    //     const address = document.querySelector("#address").value;
+    //     const password = document.querySelector("#password").value;
 
-        if(firstName <= 0) {
-            showTost("Please enter first name");
-        } else if(lastName <= 0) {
-            showTost("Please enter last name");
-        } else if(address <= 0) {
-            showTost("Please enter your address");
-        } else if(password <= 0) {
-            showTost("Please enter a strong password");
-        } else {
-            showLoader();
-            const response = await axios.post("/admin/update-profile",{
-                "firstName": firstName,
-                "lastName": lastName,
-                "address": address,
-                "password": password
-            });
-            hideLoader();
-            if(response.data['status'] === 'success') {
-                showTost(response.data['message']);
-                getData();
-            } else {
-                showTost(response.data['message']);
-            }
-        }
-    }
-
-    // document.querySelector('.userImgContainer').addEventListener("click", () => {
-    //     alert("userImgContainer");
-    // })
+    //     if(firstName <= 0) {
+    //         showTost("Please enter first name");
+    //     } else if(lastName <= 0) {
+    //         showTost("Please enter last name");
+    //     } else if(address <= 0) {
+    //         showTost("Please enter your address");
+    //     } else if(password <= 0) {
+    //         showTost("Please enter a strong password");
+    //     } else {
+    //         showLoader();
+    //         const response = await axios.post("/admin/update-profile",{
+    //             "firstName": firstName,
+    //             "lastName": lastName,
+    //             "address": address,
+    //             "password": password
+    //         });
+    //         hideLoader();
+    //         if(response.data['status'] === 'success') {
+    //             showTost(response.data['message']);
+    //             getData();
+    //         } else {
+    //             showTost(response.data['message']);
+    //         }
+    //     }
+    // }
 </script>

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OtpMail;
 use App\Models\User;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -64,21 +67,34 @@ class AuthController extends Controller
         }
     }
 
+    public function Logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Logout successfull',
+        ]);
+    }
+
     public function SendOTP(Request $request)
     {
         try {
             $email = $request->input('email');
-            $user = User::where('email', $email)->count();
+            $user = User::where('email', $email)->first();
             $otp = rand(111111, 999999);
 
             if ($user != null) {
                 // Database(otp field) update
                 User::where('email', $email)->update(['otp' => $otp]);
 
-                $request->header('email', $email);
+                // Send email
+                Mail::to($email)->send(new OtpMail($user->name, $otp));
+
+                // $request->header('email', $email);
                 return response()->json([
                     'status' => 'success',
                     'message' => '6 digit OTP sent in your email',
+                    'email' => $email
                 ]);
             } else {
                 return response()->json([
@@ -98,7 +114,7 @@ class AuthController extends Controller
     {
         try {
             $otp = $request->input('otp');
-            $email = $request->header('email');
+            $email = $request->cookie('email');
 
             $request->validate([
                 'otp' => "required|string|min:6|max:6"

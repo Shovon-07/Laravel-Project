@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,10 +26,12 @@ Route::prefix('/')->group(function () {
 
 //___ Back end ___//
 Route::prefix('/admin')->group(function () {
-    Route::view('/', 'Backend.Pages.Auth.Login')->name('login.view');
+    Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
     Route::view('/signup', 'Backend.Pages.Auth.Signup')->name('signup.view');
     Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
     Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify')->name('verify.otp');
+    // Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard')->middleware('auth:sanctum');
+    Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
 
     //___ API ___//
     Route::controller(AuthController::class)->group(function () {
@@ -36,5 +39,13 @@ Route::prefix('/admin')->group(function () {
         Route::post('/login', 'Login');
         Route::post('/send-otp', 'SendOTP');
         Route::post('/verify-otp', 'VerifyOTP');
+        Route::get('/logout', 'Logout')->name('log.out')->middleware(['auth:sanctum']);
+    });
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::middleware(['auth:sanctum'])->group(function () {
+            Route::get('/profile', 'GetProfileData')->name('profile.view');
+            Route::post('/update-profile', 'ProfileUpdate');
+        });
     });
 });
