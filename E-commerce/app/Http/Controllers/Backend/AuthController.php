@@ -86,21 +86,70 @@ class AuthController extends Controller
 
             if ($data != null) {
                 $otp = rand(111111, 975632);
-                $name = User::where('email', '=', $email)->select('name')->first();
+                $data = User::where('email', '=', $email)->first();
                 $appName = env('APP_NAME');
+
+                // Send otp in email
+                // Mail::to($email)->send(new OtpMail($data->name, $otp, $appName));
 
                 // Update database otp
                 User::where('email', '=', $email)->update([
                     'otp' => $otp
                 ]);
 
-                // Send otp in email
-                Mail::to($email)->send(new OtpMail($name->name, $otp, $appName));
-
                 return response()->json([
                     'status' => 'success',
                     'message' => '6 digit otp sent in your email address',
                     'otp' => $otp,
+                    'email' => $email
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Email not exist !',
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    function VerifyOtp(Request $request)
+    {
+        try {
+            $request->validate([
+                'otp' => 'required|string|min:6|max:6',
+            ]);
+
+            $email = $request->headers->get('email');
+            $otp = $request->input('otp');
+            $data = User::where('email', '=', $email)->count();
+
+            if ($data != null) {
+                $verifyOTP = User::where('email', '=', $email)->where('otp', '=', $otp)->count();
+
+                if ($verifyOTP != null) {
+                    User::where('email', '=', $email)->update([
+                        'otp' => 0
+                    ]);
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Otp virified',
+                        'email' => $email,
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 'failed',
+                        'message' => 'Otp not valid !',
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Something went wrong !',
                 ]);
             }
         } catch (Exception $e) {

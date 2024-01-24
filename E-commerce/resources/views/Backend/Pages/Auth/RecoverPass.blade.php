@@ -21,7 +21,7 @@
     async function sendOtp() {
         const email = document.querySelector("#email").value;
         
-        if(email <= 0) {
+        if(email.length === 0) {
             showTost("Please enter email address");
         } else {
             showLoader();
@@ -30,6 +30,10 @@
 
             if(response.data['status']==='success') {
                 showTost(response.data['message']);
+
+                // Store token in session storeage
+                sessionStorage.setItem('email', response.data['email']);
+
                 setTimeout(() => {
                     window.location.href = "/admin/verify-otp";
                 }, 1000);

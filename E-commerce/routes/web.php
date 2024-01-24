@@ -24,13 +24,15 @@ Route::prefix('/')->group(function () {
 Route::prefix('/admin')->group(function () {
     Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
     Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
-    Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
+    Route::view('/send-otp', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
+    Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
 
     //___ API ___//
     Route::controller(AuthController::class)->group(function () {
         Route::post('/sign-up', 'Signup');
         Route::post('/login', 'Login');
         Route::post('/send-otp', 'SendOtp');
+        Route::post('/verify-otp', 'VerifyOtp');
         Route::get('/logout', 'Logout')->name('logout')->middleware('auth:sanctum');
     });
 
