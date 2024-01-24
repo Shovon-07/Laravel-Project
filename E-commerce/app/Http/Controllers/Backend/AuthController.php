@@ -5,140 +5,108 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Mail\OtpMail;
 use App\Models\User;
+use Auth;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-    public function Signup(Request $request)
+    function Signup(Request $request)
     {
         try {
             $request->validate([
-                "name" => "required|string",
-                "email" => "required|string|email",
-                "password" => "required|string|min:3"
+                'name' => 'required|string|max:30',
+                'email' => 'required|string|email|unique:users,email',
+                'password' => 'required|string|min:3'
             ]);
 
             User::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
-                'password' => Hash::make($request->input('password')),
+                'password' => Hash::make($request->input('password'))
             ]);
+
             return response()->json([
                 'status' => 'success',
-                'message' => 'Registration successfull'
+                'message' => 'Registration successfull',
             ]);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'failed',
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ]);
         }
     }
 
-    public function Login(Request $request)
+    function Login(Request $request)
     {
         try {
             $email = $request->input('email');
             $password = $request->input('password');
-            $user = User::where('email', $email)->first();
+            $user = User::where('email', '=', $email)->first();
 
-            if (!$user || !Hash::check($password, $user->password)) {
-                return response()->json([
-                    'status' => 'failed',
-                    'message' => 'User not found !'
-                ]);
-            } else {
+            if ($user && Hash::check($password, $user->password)) {
                 $token = $user->createToken('token')->plainTextToken;
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Login successfull',
                     'token' => $token
                 ]);
-            }
-        } catch (Exception $e) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => $e->getMessage()
-            ]);
-        }
-    }
-
-    public function Logout(Request $request)
-    {
-        $request->user()->tokens()->delete();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Logout successfull',
-        ]);
-    }
-
-    public function SendOTP(Request $request)
-    {
-        try {
-            $email = $request->input('email');
-            $user = User::where('email', $email)->first();
-            $otp = rand(111111, 999999);
-
-            if ($user != null) {
-                // Database(otp field) update
-                User::where('email', $email)->update(['otp' => $otp]);
-
-                // Send email
-                Mail::to($email)->send(new OtpMail($user->name, $otp));
-
-                // $request->header('email', $email);
-                return response()->json([
-                    'status' => 'success',
-                    'message' => '6 digit OTP sent in your email',
-                    'email' => $email
-                ]);
             } else {
                 return response()->json([
                     'status' => 'failed',
-                    'message' => 'Invalid email address !'
+                    'message' => 'User not found !',
                 ]);
             }
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'failed',
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ]);
         }
     }
 
-    public function VerifyOTP(Request $request)
+    function Logout(Request $request)
+    {
+        Auth::user()->tokens()->delete();
+        return redirect('/admin/');
+    }
+
+    function SendOtp(Request $request)
     {
         try {
-            $otp = $request->input('otp');
-            $email = $request->cookie('email');
-
             $request->validate([
-                'otp' => "required|string|min:6|max:6"
+                'email' => 'required|string|email'
             ]);
 
-            $data = User::where('email', $email)->where('otp', $otp)->count();
+            $email = $request->input('email');
+            $data = User::where('email', '=', $email)->count();
 
             if ($data != null) {
-                User::where('email', $email)->where('otp', $otp)->update(['otp' => '0']);
+                $otp = rand(111111, 975632);
+                $name = User::where('email', '=', $email)->select('name')->first();
+                $appName = env('APP_NAME');
+
+                // Update database otp
+                User::where('email', '=', $email)->update([
+                    'otp' => $otp
+                ]);
+
+                // Send otp in email
+                Mail::to($email)->send(new OtpMail($name->name, $otp, $appName));
+
                 return response()->json([
                     'status' => 'success',
-                    'message' => 'OTP verification successfull',
-                ]);
-            } else {
-                return response()->json([
-                    'status' => 'failed',
-                    'message' => 'Invalid OTP !'
+                    'message' => '6 digit otp sent in your email address',
+                    'otp' => $otp,
                 ]);
             }
-
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'failed',
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ]);
         }
     }

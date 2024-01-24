@@ -18,7 +18,7 @@
             <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
         </div>
         <div class="buttonDiv">
-            <button type="submit" class="button" onclick="register()">COMPLEATE</button>
+            <button type="submit" class="button" onclick="signUp()">COMPLEATE</button>
         </div>
         <div class="formBottom">
             <span>Already have an account ?</span><a href="{{route('login')}}">Sign In</a>
@@ -27,29 +27,30 @@
 </div>
 
 <script>
-    async function register() {
+    async function signUp() {
         const name = document.querySelector("#name").value;
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
 
-        if(name <= 0) {
-            showTost("Please enter first name");
-        } else if(email <= 0) {
+        if(name.length === 0) {
+            showTost("Please enter your name");
+        } else if(email.length === 0) {
             showTost("Please enter email address");
-        } else if(password <= 0) {
-            showTost("Please enter a strong password");
+        } else if(password.length < 3) {
+            showTost("Please enter a strong password up to 3 charecters");
         } else {
             showLoader();
-            const response = await axios.post("/admin/sign-up",{
-                "name": name,
-                "email": email,
-                "password": password
+            const response = await axios.post("/admin/sign-up", {
+                "name" : name,
+                "email" : email,
+                "password" : password
             });
             hideLoader();
-            if(response.data['status'] === 'success') {
+
+            if(response.data["status"] === "success") {
                 showTost(response.data['message']);
                 setTimeout(() => {
-                    window.location.href = "/admin/"
+                    window.location.href = "/admin/";
                 }, 1000);
             } else {
                 showTost(response.data['message']);

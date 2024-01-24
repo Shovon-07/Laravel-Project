@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 //___ Front end ___//
 Route::prefix('/')->group(function () {
     Route::view('/', 'Frontend.Pages.Index');
@@ -27,25 +23,22 @@ Route::prefix('/')->group(function () {
 //___ Back end ___//
 Route::prefix('/admin')->group(function () {
     Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
-    Route::view('/signup', 'Backend.Pages.Auth.Signup')->name('signup.view');
+    Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
     Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
-    Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify')->name('verify.otp');
-    // Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard')->middleware('auth:sanctum');
-    Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
 
     //___ API ___//
     Route::controller(AuthController::class)->group(function () {
         Route::post('/sign-up', 'Signup');
         Route::post('/login', 'Login');
-        Route::post('/send-otp', 'SendOTP');
-        Route::post('/verify-otp', 'VerifyOTP');
-        Route::get('/logout', 'Logout')->name('log.out')->middleware(['auth:sanctum']);
+        Route::post('/send-otp', 'SendOtp');
+        Route::get('/logout', 'Logout')->name('logout')->middleware('auth:sanctum');
     });
 
     Route::controller(ProfileController::class)->group(function () {
+        Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
         Route::middleware(['auth:sanctum'])->group(function () {
-            Route::get('/profile', 'GetProfileData')->name('profile.view');
-            Route::post('/update-profile', 'ProfileUpdate');
+            //___ API ___//
+            Route::get('/profile', 'ProfileData')->name('profile.view');
         });
     });
 });

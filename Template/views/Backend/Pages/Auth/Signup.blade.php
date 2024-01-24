@@ -21,7 +21,7 @@
             <button type="submit" class="button" onclick="register()">COMPLEATE</button>
         </div>
         <div class="formBottom">
-            <span>Already have an account ?</span><a href="{{route('login.view')}}">Sign In</a>
+            <span>Already have an account ?</span><a href="{{route('login')}}">Sign In</a>
         </div>
     </div>
 </div>
