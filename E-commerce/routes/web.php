@@ -26,6 +26,7 @@ Route::prefix('/admin')->group(function () {
     Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
     Route::view('/send-otp', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
     Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
+    Route::view('/update-password', 'Backend.Pages.Auth.UpdatePass');
 
     //___ API ___//
     Route::controller(AuthController::class)->group(function () {

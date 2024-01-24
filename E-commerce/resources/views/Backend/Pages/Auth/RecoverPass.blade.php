@@ -32,7 +32,7 @@
                 showTost(response.data['message']);
 
                 // Store token in session storeage
-                sessionStorage.setItem('email', response.data['email']);
+                setSessionStorage(response.data['email']);
 
                 setTimeout(() => {
                     window.location.href = "/admin/verify-otp";

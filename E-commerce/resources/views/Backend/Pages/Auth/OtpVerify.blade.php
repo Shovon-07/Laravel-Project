@@ -9,7 +9,7 @@
     <div class="form">
         <h3 class="title">VERIFY OTP</h3>
         <div>
-            <input type="number" id="otp" maxlength="4" placeholder="Enter 6 digit otp">
+            <input type="number" id="otp" placeholder="Enter 6 digit otp">
         </div>
         <div class="buttonDiv">
             <button type="submit" class="button" onclick="verifyOtp()">CONFIRM</button>
@@ -20,15 +20,24 @@
 <script>
     async function verifyOtp() {
         const otp = document.querySelector("#otp").value;
-        if(otp <= 0) {
-            showTost("Please enter otp");
+        if(otp.length < 6 || otp.length > 6) {
+            showTost("Please enter 6 digit otp");
         } else {
             showLoader();
-            const response = await axios.post("/admin/verify-otp", {"otp": otp});
+            // const headerData = getSessionStorage();
+            // alert(getSessionStorage());
+            const response = await axios.post("/admin/verify-otp", getSessionStorage(), {"otp": otp});
+            // const response = {
+            //     method: 'post',
+            //     url: '/admin/verify-otp',
+            //     headers: {'email': headerData,},
+            //     data : {'otp': otp}
+            // };
             hideLoader();
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
+                console.log(response.data);
                 setTimeout(() => {
                     window.location.href = "/admin/update-password";
                 }, 1000);
