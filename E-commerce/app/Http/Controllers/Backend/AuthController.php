@@ -47,17 +47,17 @@ class AuthController extends Controller
             $password = $request->input('password');
             $user = User::where('email', '=', $email)->first();
 
-            if ($user && Hash::check($password, $user->password)) {
+            if (!$user || !Hash::check($password, $user->password)) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'User not found !',
+                ]);
+            } else {
                 $token = $user->createToken('token')->plainTextToken;
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Login successfull',
                     'token' => $token
-                ]);
-            } else {
-                return response()->json([
-                    'status' => 'failed',
-                    'message' => 'User not found !',
                 ]);
             }
         } catch (Exception $e) {
@@ -124,7 +124,7 @@ class AuthController extends Controller
                 'otp' => 'required|string|min:6|max:6',
             ]);
 
-            $email = $request->headers->get('email');
+            $email = $request->input('email');
             $otp = $request->input('otp');
             $data = User::where('email', '=', $email)->count();
 
@@ -137,7 +137,7 @@ class AuthController extends Controller
                     ]);
                     return response()->json([
                         'status' => 'success',
-                        'message' => 'Otp virified',
+                        'message' => 'Otp verificition successfull',
                         'email' => $email,
                     ]);
                 } else {
@@ -146,6 +146,41 @@ class AuthController extends Controller
                         'message' => 'Otp not valid !',
                     ]);
                 }
+            } else {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Something went wrong !',
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    function UpdatePassword(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|string|email',
+                'password' => 'required|string|min:3'
+            ]);
+
+            $email = $request->input('email');
+            $password = $request->input('password');
+            $data = User::where('email', '=', $email)->count();
+
+            if ($data != null) {
+                User::where('email', '=', $email)->update([
+                    'password' => Hash::make($password)
+                ]);
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Password updated',
+                    'data' => $data
+                ]);
             } else {
                 return response()->json([
                     'status' => 'failed',

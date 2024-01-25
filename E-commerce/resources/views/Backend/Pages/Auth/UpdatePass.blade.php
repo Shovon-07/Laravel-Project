@@ -8,13 +8,10 @@
 <div class="form-container">
     <div class="form">
         <h3 class="title">UPDATE PASSWORD</h3>
-        <hr>
         <div>
-            <label for="password">New password :</label> <br>
             <input type="password" id="password" placeholder="Enter new password">
         </div>
         <div>
-            <label for="c_password">Confirm password :</label> <br>
             <input type="password" id="c_password" placeholder="Retype password">
         </div>
         <div class="buttonDiv">
@@ -28,19 +25,21 @@
         const password = document.querySelector("#password").value;
         const c_password = document.querySelector("#c_password").value;
 
-        if(password <= 0) {
-            showTost("Please enter password");
+        if(password.length < 3) {
+            showTost("Please enter a strong password up to 3 charecters");
         } else if(password !== c_password) {
             showTost("Password not matched");
         } else {
             showLoader();
-            const response = await axios.post("/admin/update-password", {"password" : password});
+            const email = getSessionStorage();
+            const response = await axios.post("/admin/update-password", {"email" : email,"password" : password});
             hideLoader();
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
+                sessionStorage.clear();
                 setTimeout(() => {
-                    window.location.href = '/admin/dashboard';
+                    window.location.href = '/admin/';
                 }, 1000);
             } else {
                 showTost(response.data['message']);

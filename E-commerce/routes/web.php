@@ -34,6 +34,7 @@ Route::prefix('/admin')->group(function () {
         Route::post('/login', 'Login');
         Route::post('/send-otp', 'SendOtp');
         Route::post('/verify-otp', 'VerifyOtp');
+        Route::post('/update-password', 'UpdatePassword');
         Route::get('/logout', 'Logout')->name('logout')->middleware('auth:sanctum');
     });
 

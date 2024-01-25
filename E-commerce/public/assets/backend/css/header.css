@@ -74,6 +74,7 @@
     color: var(--dark);
     padding: 10px 5px 10px 0;
     border-left: 3px solid transparent;
+    cursor: pointer;
 }
 .header .headerRight .profileBox ul a:hover {
     color: var(--main);

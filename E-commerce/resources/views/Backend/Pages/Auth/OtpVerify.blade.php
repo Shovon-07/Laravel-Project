@@ -24,20 +24,12 @@
             showTost("Please enter 6 digit otp");
         } else {
             showLoader();
-            // const headerData = getSessionStorage();
-            // alert(getSessionStorage());
-            const response = await axios.post("/admin/verify-otp", getSessionStorage(), {"otp": otp});
-            // const response = {
-            //     method: 'post',
-            //     url: '/admin/verify-otp',
-            //     headers: {'email': headerData,},
-            //     data : {'otp': otp}
-            // };
+            const email = getSessionStorage();
+            const response = await axios.post("/admin/verify-otp", {"email": email,"otp": otp});
             hideLoader();
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
-                console.log(response.data);
                 setTimeout(() => {
                     window.location.href = "/admin/update-password";
                 }, 1000);
