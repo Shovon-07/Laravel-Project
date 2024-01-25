@@ -1,4 +1,7 @@
 <div data-bs-theme="dark" style="margin-top: 50px">
+    <div style="text-align: right">
+        <button class="button" style="padding: 10px; margin-bottom: 20px" onclick="showPopUp()">Create Category</button>
+    </div>
     <table id="table">
         <thead>
             <tr>
@@ -34,8 +37,8 @@
                 <td>${count++}</td>
                 <td>${item['category_name']}</td>
                 <td>
-                    <button class="edite">Edite</button> <span class="btnDevider">|</span>
-                    <button class="delete">Delete</button>
+                    <button data-id="${item['id']}" class="edite">Edite</button> <span class="btnDevider">|</span>
+                    <button data-id="${item['id']}" class="delete">Delete</button>
                 </td>
             </tr>`;
 
@@ -45,6 +48,18 @@
         new DataTable(table, {
             order: [0, "desc"],
             lengthMenu: [5,10,15],
+        });
+
+        // Edite
+        $('.edite').on('click', function() {
+            const id = $(this).data('id');
+            console.log(id);
+        });
+
+        // Delete
+        $('.delete').on('click', function() {
+            const id = $(this).data('id');
+            showDeleteCategoryPopUp(id);
         });
     }
 </script>

@@ -12,8 +12,8 @@ class CategoryController extends Controller
 {
     public function CategoryList(Request $request)
     {
-        $userId = $request->headers->get("id");
-        $categories = Category::where('user_id', '=', $userId)->get();
+        $id = $request->headers->get("id");
+        $categories = Category::where('user_id', '=', $id)->get();
         return response()->json([
             'categories' => $categories
         ]);
@@ -27,6 +27,8 @@ class CategoryController extends Controller
             'user_id' => $userId
         ]);
         return response()->json([
+            'status' => 'success',
+            'message' => 'New category created',
             'data' => $userId
         ]);
     }
@@ -34,11 +36,13 @@ class CategoryController extends Controller
     public function DeleteCategory(Request $request)
     {
         try {
-            $category_name = $request->input('categoryName');
+            // $category_name = $request->input('categoryName');
+            $categoryId = $request->input('categoryId');
             $userId = $request->headers->get('id');
-            Category::where('category_name', '=', $category_name)->where('user_id', '=', $userId)->delete();
+            Category::where('id', '=', $categoryId)->where('user_id', '=', $userId)->delete();
             return response()->json([
-                'status' => "Category deleted"
+                'status' => "success",
+                'message' => 'Category deleted'
             ]);
         } catch (Exception $e) {
             return response()->json([

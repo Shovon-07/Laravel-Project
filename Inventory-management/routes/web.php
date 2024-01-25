@@ -29,6 +29,14 @@ Route::prefix('/admin')->group(function () {
         Route::view('/otp', 'Backend.Pages.Auth.Otp')->name('otp.view');
         Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
 
+        // Web API route
+        Route::post('/sign-up', 'SignUp');
+        Route::post('/login', 'Login');
+        Route::post('/send-otp', 'SendOTP');
+        Route::post('/verify-otp', 'VerifyOTP');
+        Route::post('/update-password', 'UpdatePass');
+        Route::get('/logout', 'LogOut')->name('log.out');
+
         // Protected route
         Route::middleware(['TokenVerify'])->group(function () {
             // View
@@ -41,22 +49,14 @@ Route::prefix('/admin')->group(function () {
             Route::get('/profile-data', 'UserProfile');
             Route::post('/update-profile', 'UserProfileUpdate');
         });
-
-        // Web API route
-        Route::post('/sign-up', 'SignUp');
-        Route::post('/login', 'Login');
-        Route::post('/send-otp', 'SendOTP');
-        Route::post('/verify-otp', 'VerifyOTP');
-        Route::post('/update-password', 'UpdatePass');
-
-        Route::get('/logout', 'LogOut')->name('log.out');
     });
 
     Route::controller(CategoryController::class)->group(function () {
+        // Protected route
         Route::middleware(['TokenVerify'])->group(function () {
             Route::get('/categories', 'CategoryList');
             Route::post('/create-category', 'CreateCategory');
-            Route::delete('/delete-category', 'DeleteCategory');
+            Route::post('/delete-category', 'DeleteCategory');
         });
     });
 });

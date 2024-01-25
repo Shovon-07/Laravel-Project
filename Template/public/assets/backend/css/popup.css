@@ -1,6 +1,6 @@
 /*___ Pop Up ___*/
 .popup {
-    background: var(--light-ofWhite);
+    backdrop-filter: blur(20px);
     width: 30%;
     padding: 20px;
     border-radius: 12px;
@@ -36,4 +36,15 @@
 
 .hidePopUp {
     display: none;
+}
+
+/* For create category */
+.categoryInput {
+    background-color: transparent;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border: 1px solid var(--green);
+    border-radius: 8px;
 }
