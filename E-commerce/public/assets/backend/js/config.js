@@ -19,3 +19,11 @@ function setSessionStorage(email) {
 function getSessionStorage() {
     return sessionStorage.getItem('email');
 }
+
+async function logout() {
+    const response = await axios.get("/admin/logout", header());
+    console.log(header());
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.href = "/admin/";
+}
