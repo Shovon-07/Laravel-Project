@@ -42,6 +42,7 @@ Route::prefix('/admin')->group(function () {
         Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
         Route::middleware(['auth:sanctum'])->group(function () {
             //___ API ___//
+            // Route::get('/dashboard', 'Dashboard');
             Route::get('/profile', 'ProfileData')->name('profile.view');
         });
     });

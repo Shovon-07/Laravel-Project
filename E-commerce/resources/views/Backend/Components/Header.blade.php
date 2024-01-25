@@ -30,7 +30,7 @@
 
 <script>
   async function logout() {
-    const response = await axios.get("/admin/logout", header());
+  const response = await axios.get("/admin/logout", header());
     console.log(header());
     localStorage.clear();
     sessionStorage.clear();

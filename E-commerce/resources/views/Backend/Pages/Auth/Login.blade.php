@@ -43,6 +43,7 @@
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
                 setToken(response.data['token']);
+                // dashboard();
                 setTimeout(() => {
                     window.location.href = "/admin/dashboard";
                 }, 1000);
@@ -51,6 +52,18 @@
             }
         }
     }
+
+    // async function dashboard() {
+    //     const response = await axios.get("/admin/dashboard", header());
+    //     if(response.data['status'] === 'success') {
+    //         showTost(response.data['message']);
+    //         setTimeout(() => {
+    //             window.location.href = "/admin/dashboard";
+    //         }, 1000);
+    //     } else {
+    //         showTost(response.data['message']);
+    //     }
+    // }
 </script>
 
 {{-- <script>
