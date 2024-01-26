@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Laravel\SerializableClosure\UnsignedSerializableClosure;
 
 return new class extends Migration {
     /**
@@ -10,12 +11,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('email', 50)->unique();
-            $table->string('password', 1000);
-            $table->string('otp', 10);
+            $table->string('email', 50);
+            $table->string('mobile', 20);
+
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users')->cascadeOnUpdate()->restrictOnDelete();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -26,6 +30,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('customers');
     }
 };

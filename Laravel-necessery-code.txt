@@ -1,3 +1,6 @@
+//_______________ Create laravel new project _______________//
+> composer create-project laravel/laravel example-app
+
 //_______________ Image uploade start _______________//
 
 //___ Single image uploade ___//
