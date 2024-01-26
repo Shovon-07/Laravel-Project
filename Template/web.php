@@ -17,16 +17,17 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
 //___ Front end ___//
 Route::prefix('/')->group(function () {
-    Route::view('/','Frontend.Pages.Index');
+    Route::view('/', 'Frontend.Pages.Index');
 });
 
 //___ Back end ___//
 Route::prefix('/admin')->group(function () {
-    Route::view('/','Backend.Pages.Auth.Login')->name('login.view');
-    Route::view('/signup','Backend.Pages.Auth.Signup')->name('signup.view');
-    Route::view('/forgot-password','Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
+    Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
+    Route::view('/signup', 'Backend.Pages.Auth.Signup')->name('signup.view');
+    Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
 
-    
+
 });

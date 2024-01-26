@@ -25,3 +25,4 @@
 
 {{-- Script --}}
 <script src="{{asset('assets/backend/js/app.js')}}"></script>
+<script src="{{asset('assets/backend/js/config.js')}}"></script>

@@ -1,0 +1,86 @@
+/*=== Extra Extra large screen===*/
+@media screen and (max-width : 1270px) {
+}
+
+/*=== Extra large screen===*/
+@media screen and (max-width : 1200px) {
+    /*____ Sidebar start _____*/
+    .sidebar {
+        width: 0px;
+    }
+    .sidebar.active {
+        width: 300px;
+    }
+    /*____ Sidebar end _____*/
+
+    /*____ Main start _____*/
+    .main {
+        margin-left: 0px;
+        width: calc(100%);
+    }
+    .main.active {
+        margin-left: 300px;
+        width: calc(100% - 300px);
+    }
+
+    /*____ Hamberger start _____*/
+    .topbar .hamberger {
+        display: flex;
+    }
+    .topbar .hamberger.active .bar {
+        width: 0px;
+    }
+    .topbar .hamberger.active .bar::before {
+        top: 39px;
+        transform: rotateZ(45deg);
+    }
+    .topbar .hamberger.active .bar::after {
+        bottom: 39px;
+        transform: rotateZ(-45deg);
+    }
+
+    /*____ Hamberger end _____*/
+
+    /*____ Main end _____*/
+ 
+
+    /*____ Footer start _____*/
+    .footer {
+        margin-left: 0px;
+        width: calc(100%);
+    }
+    .footer.active {
+        margin-left: 300px;
+        width: calc(100% - 300px);
+    }
+    /*____ Footer end _____*/
+}
+
+@media screen and (max-width: 1050px) {
+     /*____ Topbar start _____*/
+    .topbar .top-right a {
+        margin: 0 8px;
+    }
+    .topbar .top-right a .icon {
+        font-size: 18px;
+    }
+    .topbar .top-right a:last-child span, .topbar .top-right a:last-child span i {
+        font-size: 13px;
+    }
+    /*____ Topbar end _____*/
+}
+
+/*=== Large screen===*/
+@media screen and (max-width : 992px) {
+}
+
+
+/*=== Medium screen===*/
+@media screen and (max-width : 768px) {
+
+}
+
+/*=== Small screen ===*/
+@media screen and (max-width: 576px) {
+    
+}

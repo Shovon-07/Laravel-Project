@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//___ Front end ___//
+Route::prefix('/')->group(function () {
+    Route::view('/', 'Frontend.Pages.Index');
+});
+
+//___ Back end ___//
+Route::prefix('/admin')->group(function () {
+    Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
+    Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
+    Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
+
+    Route::controller(AuthController::class)->group(function () {
+        // API
+        Route::post('/sign-up', 'Signup');
+        Route::post('/login', 'Login');
+        Route::get('/logout', 'Logout')->name('logout')->middleware('JwtVerify');
+        Route::post('/send-otp', 'SendOtp');
+    });
+
+    // Protected view
+    Route::controller(ProfileController::class)->group(function () {
+        Route::middleware(['JwtVerify'])->group(function () {
+            Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
+            Route::view('/profile', 'Backend.Pages.Dashboard.Profile')->name('profile.view');
+        });
+    });
+
 });

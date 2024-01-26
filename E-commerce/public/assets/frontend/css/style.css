@@ -1,0 +1,265 @@
+/*_____ header start _____*/
+.header {
+	background: var(--light-100);
+	border-bottom: 1px solid var(--light-50);
+	z-index: 100;
+
+	/*position: sticky;
+	top: 0;
+	position: -webkit-sticky;*/
+}
+.header, .header ul {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 13px;
+	padding: 8px 15px;
+}
+.header ul li a {
+	margin: 0 15px;
+	font-weight: 200;
+	transition: var(--main-transition);
+}
+.header ul li .icon {
+	color: var(--dark-50);
+	margin-right: 3px;
+	transition: var(--main-transition);
+}
+.header ul li a:hover, .header ul li a:hover .icon {
+	color: var(--main-clr);
+}
+/*_____ header end _____*/
+
+
+/*_____ sidebar start _____*/
+.sidebar {
+    background: var(--light-100);
+    width: 300px;
+    height: 100vh;
+    padding-bottom: 50px;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 99;
+    transition: var(--main-transition);
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+.sidebar .brand a {
+    display: flex;
+    font-size: 25px;
+    color: var(--dark-80);
+    font-weight: bolder;
+    padding: 8px 0 10px 20px;
+    background: var(--light-100);
+}
+.sidebar .side-menu {
+	margin: 10px 0 30px 0 !important;
+}
+.sidebar .side-menu li a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--light-50);
+    transition: var(--main-transition);
+}
+.sidebar .side-menu li a .icon {
+	margin-right: 10px;
+} 
+.sidebar .side-menu li a .right-icon {
+    right: 8%;
+    position: absolute;
+    transition: var(--main-transition);
+}
+.sidebar .side-menu li a .right-icon.active {
+	transform: rotateZ(90deg);
+}
+.sidebar .side-menu li a:hover {
+	color: var(--dark-80);
+	transform: translateX(6px);
+}
+.sidebar .side-menu li a.active {
+	background: var(--main-clr);
+}
+.sidebar .side-menu li .dropdown-item {
+	height: 0;
+	overflow: hidden;
+	transition: var(--main-transition);	
+}
+.sidebar .side-menu li .dropdown-item li a {
+	padding-left: 40px;
+}
+.sidebar .side-menu li .dropdown-item.active {
+	height: 200px;
+}
+/*____ sidebar end _____*/
+
+
+/*____ Main start _____*/
+.main {
+    background: var(--light-80);
+    margin-left: 300px;
+    margin-top: 40px;
+    width: calc(100% - 300px);
+/*    height: 100%;*/
+    transition: var(--main-transition);
+}
+
+/*____ Topbar start _____*/
+.topbar {
+	max-width: 3000px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px 30px;
+    z-index: 98;
+}
+.topbar .hamberger {
+	width: 60px;
+	height: 60px;
+/*	display: flex;*/
+	display: none;
+	align-items: center;
+	justify-content: center;
+	margin-right: 40px;
+    cursor: pointer;
+}
+.topbar .hamberger .bar {
+    width: 30px;
+    height: 3px;
+    background: var(--dark-80);
+/*    position: relative;*/
+}
+.topbar .hamberger .bar::before, .topbar .hamberger .bar::after {
+	content: '';
+	width: 30px;
+    height: 3px;
+	background: var(--dark-80);
+	position: absolute;
+	transition: var(--main-transition);
+}
+.topbar .hamberger .bar::before {
+	top: 25px;
+}
+.topbar .hamberger .bar::after {
+	bottom: 25px;
+}
+.topbar .search-box {
+	flex-basis: 70%;
+}
+.topbar .search-box div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.topbar .search-box div input {
+	width: 100%;
+	padding: 8px 20px;
+	border: 1px solid var(--main-clr);
+	border-radius: 50px;
+	font-size: 12px;
+}
+.topbar .search-box div select {
+	right: 8%;
+	position: absolute;
+	width: 150px;
+	border: none;
+	font-size: 12px;
+	cursor: pointer;
+}
+.topbar .search-box div a {
+    position: absolute;
+    right: 0;
+    color: var(--dark-80);
+    font-size: 20px;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-clr);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.topbar .top-right a {
+    margin: 0 15px;
+}
+.topbar .top-right a .icon {
+    font-size: 20px;
+    color: var(--dark-80);
+}
+.topbar .top-right a:last-child span, .topbar .top-right a:last-child span i {
+	font-size: 13px;
+}
+/*____ Topbar end _____*/
+
+
+/*____ Section 1 start _____*/
+.section-1 {
+	padding: 0 30px;
+}
+.section-1 .section-top, .section-1 .section-top div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px 0;
+}
+.section-1 .section-top div a {
+	display: flex;
+	align-items: center;
+	margin-right: 30px;
+	color: var(--dark-80);
+	font-size: 13px;
+	font-weight: bold;
+}
+.section-1 .section-top div:last-of-type a {
+	margin: 0;
+}
+.section-1 .section-top div a .right-icon {
+	margin-left: 10px;
+}
+.section-1 .section-top div a.active {
+	color: var(--red);
+}
+.section-1 .section-bottom {
+    width: 100%;
+    overflow: hidden;
+}
+/*____ Section 1 end _____*/
+
+
+/*____ Section 2 start _____*/
+.section-2 .card {
+    /* width: 100%; */
+    padding: 5px;
+    margin: 10px;
+    border: none;
+}
+.section-2 .card img {
+    width: 130px !important;
+    height: 60px !important;
+    margin-right: 20px;
+}
+.section-2 .card div p {
+	font-size: 14px;
+	font-weight: 100;
+}
+/*____ Section 2 end _____*/
+
+
+/*____ Section 3 start _____*/
+/*.section-3 .parent {
+	display: flex;
+}*/
+.section-3 .parent .left div a {
+    border: 2px solid var(--main-clr);
+    border-radius: 20px;
+}
+/*____ Section 3 end _____*/
+
+/*____ Main end _____*/

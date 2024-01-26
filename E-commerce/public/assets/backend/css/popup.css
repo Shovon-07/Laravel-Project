@@ -1,0 +1,50 @@
+/*___ Pop Up ___*/
+.popup {
+    backdrop-filter: blur(20px);
+    width: 30%;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 400000;
+}
+.popup .userImgContainer {
+    margin: 0 0 20px 0;
+}
+.popup button {
+    background: var(--btn-gradient);
+    color: var(--light);
+    padding: 10px;
+    width: 30%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.popup .cancel {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.hidePopUp {
+    display: none;
+}
+
+/* For create category */
+.categoryInput {
+    background-color: transparent;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border: 1px solid var(--green);
+    border-radius: 8px;
+}

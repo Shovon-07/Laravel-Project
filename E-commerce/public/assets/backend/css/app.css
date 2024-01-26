@@ -1,0 +1,103 @@
+/*________________ Variables start ________________*/
+:root {
+    --light: #fff;
+    --light-2: #afadad;
+    --light-3: rgb(202, 202, 202);
+    --light-ofWhite: rgb(255, 247, 219);
+    --dark: #5e5e5e;
+    --dark-2: #6d6d6d;
+    --main: #fb0565;
+    --blue: #7f69ff;
+    --btn-gradient: linear-gradient(-7deg, #52026a, #d8048b);
+    --boxGradient: linear-gradient(-35deg, #52026a, #fe09a5);
+
+    --box-shadow: 1px 1px 8px rgb(214 214 214), -1px -1px 8px rgb(214 214 214);
+    --trans: 0.5s all;
+    --font-family: "Ubuntu", sans-serif;
+}
+/* Change Theme */
+body.light {
+}
+/*________________ Variables end ________________*/
+
+/*________________ Common style start ________________*/
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--font-family);
+    overflow-x: hidden;
+    background: var(--light);
+}
+
+.main-panel {
+    margin-left: 250px;
+}
+
+.container {
+    width: 95%;
+    max-width: 2000px;
+    margin: 0 auto;
+    /* padding: 0 50px; */
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: var(--dark);
+}
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+.button {
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    /* background-color: var(--main); */
+    background: var(--btn-gradient);
+    font-size: 20px;
+    color: var(--light);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--trans);
+}
+.button:hover {
+    background: linear-gradient(-7deg, #660385, #d8078b);
+}
+hr {
+    background: var(--dark);
+}
+.title {
+    color: var(--dark);
+}
+/* For side nav dropdown & profile icon dropdown */
+.dropdown.display {
+    display: none;
+}
+/*________________ Common style end ________________*/
+
+/*________________ custome scroll bar start ________________*/
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    /*	background: linear-gradient(165deg, rgba(0,0,0,0.9360119047619048) 0%, rgba(0,0,0,0.5662640056022409) 100%);*/
+    background: var(--dark-80);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark-50);
+}
+/*________________ custome scroll bar end ________________*/
