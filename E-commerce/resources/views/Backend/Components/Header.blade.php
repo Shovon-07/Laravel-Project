@@ -19,7 +19,7 @@
               </div>
               <ul class="dropdown display">
                 <li class="d-flex"><a href="{{route('profile.view')}}"><i class="fa-regular fa-user leftIcon"></i> Profile</a></li>
-                <li class="d-flex"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket leftIcon"></i> Log out</a></li>
+                <li class="d-flex"><a href="{{route('logout')}}" class="logout"><i class="fa-solid fa-right-from-bracket leftIcon"></i> Log out</a></li>
               </ul>
             </div>
           </div>

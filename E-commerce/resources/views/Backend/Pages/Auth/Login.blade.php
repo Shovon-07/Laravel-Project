@@ -56,31 +56,3 @@
 
     }
 </script>
-
-{{-- <script>
-    async function login() {
-        const email = document.querySelector("#email").value;
-        const password = document.querySelector("#password").value;
-
-        if(email <= 0) {
-            showTost("Please enter email address");
-        } else if(password <= 0) {
-            showTost("Please enter passward");
-        } else {
-            showLoader();
-            const response = await axios.post("/admin/login", {
-                "email" : email,
-                "password" : password
-            });
-            hideLoader();
-            if(response.data['status'] === 'success') {
-                showTost(response.data['message']);
-                setTimeout(() => {
-                    window.location.href = "/admin/dashboard";
-                }, 1000);
-            } else {
-                showTost(response.data['message']);
-            }
-        }
-    }
-</script> --}}

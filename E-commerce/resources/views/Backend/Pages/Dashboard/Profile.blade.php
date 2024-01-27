@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     window.addEventListener('load', () => {
         getData();
     });
@@ -111,4 +111,4 @@
     // document.querySelector('.userImgContainer').addEventListener("click", () => {
     //     alert("userImgContainer");
     // })
-</script>
+</script> --}}

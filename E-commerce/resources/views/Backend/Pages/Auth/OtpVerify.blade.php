@@ -19,16 +19,20 @@
 
 <script>
     async function verifyOtp() {
+        const email = getSessionData();
         const otp = document.querySelector("#otp").value;
-        if(otp <= 0) {
-            showTost("Please enter otp");
+        
+        if(otp.length === 0 || otp.length > 6) {
+            showTost("Please enter 6 digit otp");
         } else {
             showLoader();
-            const response = await axios.post("/admin/verify-otp", {"otp": otp});
+            const response = await axios.post("/admin/verify-otp", {"email":email,"otp": otp});
             hideLoader();
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
+                setToken(response.data['token']);
+                                
                 setTimeout(() => {
                     window.location.href = "/admin/update-password";
                 }, 1000);

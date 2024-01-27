@@ -82,7 +82,5 @@
                 showTost(response.data['message']);
             }
         }
-        
-
     }
 </script>

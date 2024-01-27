@@ -8,39 +8,43 @@
 <div class="form-container">
     <div class="form">
         <h3 class="title">UPDATE PASSWORD</h3>
-        <hr>
         <div>
-            <label for="password">New password :</label> <br>
             <input type="password" id="password" placeholder="Enter new password">
         </div>
         <div>
-            <label for="c_password">Confirm password :</label> <br>
             <input type="password" id="c_password" placeholder="Retype password">
         </div>
         <div class="buttonDiv">
-            <button type="submit" class="button" onclick="confirmPass()">CONFIRM</button>
+            <button type="submit" class="button" onclick="updatePass()">CONFIRM</button>
         </div>
     </div>
 </div>
 
 <script>
-    async function confirmPass() {
+    async function updatePass() {
+        const email = getSessionData();
         const password = document.querySelector("#password").value;
         const c_password = document.querySelector("#c_password").value;
 
-        if(password <= 0) {
-            showTost("Please enter password");
+        if(password.length < 3) {
+            showTost("Please enter a strong password minimum 3 cherecter");
+        } else if(password.length > 6) {
+            showTost("Please enter a strong password maximum 6 cherecter");
         } else if(password !== c_password) {
             showTost("Password not matched");
         } else {
             showLoader();
-            const response = await axios.post("/admin/update-password", {"password" : password});
+            const response = await axios.post("/admin/update-password", {"email":email,"password" : password});
             hideLoader();
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
+                
+                sessionStorage.clear();
+                localStorage.clear();
+                
                 setTimeout(() => {
-                    window.location.href = '/admin/dashboard';
+                    window.location.href = '/admin/';
                 }, 1000);
             } else {
                 showTost(response.data['message']);

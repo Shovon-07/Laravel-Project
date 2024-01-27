@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helper\JwtToken;
 use App\Http\Controllers\Controller;
+use App\Mail\PasswordRecoverOtp;
 use App\Models\User;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -52,6 +54,7 @@ class AuthController extends Controller
             $data = User::where('Email', '=', $email)->first();
 
             if ($data == true && Hash::check($password, $data->Password)) {
+                // Create authentication token
                 $token = JwtToken::CreateLoginToken($data->id, $data->Email);
                 // $request->headers->set('token', $token);
 
@@ -89,24 +92,106 @@ class AuthController extends Controller
             ]);
 
             $email = $request->input('email');
-            $data = User::where('email', '=', $email)->first();
+            $data = User::where('Email', '=', $email)->first();
 
             if ($data != null) {
                 $otp = rand(111111, 975632);
+                $appName = env('APP_NAME');
+
                 // Update database otp 
-                User::where('email', '=', $email)->update([
+                User::where('Email', '=', $email)->update([
                     'Otp' => $otp
                 ]);
 
+                // Send otp mail
+                Mail::to($email)->send(new PasswordRecoverOtp($data->Name, $otp, $appName));
+
                 return response()->json([
                     'status' => 'success',
-                    'message' => 'Login successfull',
-                    'otp' => $otp
+                    'message' => '6 digit otp sent in your email',
+                    'email' => $data->Email
                 ]);
             } else {
                 return response()->json([
                     'status' => 'failed',
                     'message' => 'Not a valid email !',
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    function VerifyOtp(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|string|email',
+                'otp' => 'required|string|min:6|max:6'
+            ]);
+
+            $email = $request->input('email');
+            $otp = $request->input('otp');
+            $data = User::where('Email', '=', $email)->where('Otp', '=', $otp)->first();
+
+            if ($data != null) {
+                // Update database otp
+                User::where('Email', '=', $email)->where('Otp', '=', $otp)->update([
+                    'Otp' => 0
+                ]);
+
+                // Create authentication token
+                $token = JwtToken::CreateLoginToken($data->id, $data->Email);
+
+                return response()->json([
+                    'status' => 'success',
+                    'message' => '6 digit otp sent in your email',
+                    'token' => $token
+                ])->cookie('token', $token);
+            } else {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Invalid otp !',
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    function UpdatePassword(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|string|email',
+                'password' => 'required|string|min:3|max:10'
+            ]);
+
+            $email = $request->input('email');
+            $password = $request->input('password');
+            $data = User::where('email', '=', $email)->count();
+
+            if ($data != null) {
+                User::where('email', '=', $email)->update([
+                    'Password' => Hash::make($password)
+                ]);
+
+                Cookie::queue(Cookie::forget('token'));
+
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Password updated',
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Something went wrong !',
                 ]);
             }
         } catch (Exception $e) {
