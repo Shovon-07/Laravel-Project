@@ -59,6 +59,9 @@
     border: 2px solid var(--main);
     background: var(--light-3);
 }
+.header .headerRight .profile span {
+    text-transform: capitalize;
+}
 .header .headerRight .profileBox .dropdown {
     background: var(--light);
     position: absolute;

@@ -13,7 +13,7 @@
     <div class="form">
         <h4 class="title">PROFILE</h4>
         <div class="userImgContainer overlay" onclick="showPopUp()">
-            <img src="{{asset('Uploaded_file/Img/user.png')}}" class="userImg" id="userImg" alt="profile pic">
+            <img src="{{asset('Uploaded_file/images/avater.png')}}" class="userImg" id="userImg" alt="profile pic">
             <i class="fa-solid fa-share-from-square shareIcon"></i>
         </div>
         <div class="d-flex">
@@ -45,6 +45,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener('load', () => {
+        userData();
+    });
+
+    async function userData() {
+        showLoader();
+        const response = await axios.get("/admin/profile-data");
+        hideLoader();
+
+        if(response.data['status'] === 'success') {
+            const userData = response.data['data'];
+            console.log(userData);
+        } else {
+            console.log("Oops !");
+        }
+    }
+</script>
 
 {{-- <script>
     window.addEventListener('load', () => {

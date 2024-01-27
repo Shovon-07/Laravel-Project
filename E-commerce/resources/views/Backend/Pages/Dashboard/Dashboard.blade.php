@@ -6,3 +6,10 @@
         @include('Backend.Components.Table')
     </section>
 @endsection
+
+<script>
+    window.addEventListener('load', () => {
+    userData();
+  });
+  
+</script>

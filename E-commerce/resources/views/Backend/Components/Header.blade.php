@@ -14,8 +14,8 @@
             </div>
             <div id="dropParent" class="profileBox">
               <div class="profile">
-                <img src="{{asset('Uploaded_file/Img/user.png')}}" id="userImg" alt="profile pic">
-                <span id="userName"></span>
+                <img src="{{asset('Uploaded_file/images/avater.png')}}" id="userImg" alt="profile pic">
+                <span id="userName">User</span>
               </div>
               <ul class="dropdown display">
                 <li class="d-flex"><a href="{{route('profile.view')}}"><i class="fa-regular fa-user leftIcon"></i> Profile</a></li>
@@ -26,6 +26,32 @@
         </div>
       </div>
 </div>
+
+<script>
+  async function userData() {
+    showLoader();
+    const response = await axios.get("/admin/profile-data");
+    hideLoader();
+
+    if(response.data['status'] === 'success') {
+      const userData = response.data['data'];
+
+      // View profile pic
+      const dbImg = userData['Img'];
+      const imgPath = "{{asset('Uploaded_file/images')}}" + `/${dbImg}`;
+      document.querySelector("#userImg").src = imgPath;
+
+      // View user name
+      const dbName = userData['Name'];
+      document.querySelector("#userName").innerHTML = dbName;
+      
+    } else {
+      console.log("Oops !");
+    }
+  }
+</script>
+
+
 
 {{-- <script>
   window.addEventListener('load', () => {

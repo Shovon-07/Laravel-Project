@@ -25,9 +25,9 @@ Route::prefix('/admin')->group(function () {
     Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
     Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
     Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
-    // Route::view('/mail', 'Backend.Emails.PasswordRecoverOtp');
     Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
     Route::view('/update-password', 'Backend.Pages.Auth.UpdatePass')->middleware('JwtVerify');
+    // Route::view('/mail', 'Backend.Emails.PasswordRecoverOtp');
 
     Route::controller(AuthController::class)->group(function () {
         // API
@@ -44,6 +44,9 @@ Route::prefix('/admin')->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
             Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
             Route::view('/profile', 'Backend.Pages.Dashboard.Profile')->name('profile.view');
+
+            // API
+            Route::get('/profile-data', 'ProfileData');
         });
     });
 

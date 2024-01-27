@@ -29,6 +29,11 @@ body.light {
     box-sizing: border-box;
 }
 
+::selection {
+    color: var(--light);
+    background: var(--main);
+}
+
 html {
     scroll-behavior: smooth;
 }

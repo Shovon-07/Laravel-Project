@@ -75,6 +75,9 @@
     cursor: pointer;
     position: relative;
 }
+/* .userImgContainer img {
+    overflow: hidden;
+} */
 .userImgContainer.overlay::after {
     content: '';
     background: #4b4b4b34;
@@ -107,4 +110,13 @@
 }
 .userImgContainer:hover .shareIcon {
     display: block;
+}
+
+input:-moz-read-only {
+    background: Green;
+    color: var(--light-3)
+}
+input:read-only {
+    background: Green;
+    color: var(--light-3)
 }
