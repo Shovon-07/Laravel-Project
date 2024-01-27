@@ -70,7 +70,7 @@
 .userImgContainer {
     width: 100px;
     height: 110px;
-    margin: 40px auto;
+    margin: 10px auto;
     border-radius: 8px;
     cursor: pointer;
     position: relative;
@@ -110,13 +110,4 @@
 }
 .userImgContainer:hover .shareIcon {
     display: block;
-}
-
-input:-moz-read-only {
-    background: Green;
-    color: var(--light-3)
-}
-input:read-only {
-    background: Green;
-    color: var(--light-3)
 }

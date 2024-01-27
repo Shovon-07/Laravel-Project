@@ -3,7 +3,7 @@ let popUpMsg = document.querySelector('.popUpMsg');
 
 function showPopUp(msg) {
     popup.classList.remove('hidePopUp');
-    popUpMsg.innerHTML = msg;
+    // popUpMsg.innerHTML = msg;
 }
 
 function hidePopUp() {
