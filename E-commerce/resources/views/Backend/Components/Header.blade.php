@@ -28,6 +28,10 @@
 </div>
 
 <script>
+  window.addEventListener('load', () => {
+        userData();
+  });
+
   async function userData() {
     showLoader();
     const response = await axios.get("/admin/profile-data");
@@ -38,7 +42,7 @@
 
       // View profile pic
       const dbImg = userData['Img'];
-      const imgPath = "{{asset('Uploaded_file/images')}}" + `/${dbImg}`;
+      const imgPath = "{{asset('Uploaded_file/images/users')}}" + `/${dbImg}`;
       document.querySelector("#userImg").src = imgPath;
 
       // View user name

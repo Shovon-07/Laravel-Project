@@ -23,6 +23,8 @@ class JwtTokenVerifyMiddleware
         if ($result === 'Unauthorized') {
             return redirect('/admin/');
         } else {
+            $request->headers->set('userId', $result->userId);
+            $request->headers->set('userEmail', $result->userEmail);
             return $next($request);
         }
     }

@@ -48,3 +48,16 @@
     border: 1px solid var(--green);
     border-radius: 8px;
 }
+
+/* For uploade img */
+.selectImg {
+    border: 1px solid var(--dark-2);
+    color: var(--dark-2);
+    padding: 5px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.selectImg:hover {
+    background: var(--blue);
+    color: var(--light);
+}

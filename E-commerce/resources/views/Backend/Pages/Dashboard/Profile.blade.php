@@ -55,7 +55,7 @@
 
             // View profile pic
             const dbImg = userData['Img'];
-            const imgPath = "{{asset('Uploaded_file/images')}}" + `/${dbImg}`;
+            const imgPath = "{{asset('Uploaded_file/images/users')}}" + `/${dbImg}`;
             document.querySelector("#userImg").src = imgPath;
         } else {
             console.log("Oops !");

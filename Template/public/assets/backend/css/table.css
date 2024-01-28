@@ -1,8 +1,8 @@
 table {
-    margin-top: 40px;
+    margin-top: 20px;
     width: 100%;
 }
-table,th,td {
+th,td {
     border: 1px solid var(--light-2);
     border-collapse: collapse;
     text-align: center;

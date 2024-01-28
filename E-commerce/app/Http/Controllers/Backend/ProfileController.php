@@ -8,15 +8,12 @@ use App\Models\User;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 
 class ProfileController extends Controller
 {
     function ProfileData(Request $request)
     {
-        $token = $request->cookie('token');
-        $result = JwtToken::VerifyToken($token);
-        $email = $result->userEmail;
+        $email = $request->headers->get('userEmail');
 
         $data = User::where('email', '=', $email)->first();
         if ($data != null) {
@@ -35,9 +32,7 @@ class ProfileController extends Controller
     function UpdateProfile(Request $request)
     {
         try {
-            $token = $request->cookie('token');
-            $result = JwtToken::VerifyToken($token);
-            $email = $result->userEmail;
+            $email = $request->headers->get('userEmail');
 
             $data = User::where('email', '=', $email)->count();
             if ($data != null) {
@@ -66,9 +61,7 @@ class ProfileController extends Controller
     function UpdateProfilePic(Request $request)
     {
         try {
-            $token = $request->cookie('token');
-            $result = JwtToken::VerifyToken($token);
-            $email = $result->userEmail;
+            $email = $request->headers->get('userEmail');
 
             $data = User::where('email', '=', $email)->count();
             if ($data != null) {
@@ -88,7 +81,7 @@ class ProfileController extends Controller
                     ]);
 
                     // Store img in folder
-                    $img->move(public_path('Uploaded_file/images'), $imgName);
+                    $img->move(public_path('Uploaded_file/images/users'), $imgName);
 
                     return redirect('/admin/profile');
                     // return response()->json([
