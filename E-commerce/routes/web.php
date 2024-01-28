@@ -22,14 +22,14 @@ Route::prefix('/')->group(function () {
 
 //___ Back end ___//
 Route::prefix('/admin')->group(function () {
-    Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
-    Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
-    Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
-    Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
-    Route::view('/update-password', 'Backend.Pages.Auth.UpdatePass')->middleware('JwtVerify');
-    // Route::view('/mail', 'Backend.Emails.PasswordRecoverOtp');
-
     Route::controller(AuthController::class)->group(function () {
+        Route::view('/', 'Backend.Pages.Auth.Login')->name('login');
+        Route::view('/sign-up', 'Backend.Pages.Auth.Signup')->name('signup.view');
+        Route::view('/forgot-password', 'Backend.Pages.Auth.RecoverPass')->name('forgotpass.view');
+        Route::view('/verify-otp', 'Backend.Pages.Auth.OtpVerify');
+        Route::view('/update-password', 'Backend.Pages.Auth.UpdatePass')->middleware('JwtVerify');
+        // Route::view('/mail', 'Backend.Emails.PasswordRecoverOtp');
+
         // API
         Route::post('/sign-up', 'Signup');
         Route::post('/login', 'Login');
@@ -39,7 +39,7 @@ Route::prefix('/admin')->group(function () {
         Route::post('/update-password', 'UpdatePassword')->middleware('JwtVerify');
     });
 
-    // Protected view
+    // Protected Route
     Route::controller(ProfileController::class)->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
             Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');

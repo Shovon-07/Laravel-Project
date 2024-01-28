@@ -44,6 +44,9 @@
     margin-top: 20px;
     font-size: 14px;
 }
+.form-container .form .formBottom a {
+    color: var(--dark-2);
+}
 .form-container .form .formBottom a:hover {
     color: var(--main);
 }

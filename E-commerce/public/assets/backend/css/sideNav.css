@@ -2,7 +2,7 @@
     width: 250px;
     height: 100vh;
     /* background: var(--light); */
-    background: var(--light-ofWhite);
+    background: var(--dark-deep);
     backdrop-filter: blur("15px");
     position: fixed;
     overflow-y: scroll;
@@ -11,8 +11,8 @@
     position: sticky;
     top: 0;
     left: 0;
-    color: var(--dark);
-    background: var(--light-ofWhite);
+    color: var(--light);
+    background: var(--dark-deep);
     font-size: 30px;
     text-align: center;
     padding: 10px 0;
@@ -24,8 +24,8 @@
     margin-top: 25px;
 }
 .sideNav .task {
-    color: var(--light-2);
-    margin: 0 10px 8px;
+    color: var(--dark-2);
+    margin: 0 0 15px 10px;
 }
 .sideNav .menu li a {
     margin: 10px 0;

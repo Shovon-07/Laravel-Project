@@ -6,6 +6,7 @@
     --light-ofWhite: rgb(255, 247, 219);
     --dark: #5e5e5e;
     --dark-2: #6d6d6d;
+    --dark-deep: rgb(24 24 24);
     --main: #fb0565;
     --blue: #7f69ff;
     --btn-gradient: linear-gradient(-7deg, #52026a, #d8048b);
@@ -58,7 +59,7 @@ li {
 }
 a {
     text-decoration: none;
-    color: var(--dark);
+    color: var(--light-2);
 }
 .d-flex {
     display: flex;
