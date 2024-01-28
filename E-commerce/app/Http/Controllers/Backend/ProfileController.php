@@ -8,6 +8,7 @@ use App\Models\User;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ProfileController extends Controller
 {
@@ -21,7 +22,7 @@ class ProfileController extends Controller
         if ($data != null) {
             return response()->json([
                 'status' => 'success',
-                'data' => $data
+                'data' => $data,
             ]);
         } else {
             return response()->json([
@@ -71,19 +72,30 @@ class ProfileController extends Controller
 
             $data = User::where('email', '=', $email)->count();
             if ($data != null) {
-                $img = $request->file('img');
-                $imgOriginalName = $img->getClientOriginalName();
-                $imgOriginalExt = $img->getClientOriginalExtension();
-                $imgName = time() . "_" . md5(uniqid()) . "_" . $imgOriginalName . "_" . md5(time()) . "." . $imgOriginalExt;
-
-                User::where('email', '=', $email)->update([
-                    'Img' => $imgName
+                $request->validate([
+                    'img' => 'required|mimes:jpeg,jpg,png,gif|max:5000'
                 ]);
 
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'Updated',
-                ]);
+                if ($request->hasFile('img')) {
+                    $img = $request->file('img');
+                    $imgOriginalName = $img->getClientOriginalName();
+                    $imgOriginalExt = $img->getClientOriginalExtension();
+                    $imgName = time() . "_" . md5(uniqid()) . "_" . $imgOriginalName . "_" . md5(time()) . "." . $imgOriginalExt;
+
+                    // Update database img
+                    User::where('email', '=', $email)->update([
+                        'Img' => $imgName
+                    ]);
+
+                    // Store img in folder
+                    $img->move(public_path('Uploaded_file/images'), $imgName);
+
+                    return redirect('/admin/profile');
+                    // return response()->json([
+                    //     'status' => 'success',
+                    //     'message' => 'Updated',
+                    // ]);
+                }
             } else {
                 return response()->json([
                     'status' => 'success',

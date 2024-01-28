@@ -13,7 +13,7 @@
     <div class="form">
         <h4 class="title">PROFILE</h4>
         <div class="userImgContainer overlay" onclick="showPopUp()">
-            <img src="{{asset('Uploaded_file/images/avater.png')}}" class="userImg" id="userImg" alt="profile pic">
+            <img class="userImg" id="userImg">
             <i class="fa-solid fa-share-from-square shareIcon"></i>
         </div>
                 <div>
@@ -73,8 +73,6 @@
             showTost("Please enter your email address");
         } else if(password.length < 3) {
             showTost("Please enter a strong password minimum 3 cherecter");
-        } else if(password.length > 6) {
-            showTost("Please enter a strong password maximum 6 cherecter");
         } else {
             showLoader();
             const config = { headers: { 'Content-Type': 'multipart/form-data' } };

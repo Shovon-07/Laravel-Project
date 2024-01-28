@@ -1,31 +1,26 @@
 <div class="popup hidePopUp">
     <div>
-        <h3 style="margin-bottom:20px">Change profile pic</h3>
+        <h3 style="margin-bottom:40px;color:var(--dark-2)">Change profile pic</h3>
     </div>
-    <div>
-        <input type="file" id="updatePic" placeholder="Choose profile pic">
-    </div>
-    <button onclick="updatePic()">CONFIRM</button>
+    <form action="{{route('update.profile.pic')}}" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="files" class="selectImg">Select Image</label>
+            <input type="file" id="files" class="img" name="img" required style="visibility:hidden;">
+
+            {{-- <input type="file" required id="img" name="img" placeholder="Choose profile pic"> --}}
+        </div>
+        <button type="submit" class="submitBtn" id="closePopUp">CONFIRM</button>
+    </form>
     <a class="cancel" id="closePopUp">Cancel</a>
 </div>
 
 <script>
-    async function updatePic() {
-        const updatePic = document.querySelector("#updatePic").value;
-        
-        console.log(updatePic);
-        
-        showLoader();
-        const response = await axios.post("/admin/update-profile-pic",{
-            "img": updatePic
-        });
-        hideLoader();
-
-        if(response.data['status'] === 'success') {
-                showTost(response.data['message']);
-                userData();
+    const img = document.querySelector(".img").value;
+    document.querySelector(".submitBtn").addEventListener('click', () => {
+        if(img.length === 0) {
+            showTost("You don't select any image");
         } else {
-            showTost(response.data['message']);
+            showTost(`Selected ${img}`);
         }
-    }
+    });
 </script>

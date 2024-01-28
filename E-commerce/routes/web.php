@@ -48,7 +48,7 @@ Route::prefix('/admin')->group(function () {
             // API
             Route::get('/profile-data', 'ProfileData');
             Route::post('/update-profile', 'UpdateProfile');
-            Route::post('/update-profile-pic', 'UpdateProfilePic');
+            Route::post('/update-profile-pic', 'UpdateProfilePic')->name('update.profile.pic');
         });
     });
 

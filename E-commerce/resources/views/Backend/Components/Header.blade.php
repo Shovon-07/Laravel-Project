@@ -14,7 +14,7 @@
             </div>
             <div id="dropParent" class="profileBox">
               <div class="profile">
-                <img src="{{asset('Uploaded_file/images/avater.png')}}" id="userImg" alt="profile pic">
+                <img id="userImg">
                 <span id="userName">User</span>
               </div>
               <ul class="dropdown display">
