@@ -61,6 +61,7 @@ Route::prefix('/admin')->group(function () {
             Route::post('/create-category', 'CreateCategory');
             Route::get('/category-list', 'CategoryList');
             Route::post('/category-delete', 'CategoryDelete');
+            Route::post('/category-edite', 'CategoryEdite');
         });
     });
 

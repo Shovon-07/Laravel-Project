@@ -76,4 +76,31 @@ class CategoryController extends Controller
         }
     }
 
+    function CategoryEdite(Request $request)
+    {
+        try {
+            $request->validate([
+                'categoryId' => 'required|string',
+                'categoryName' => 'required|string'
+            ]);
+
+            $userId = $request->headers->get('userId');
+            $categoryId = $request->input('categoryId');
+
+            Category::where('UserId', '=', $userId)->where('id', '=', $categoryId)->update([
+                'CategoryName' => $request->input('categoryName'),
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Category updated',
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
 }

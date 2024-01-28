@@ -56,17 +56,16 @@
 
         new DataTable(table, {
             order: [0, "desc"],
-            lengthMenu: [2,4,6],
+            lengthMenu: [5,10,15,20],
         });
 
         $('.edite').on('click', function() {
             const id = $(this).data('id');
-            console.log(id);
+            showPopUp(id);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
-            console.log(id);
             deleteAlertPopUp(id);
         });
     }
