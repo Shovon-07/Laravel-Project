@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'category' => $data
+                'categories' => $data
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -52,4 +52,28 @@ class CategoryController extends Controller
             ]);
         }
     }
+
+    public function CategoryDelete(Request $request)
+    {
+        try {
+            $request->validate([
+                'categoryId' => 'required|string'
+            ]);
+
+            // $category_name = $request->input('categoryName');
+            $categoryId = $request->input('categoryId');
+            $userId = $request->headers->get('userId');
+            Category::where('id', '=', $categoryId)->where('UserId', '=', $userId)->delete();
+            return response()->json([
+                'status' => "success",
+                'message' => 'Category deleted'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => "Failed",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
 }

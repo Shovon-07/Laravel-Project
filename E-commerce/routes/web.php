@@ -60,6 +60,7 @@ Route::prefix('/admin')->group(function () {
             // API
             Route::post('/create-category', 'CreateCategory');
             Route::get('/category-list', 'CategoryList');
+            Route::post('/category-delete', 'CategoryDelete');
         });
     });
 

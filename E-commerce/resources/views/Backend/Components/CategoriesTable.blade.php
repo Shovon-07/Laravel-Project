@@ -36,26 +36,38 @@
         let table = $("#table");
         let tableData = $("#tableData");
 
-        const data = response.data['category'];
+        table.DataTable().destroy();
+        tableData.empty();
+
+        const data = response.data['categories'];
         let count = 1;
         data.forEach((items) => {
-            console.log(items);
             let row = `<tr>
                 <td>${count++}</td>
                 <td>${items['CategoryName']}</td>
                 <td>
-                    <button data-id="" class="edite">Edite</button> <span class="btnDevider">|</span>
-                    <button data-id="" class="delete">Delete</button>
+                    <button data-id="${items['id']}" class="edite">Edite</button> <span class="btnDevider">|</span>
+                    <button data-id="${items['id']}" class="delete">Delete</button>
                 </td>
             </tr>`;
 
-
             tableData.append(row);
+        });
 
-            new DataTable(table, {
-                // order: [0, "desc"],
-                lengthMenu: [2,4,6],
-            });
+        new DataTable(table, {
+            order: [0, "desc"],
+            lengthMenu: [2,4,6],
+        });
+
+        $('.edite').on('click', function() {
+            const id = $(this).data('id');
+            console.log(id);
+        });
+
+        $('.delete').on('click', function() {
+            const id = $(this).data('id');
+            console.log(id);
+            deleteAlertPopUp(id);
         });
     }
 </script>

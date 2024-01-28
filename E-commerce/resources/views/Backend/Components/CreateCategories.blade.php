@@ -21,7 +21,7 @@
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
-                getData();
+                categoryList();
             } else {
                 showTost(response.data['message'])
             }

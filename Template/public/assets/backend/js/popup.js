@@ -7,16 +7,16 @@ function showPopUp(msg) {
 }
 
 // Show popup for delete category
-let deleteCategoryPopUp = document.querySelector("#deleteCategoryPopUp");
-let deleteCategoryMsg = document.querySelector(".deleteCategoryMsg");
-function showDeleteCategoryPopUp(msg) {
-    deleteCategoryPopUp.classList.remove("hidePopUp");
-    deleteCategoryMsg.value = msg;
+let deletePopUp = document.querySelector("#deletePopUp");
+let deleteAbleItem = document.querySelector(".deleteAbleItem");
+function deleteAlertPopUp(msg) {
+    deletePopUp.classList.remove("hidePopUp");
+    deleteAbleItem.value = msg;
 }
 
 function hidePopUp() {
     popup.classList.add("hidePopUp");
-    deleteCategoryPopUp.classList.add("hidePopUp");
+    deletePopUp.classList.add("hidePopUp");
 }
 
 // let closePopUp = document.querySelectorAll("#closePopUp");
