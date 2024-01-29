@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="container">
-        @include('Backend.Components.CreateCategories')
-        @include('Backend.Components.CategoriesTable')
-        @include('Backend.Components.CategoryDelete')
-        @include('Backend.Components.CategoryEdit')
+        @include('Backend.Components.Categories.CategoryCreate')
+        @include('Backend.Components.Categories.CategoriesTable')
+        @include('Backend.Components.Categories.CategoryDelete')
+        @include('Backend.Components.Categories.CategoryEdit')
     </section>
 @endsection

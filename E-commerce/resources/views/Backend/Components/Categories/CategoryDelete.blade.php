@@ -20,7 +20,7 @@
         if(response.data['status'] === 'success') {
             showTost(response.data['message']);
             closePopUp();
-            categoryList();
+            categoryList()
         } else {
             showTost(response.data['message']);
         }

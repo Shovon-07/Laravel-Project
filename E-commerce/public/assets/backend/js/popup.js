@@ -4,6 +4,7 @@ let popUpMsg = document.querySelector(".popUpMsg");
 function showPopUp(msg) {
     popup.classList.remove("hidePopUp");
     popUpMsg.innerHTML = msg;
+    editAbleItem.value = msg;
 }
 
 // Show popup for delete category
@@ -14,9 +15,20 @@ function deleteAlertPopUp(msg) {
     deleteAbleItem.value = msg;
 }
 
+// Show popup for edit category
+let editPopUp = document.querySelector("#editPopUp");
+let editAbleItem = document.querySelector(".editAbleItem");
+// let categoryName = document.querySelector(".categoryName");
+function editePopUp(id) {
+    editPopUp.classList.remove("hidePopUp");
+    editAbleItem.value = id;
+    // categoryName.value = id;
+}
+
 function hidePopUp() {
     popup.classList.add("hidePopUp");
     deletePopUp.classList.add("hidePopUp");
+    editPopUp.classList.add("hidePopUp");
 }
 
 // let closePopUp = document.querySelectorAll("#closePopUp");
