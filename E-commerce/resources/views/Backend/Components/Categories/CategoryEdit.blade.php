@@ -14,7 +14,6 @@
     async function editCategory() {
         let categoryId = document.querySelector(".editAbleItem").value;
         let categoryName = document.querySelector(".categoryName").value;
-        // const categoryName = document.querySelector(".categoryName").value;
 
         if(categoryName.length === 0) {
             showTost("Please enter category name");

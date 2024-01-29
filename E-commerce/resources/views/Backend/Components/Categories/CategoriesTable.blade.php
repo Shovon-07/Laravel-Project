@@ -64,7 +64,6 @@
             const id = $(this).data('id');
             // const data = $(this).data('data');
             editePopUp(id);
-            console.log(id);
         });
 
         $('.delete').on('click', function() {

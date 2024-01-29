@@ -14,6 +14,7 @@ class JwtToken
             'iss' => env('APP_URL') . "/" . env('APP_NAME'),
             'iat' => time(),
             'exp' => time() + 60 * 60,
+            // time() + second * minute * hour * day
             'userId' => $id,
             'userEmail' => $email
         ];
