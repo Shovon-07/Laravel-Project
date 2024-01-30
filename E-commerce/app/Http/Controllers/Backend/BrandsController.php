@@ -17,12 +17,12 @@ class BrandsController extends Controller
             ]);
 
             $userId = $request->headers->get('userId');
-            $categoryId = $request->input('categoryId');
+            $categoryIdForBrnad = $request->input('categoryIdForBrnad');
 
             Brand::create([
                 'BrandName' => $request->input('brandName'),
                 'UserId' => $userId,
-                'CategoryId' => $categoryId
+                'CategoryId' => $categoryIdForBrnad
             ]);
 
             return response()->json([

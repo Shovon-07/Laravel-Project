@@ -26,11 +26,12 @@ function editePopUp(id) {
 }
 
 // Show popup for create brand
-// let deletePopUp = document.querySelector("#deletePopUp");
-// let deleteAbleItem = document.querySelector(".deleteAbleItem");
-function createBrandPopUp(msg) {
-    deletePopUp.classList.remove("hidePopUp");
-    deleteAbleItem.value = msg;
+let brandPopUp = document.querySelector("#createBrandPopUp");
+// let popUpMsg = document.querySelector(".popUpMsg");
+let categoryIdForBrnad = document.querySelector(".categoryIdForBrnad");
+function createBrandPopUp(id) {
+    brandPopUp.classList.remove("hidePopUp");
+    categoryIdForBrnad.value = id;
 }
 
 
@@ -39,6 +40,7 @@ function hidePopUp() {
     popup.classList.add("hidePopUp");
     deletePopUp.classList.add("hidePopUp");
     editPopUp.classList.add("hidePopUp");
+    brandPopUp.classList.add("hidePopUp");
 }
 
 // let closePopUp = document.querySelectorAll("#closePopUp");

@@ -11,7 +11,7 @@
         </div>
     
         <div>
-            <button class="button" style="padding: 10px 20px;" onclick="createBrandPopUp()">Add new brand</button>
+            <button class="button" style="padding: 10px 20px;" onclick="createBrandPopUp(categoryIdForBrand)">Add new brand</button>
         </div>
     </div>
 
@@ -37,10 +37,9 @@
 </div>
 
 <script>
-    let categoryId = "";
+    let categoryIdForBrand = "";
 
     window.addEventListener('load', () => {
-        brandList();
         categoryList();
     });
 
@@ -64,14 +63,14 @@
     }
 
     function getOptionsValue() {
-        categoryId = $("#selectItems").val(); 
+        categoryIdForBrand = $("#selectItems").val(); 
         brandList();
     } 
 
     async function brandList() {
         showLoader();
         const response = await axios.post("/admin/brands-list", {
-            "categoryId" : categoryId
+            "categoryId" : categoryIdForBrand
         });
         hideLoader();
 

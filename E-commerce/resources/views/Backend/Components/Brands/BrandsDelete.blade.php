@@ -4,7 +4,7 @@
     </div>
     <div>
         {{-- <p class="deleteCategoryMsg"></p> --}}
-        <input type="hidden" class="deleteAbleItem">
+        <input type="text" class="deleteAbleItem">
     </div>
     <button id="closePopUp" onclick="deleteItem()">CONFIRM</button>
     <a class="cancel" id="closePopUp" onclick="closePopUp()">Cancel</a>
@@ -20,7 +20,7 @@
         if(response.data['status'] === 'success') {
             showTost(response.data['message']);
             closePopUp();
-            categoryList()
+            categoryList();
         } else {
             showTost(response.data['message']);
         }
