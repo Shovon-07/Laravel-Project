@@ -43,6 +43,7 @@ function deleteBrandPopUp(id) {
 // Edit brand
 function editBrandPopUp(id) {
     $("#brandEditPopUp").removeClass("hidePopUp");
+    $(".editAbleBrand").val(id);
 }
 //___ Brand section end ___//
 
