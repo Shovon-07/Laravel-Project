@@ -206,8 +206,20 @@ class AuthController extends Controller
 
 /*
 {
-    "name": "Shovon",
-    "email": "mman35230@gmail.com",
-    "password": "sho"
+    [
+        "name": "Shovon",
+        "email": "mman35230@gmail.com",
+        "password": "sho"
+    ],
+    [
+        "name": "Asik",
+        "email": "asik@gmail.com",
+        "password": "asi"
+    ],
+    [
+        "name": "Jony",
+        "email": "jony@gmail.com",
+        "password": "jon"
+    ]    
 }
 */
