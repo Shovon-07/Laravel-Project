@@ -60,9 +60,8 @@ class CategoryController extends Controller
                 'categoryId' => 'required|string'
             ]);
 
-            // $category_name = $request->input('categoryName');
-            $categoryId = $request->input('categoryId');
             $userId = $request->headers->get('userId');
+            $categoryId = $request->input('categoryId');
             Category::where('id', '=', $categoryId)->where('UserId', '=', $userId)->delete();
             return response()->json([
                 'status' => "success",
@@ -79,15 +78,15 @@ class CategoryController extends Controller
     function CategoryEdite(Request $request)
     {
         try {
-            $request->validate([
-                'categoryId' => 'required|string',
-                'categoryName' => 'required|string'
-            ]);
+            // $request->validate([
+            //     'categoryId' => 'required|string',
+            //     'categoryName' => 'required|string'
+            // ]);
 
             $userId = $request->headers->get('userId');
             $categoryId = $request->input('categoryId');
 
-            Category::where('UserId', '=', $userId)->where('id', '=', $categoryId)->update([
+            Category::where('id', '=', $categoryId)->where('UserId', '=', $userId)->update([
                 'CategoryName' => $request->input('categoryName'),
             ]);
 

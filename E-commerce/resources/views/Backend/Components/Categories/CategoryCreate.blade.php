@@ -1,6 +1,6 @@
-<div class="popup hidePopUp">
+<div class="popup hidePopUp" id="categoryCreatePopUp">
     <div>
-        <input class="categoryInput" type="text" id="categoryName" placeholder="Category name">
+        <input class="addItemsInput" type="text" id="categoryName" placeholder="Category name">
     </div>
     <button id="closePopUp" onclick="createCategory()">CONFIRM</button>
     <a class="cancel" id="closePopUp" onclick="closePopUp()">Cancel</a>
@@ -8,7 +8,7 @@
 
 <script>
     async function createCategory() {
-        const categoryName = document.querySelector("#categoryName").value;
+        const categoryName = $("#categoryName").val();
 
         if(categoryName.length === 0) {
             showTost("Please enter category name");
@@ -16,12 +16,12 @@
             showLoader();
             const response = await axios.post("/admin/create-category", {'categoryName':categoryName});
             hideLoader();
-            document.querySelector("#categoryName").value = "";
+            $("#categoryName").val("");
             closePopUp();
 
             if(response.data['status'] === 'success') {
                 showTost(response.data['message']);
-                categoryList()
+                categoryList();
             } else {
                 showTost(response.data['message'])
             }

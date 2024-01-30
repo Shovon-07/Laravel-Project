@@ -1,6 +1,6 @@
 <div data-bs-theme="dark" style="margin-top: 20px">
     <div style="text-align: right">
-        <button class="button" style="padding: 10px 20px;margin-bottom:20px" onclick="showPopUp()">Add new category</button>
+        <button class="button" style="padding: 10px 20px;margin-bottom:20px" onclick="createCategoryPopUp()">Add new category</button>
     </div>
     <table id="table">
         <thead>
@@ -63,12 +63,12 @@
         $('.edite').on('click', function() {
             const id = $(this).data('id');
             // const data = $(this).data('data');
-            editePopUp(id);
+            editeCategoryPopUp(id);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
-            deleteAlertPopUp(id);
+            deleteCategoryPopUp(id);
         });
     }
 </script>

@@ -1,4 +1,4 @@
-<div class="popup hidePopUp" id="editPopUp">
+{{-- <div class="popup hidePopUp" id="editPopUp">
     <div style="color:yellow; font-size:20px">
         <h2>Edit !</h2>
     </div>
@@ -32,4 +32,4 @@
             }
         }
     }
-</script>
+</script> --}}

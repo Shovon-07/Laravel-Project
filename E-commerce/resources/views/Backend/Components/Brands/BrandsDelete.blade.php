@@ -1,9 +1,9 @@
-<div class="popup hidePopUp" id="deletePopUp">
+{{-- <div class="popup hidePopUp" id="deletePopUp">
     <div style="color:yellow; font-size:20px">
         <h2>Delete !</h2>
     </div>
     <div>
-        {{-- <p class="deleteCategoryMsg"></p> --}}
+        <p class="deleteCategoryMsg"></p>
         <input type="text" class="deleteAbleItem">
     </div>
     <button id="closePopUp" onclick="deleteItem()">CONFIRM</button>
@@ -25,4 +25,4 @@
             showTost(response.data['message']);
         }
     }
-</script>
+</script> --}}

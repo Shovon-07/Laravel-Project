@@ -4,43 +4,46 @@ let popUpMsg = document.querySelector(".popUpMsg");
 function showPopUp(msg) {
     popup.classList.remove("hidePopUp");
     popUpMsg.innerHTML = msg;
-    editAbleItem.value = msg;
+    // editAbleItem.value = msg;
 }
 
-// Show popup for delete category
-let deletePopUp = document.querySelector("#deletePopUp");
-let deleteAbleItem = document.querySelector(".deleteAbleItem");
-function deleteAlertPopUp(msg) {
-    deletePopUp.classList.remove("hidePopUp");
-    deleteAbleItem.value = msg;
+//___ Category section start ___//
+// Create category
+function createCategoryPopUp() {
+    $("#categoryCreatePopUp").removeClass("hidePopUp");
 }
 
-// Show popup for edit category
-let editPopUp = document.querySelector("#editPopUp");
-let editAbleItem = document.querySelector(".editAbleItem");
-// let categoryName = document.querySelector(".categoryName");
-function editePopUp(id) {
-    editPopUp.classList.remove("hidePopUp");
-    editAbleItem.value = id;
-    // categoryName.value = id;
+// Delete category
+function deleteCategoryPopUp(id) {
+    $("#categoryDeletePopUp").removeClass("hidePopUp");
+    $(".deleteAbleCategory").val(id);
 }
 
-// Show popup for create brand
-let brandPopUp = document.querySelector("#createBrandPopUp");
-// let popUpMsg = document.querySelector(".popUpMsg");
-let categoryIdForBrnad = document.querySelector(".categoryIdForBrnad");
+// Edit category
+function editeCategoryPopUp(id) {
+    $("#categoryEditPopUp").removeClass("hidePopUp");
+    $(".editAbleCategory").val(id);
+}
+
+//___ Category section end ___//
+
+//___ Brand section start ___//
+// Create brand
 function createBrandPopUp(id) {
-    brandPopUp.classList.remove("hidePopUp");
-    categoryIdForBrnad.value = id;
+    $("#createBrandPopUp").removeClass("hidePopUp");
+    $(".categoryIdForBrnad").val(id);
 }
-
+//___ Brand section end ___//
 
 
 function hidePopUp() {
     popup.classList.add("hidePopUp");
-    deletePopUp.classList.add("hidePopUp");
-    editPopUp.classList.add("hidePopUp");
-    brandPopUp.classList.add("hidePopUp");
+
+    $("#categoryCreatePopUp").addClass("hidePopUp");
+    $("#categoryDeletePopUp").addClass("hidePopUp");
+    $("#categoryEditPopUp").addClass("hidePopUp");
+    
+    $("#createBrandPopUp").addClass("hidePopUp");
 }
 
 // let closePopUp = document.querySelectorAll("#closePopUp");
