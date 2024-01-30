@@ -42,9 +42,9 @@ class BrandsController extends Controller
         try {
             $userId = $request->headers->get('userId');
             $categoryId = $request->input('categoryId');
-            // $data = Brand::where('UserId', '=', $userId)->where('CategoryId', '=', $categoryId)->get();
+            $data = Brand::where('UserId', '=', $userId)->where('CategoryId', '=', $categoryId)->get();
 
-            $data = Brand::where('UserId', '=', $userId)->get();
+            // $data = Brand::where('UserId', '=', $userId)->get();
 
             return response()->json([
                 'status' => 'success',

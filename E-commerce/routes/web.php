@@ -71,7 +71,7 @@ Route::prefix('/admin')->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
             // API
             Route::post('/create-brands', 'CreateBrands');
-            Route::get('/brands-list', 'BrandsList');
+            Route::post('/brands-list', 'BrandsList');
             // Route::post('/category-delete', 'CategoryDelete');
             // Route::post('/category-edite', 'CategoryEdite');
         });

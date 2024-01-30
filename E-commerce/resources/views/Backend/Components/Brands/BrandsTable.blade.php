@@ -1,8 +1,8 @@
 <div data-bs-theme="dark" style="margin-top: 20px">
     <div class="d-flex" style="justify-content: space-between;margin-bottom:30px">
         <div>
-            <select id="options" class="selectField">
-                <option value="">Select category</option>
+            <select id="selectItems" class="selectField" onchange="getOptionsValue()">
+                <option selected>Select category</option>
                 {{-- <option value="">Select category</option>
                 <option value="">Category 1</option>
                 <option value="">Category 2</option>
@@ -37,6 +37,8 @@
 </div>
 
 <script>
+    let categoryId = "";
+
     window.addEventListener('load', () => {
         brandList();
         categoryList();
@@ -47,39 +49,30 @@
         const response = await axios.get("/admin/category-list");
         hideLoader();
 
-        let options = $('#options');
+        let selectItems = $('#selectItems');
 
         const data = response.data['categories'];
         let count = 1;
         data.forEach((items) => {
             let row = 
             `
-                <option value="">${items['CategoryName']}</option>
+                <option value="${items['id']}">${items['CategoryName']}</option>
             `;
 
-            options.append(row);
-        });
-
-        // new DataTable(table, {
-        //     order: [0, "desc"],
-        //     lengthMenu: [5,10,15,20],
-        // });
-
-        $('.edite').on('click', function() {
-            const id = $(this).data('id');
-            // const data = $(this).data('data');
-            editePopUp(id);
-        });
-
-        $('.delete').on('click', function() {
-            const id = $(this).data('id');
-            deleteAlertPopUp(id);
+            selectItems.append(row);
         });
     }
 
+    function getOptionsValue() {
+        categoryId = $("#selectItems").val(); 
+        brandList();
+    } 
+
     async function brandList() {
         showLoader();
-        const response = await axios.get("/admin/brands-list");
+        const response = await axios.post("/admin/brands-list", {
+            "categoryId" : categoryId
+        });
         hideLoader();
 
         let table = $("#table");

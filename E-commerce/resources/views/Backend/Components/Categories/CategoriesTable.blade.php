@@ -1,6 +1,6 @@
 <div data-bs-theme="dark" style="margin-top: 20px">
     <div style="text-align: right">
-        <button class="button" style="padding: 10px 20px;margin-bottom:20px" onclick="showPopUp()">Create Category</button>
+        <button class="button" style="padding: 10px 20px;margin-bottom:20px" onclick="showPopUp()">Add new category</button>
     </div>
     <table id="table">
         <thead>
