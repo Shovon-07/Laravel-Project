@@ -1,35 +1,28 @@
-{{-- <div class="popup hidePopUp" id="editPopUp">
-    <div style="color:yellow; font-size:20px">
-        <h2>Edit !</h2>
+<div class="popup hidePopUp" id="brandEditPopUp">
+    <div style="color:rgb(255, 187, 0); font-size:20px">
+        <h2>Delete !</h2>
     </div>
     <div>
-        <input type="hidden" class="editAbleItem">
-        <input class="categoryInput categoryName" type="text" placeholder="Category name" style="margin-top: 20px">
+        {{-- <p class="deleteCategoryMsg"></p> --}}
+        <input type="text" class="deleteAbleBrand">
     </div>
-    <button id="closePopUp" onclick="editCategory()">CONFIRM</button>
+    <button id="closePopUp" onclick="deleteBrand()">CONFIRM</button>
     <a class="cancel" id="closePopUp" onclick="closePopUp()">Cancel</a>
 </div>
 
 <script>
-    async function editCategory() {
-        let categoryId = document.querySelector(".editAbleItem").value;
-        let categoryName = document.querySelector(".categoryName").value;
+    async function deleteBrand() {
+        const brandID = $('.deleteAbleBrand').val();
+        showLoader();
+        const response = await axios.post("/admin/brands-delete", {'brandID':brandID});
+        hideLoader();
 
-        if(categoryName.length === 0) {
-            showTost("Please enter category name");
-        } else {
-            showLoader();
-            const response = await axios.post("/admin/category-edite", {'categoryId': categoryId,'categoryName':categoryName});
-            hideLoader();
-            document.querySelector(".categoryName").value = "";
+        if(response.data['status'] === 'success') {
+            showTost(response.data['message']);
             closePopUp();
-
-            if(response.data['status'] === 'success') {
-                showTost(response.data['message']);
-                categoryList();
-            } else {
-                showTost(response.data['message'])
-            }
+            brandList();
+        } else {
+            showTost(response.data['message']);
         }
     }
-</script> --}}
+</script>

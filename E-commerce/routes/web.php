@@ -72,8 +72,8 @@ Route::prefix('/admin')->group(function () {
             // API
             Route::post('/create-brands', 'CreateBrands');
             Route::post('/brands-list', 'BrandsList');
-            // Route::post('/category-delete', 'CategoryDelete');
-            // Route::post('/category-edite', 'CategoryEdite');
+            Route::post('/brands-delete', 'BrandsDelete');
+            Route::post('/brands-edite', 'BrandsEdite');
         });
     });
 

@@ -1,28 +1,27 @@
-{{-- <div class="popup hidePopUp" id="deletePopUp">
-    <div style="color:yellow; font-size:20px">
+<div class="popup hidePopUp" id="brandDeletePopUp">
+    <div style="color:rgb(255, 187, 0); font-size:20px">
         <h2>Delete !</h2>
     </div>
     <div>
-        <p class="deleteCategoryMsg"></p>
-        <input type="text" class="deleteAbleItem">
+        <input type="hidden" class="deleteAbleBrand">
     </div>
-    <button id="closePopUp" onclick="deleteItem()">CONFIRM</button>
+    <button id="closePopUp" onclick="deleteBrand()">CONFIRM</button>
     <a class="cancel" id="closePopUp" onclick="closePopUp()">Cancel</a>
 </div>
 
 <script>
-    async function deleteItem() {
-        const id = $('.deleteAbleItem').val();
+    async function deleteBrand() {
+        const brandID = $('.deleteAbleBrand').val();
         showLoader();
-        const response = await axios.post("/admin/category-delete", {'categoryId':id});
+        const response = await axios.post("/admin/brands-delete", {'brandID':brandID});
         hideLoader();
 
         if(response.data['status'] === 'success') {
             showTost(response.data['message']);
             closePopUp();
-            categoryList();
+            brandList();
         } else {
             showTost(response.data['message']);
         }
     }
-</script> --}}
+</script>

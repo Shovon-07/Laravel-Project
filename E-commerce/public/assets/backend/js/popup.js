@@ -33,6 +33,17 @@ function createBrandPopUp(id) {
     $("#createBrandPopUp").removeClass("hidePopUp");
     $(".categoryIdForBrnad").val(id);
 }
+
+// Delete brand
+function deleteBrandPopUp(id) {
+    $("#brandDeletePopUp").removeClass("hidePopUp");
+    $(".deleteAbleBrand").val(id);
+}
+
+// Edit brand
+function editBrandPopUp(id) {
+    $("#brandEditPopUp").removeClass("hidePopUp");
+}
 //___ Brand section end ___//
 
 
@@ -44,6 +55,8 @@ function hidePopUp() {
     $("#categoryEditPopUp").addClass("hidePopUp");
     
     $("#createBrandPopUp").addClass("hidePopUp");
+    $("#brandDeletePopUp").addClass("hidePopUp");
+    $("#brandEditPopUp").addClass("hidePopUp");
 }
 
 // let closePopUp = document.querySelectorAll("#closePopUp");

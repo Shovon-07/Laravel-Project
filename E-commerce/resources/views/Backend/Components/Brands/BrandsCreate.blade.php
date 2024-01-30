@@ -1,6 +1,6 @@
 <div class="popup hidePopUp" id="createBrandPopUp">
     <div>
-        <input type="text" class="categoryIdForBrnad">
+        <input type="hidden" class="categoryIdForBrnad">
         <input type="text" class="addItemsInput" id="brandName" placeholder="Brand name">
     </div>
     <button id="closePopUp" onclick="createBrand()">CONFIRM</button>

@@ -104,14 +104,12 @@
         $('.edite').on('click', function() {
             const id = $(this).data('id');
             // const data = $(this).data('data');
-            // editePopUp(id);
-            console.log(id);
+            editBrandPopUp(id);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
-            // deleteAlertPopUp(id);
-            console.log(id);
+            deleteBrandPopUp(id);
         });
     }
 </script>
