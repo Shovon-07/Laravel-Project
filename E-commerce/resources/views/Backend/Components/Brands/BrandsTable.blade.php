@@ -1,12 +1,25 @@
 <div data-bs-theme="dark" style="margin-top: 20px">
-    <div style="text-align: right">
-        <button class="button" style="padding: 10px 20px;margin-bottom:20px" onclick="showPopUp()">Create Category</button>
+    <div class="d-flex" style="justify-content: space-between;margin-bottom:30px">
+        <div>
+            <select id="options" class="selectField">
+                <option value="">Select category</option>
+                {{-- <option value="">Select category</option>
+                <option value="">Category 1</option>
+                <option value="">Category 2</option>
+                <option value="">Category 3</option> --}}
+            </select>
+        </div>
+    
+        <div>
+            <button class="button" style="padding: 10px 20px;" onclick="createBrandPopUp()">Add new brand</button>
+        </div>
     </div>
+
     <table id="table">
         <thead>
             <tr>
                 <th>Sl no</th>
-                <th>Category name</th>
+                <th>Brand name</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -25,6 +38,7 @@
 
 <script>
     window.addEventListener('load', () => {
+        brandList();
         categoryList();
     });
 
@@ -33,18 +47,53 @@
         const response = await axios.get("/admin/category-list");
         hideLoader();
 
+        let options = $('#options');
+
+        const data = response.data['categories'];
+        let count = 1;
+        data.forEach((items) => {
+            let row = 
+            `
+                <option value="">${items['CategoryName']}</option>
+            `;
+
+            options.append(row);
+        });
+
+        // new DataTable(table, {
+        //     order: [0, "desc"],
+        //     lengthMenu: [5,10,15,20],
+        // });
+
+        $('.edite').on('click', function() {
+            const id = $(this).data('id');
+            // const data = $(this).data('data');
+            editePopUp(id);
+        });
+
+        $('.delete').on('click', function() {
+            const id = $(this).data('id');
+            deleteAlertPopUp(id);
+        });
+    }
+
+    async function brandList() {
+        showLoader();
+        const response = await axios.get("/admin/brands-list");
+        hideLoader();
+
         let table = $("#table");
         let tableData = $("#tableData");
 
         table.DataTable().destroy();
         tableData.empty();
 
-        const data = response.data['categories'];
+        const data = response.data['brands'];
         let count = 1;
         data.forEach((items) => {
             let row = `<tr>
                 <td>${count++}</td>
-                <td>${items['CategoryName']}</td>
+                <td>${items['BrandName']}</td>
                 <td>
                     <button data-id="${items['id']}" class="edite">Edite</button>
                     <span class="btnDevider">|</span>
@@ -63,12 +112,14 @@
         $('.edite').on('click', function() {
             const id = $(this).data('id');
             // const data = $(this).data('data');
-            editePopUp(id);
+            // editePopUp(id);
+            console.log(id);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
-            deleteAlertPopUp(id);
+            // deleteAlertPopUp(id);
+            console.log(id);
         });
     }
 </script>

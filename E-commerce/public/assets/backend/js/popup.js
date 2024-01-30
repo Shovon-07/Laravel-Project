@@ -25,6 +25,16 @@ function editePopUp(id) {
     // categoryName.value = id;
 }
 
+// Show popup for create brand
+// let deletePopUp = document.querySelector("#deletePopUp");
+// let deleteAbleItem = document.querySelector(".deleteAbleItem");
+function createBrandPopUp(msg) {
+    deletePopUp.classList.remove("hidePopUp");
+    deleteAbleItem.value = msg;
+}
+
+
+
 function hidePopUp() {
     popup.classList.add("hidePopUp");
     deletePopUp.classList.add("hidePopUp");

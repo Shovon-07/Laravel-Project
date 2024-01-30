@@ -1,94 +1,93 @@
 @extends('Backend.Layouts.Links')
 <title>update profile</title>
 
-{{-- <!--=== Loader ===--> --}}
-@include('Backend.Components.Loader')
+@section('content')
+    {{-- <!--=== Popup ===--> --}}
+    @include('Backend.Components.ChangeProfilePicPopup')
 
-{{-- <!--=== Popup ===--> --}}
-@include('Backend.Components.ChangeProfilePicPopup')
-
-{{-- <!--=== Login form ===--> --}}
-<div class="form-container d-flex" style="margin: 50px 0">
-    {{-- <img class="userImg" id="userImg" alt="profile pic"> --}}
-    <div class="form">
-        <h4 class="title">PROFILE</h4>
-        <div class="userImgContainer overlay" onclick="showPopUp()">
-            <img class="userImg" id="userImg">
-            <i class="fa-solid fa-share-from-square shareIcon"></i>
-        </div>
-                <div>
-                    <input type="text" id="name" placeholder="User name">
-                </div>
-                <div>
-                    <input type="email" readonly id="email" placeholder="User email">
-                </div>
-                <div>
-                    <input type="password" id="password" autocomplete="off" placeholder="Password">
-                </div>
-        <div class="buttonDiv">
-            <button type="submit" class="button" onclick="updateProfile()">UPDATE</button>
+    {{-- <!--=== Login form ===--> --}}
+    <div class="form-container d-flex" style="margin: 50px 0">
+        {{-- <img class="userImg" id="userImg" alt="profile pic"> --}}
+        <div class="form">
+            <h4 class="title">PROFILE</h4>
+            <div class="userImgContainer overlay" onclick="showPopUp()">
+                <img class="userImg" id="userImg">
+                <i class="fa-solid fa-share-from-square shareIcon"></i>
+            </div>
+                    <div>
+                        <input type="text" id="name" placeholder="User name">
+                    </div>
+                    <div>
+                        <input type="email" readonly id="email" placeholder="User email">
+                    </div>
+                    <div>
+                        <input type="password" id="password" autocomplete="off" placeholder="Password">
+                    </div>
+            <div class="buttonDiv">
+                <button type="submit" class="button" onclick="updateProfile()">UPDATE</button>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    let name = document.querySelector("#name");
-    let email = document.querySelector("#email");
-    let password = document.querySelector("#password");
+    <script>
+        let name = document.querySelector("#name");
+        let email = document.querySelector("#email");
+        let password = document.querySelector("#password");
 
-    window.addEventListener('load', () => {
-        userData();
-    });
+        window.addEventListener('load', () => {
+            userData();
+        });
 
-    async function userData() {
-        showLoader();
-        const response = await axios.get("/admin/profile-data");
-        hideLoader();
-
-        if(response.data['status'] === 'success') {
-            const userData = response.data['data'];
-
-            // View user details
-            name.value = userData['Name'];
-            email.value = userData['Email'];
-            password.value = userData['Password'];
-
-            // View profile pic
-            const dbImg = userData['Img'];
-            const imgPath = "{{asset('Uploaded_file/images/users')}}" + `/${dbImg}`;
-            document.querySelector("#userImg").src = imgPath;
-        } else {
-            console.log("Oops !");
-        }
-    }
-
-    async function updateProfile() {
-        const name = document.querySelector("#name").value;
-        const email = document.querySelector("#email").value;
-        const password = document.querySelector("#password").value;
-
-        if(name.length === 0) {
-            showTost("Please enter your name");
-        } else if(email.length === 0) {
-            showTost("Please enter your email address");
-        } else if(password.length < 3) {
-            showTost("Please enter a strong password minimum 3 cherecter");
-        } else {
+        async function userData() {
             showLoader();
-            const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-            const response = await axios.post("/admin/update-profile", {"name":name, "password":password, config});
+            const response = await axios.get("/admin/profile-data");
             hideLoader();
 
             if(response.data['status'] === 'success') {
-                showTost(response.data['message']);
-                hidePopUp();
-                userData();
+                const userData = response.data['data'];
+
+                // View user details
+                name.value = userData['Name'];
+                email.value = userData['Email'];
+                password.value = userData['Password'];
+
+                // View profile pic
+                const dbImg = userData['Img'];
+                const imgPath = "{{asset('Uploaded_file/images/users')}}" + `/${dbImg}`;
+                document.querySelector("#userImg").src = imgPath;
             } else {
-                showTost(response.data['message']);
+                console.log("Oops !");
             }
         }
-    }
-</script>
+
+        async function updateProfile() {
+            const name = document.querySelector("#name").value;
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+
+            if(name.length === 0) {
+                showTost("Please enter your name");
+            } else if(email.length === 0) {
+                showTost("Please enter your email address");
+            } else if(password.length < 3) {
+                showTost("Please enter a strong password minimum 3 cherecter");
+            } else {
+                showLoader();
+                const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+                const response = await axios.post("/admin/update-profile", {"name":name, "password":password, config});
+                hideLoader();
+
+                if(response.data['status'] === 'success') {
+                    showTost(response.data['message']);
+                    hidePopUp();
+                    userData();
+                } else {
+                    showTost(response.data['message']);
+                }
+            }
+        }
+    </script>
+@endsection
 
 {{-- <script>
     window.addEventListener('load', () => {
