@@ -1,9 +1,8 @@
 @extends('Backend.Layouts.Links')
 <title>Sign In</title>
 
-{{-- <!--=== Loader ===--> --}}
-@include('Backend.Components.Loader')
-
+@section('content')
+    
 {{-- <!--=== Login form ===--> --}}
 <div class="form-container">
     <div class="form">
@@ -56,3 +55,4 @@
 
     }
 </script>
+@endsection

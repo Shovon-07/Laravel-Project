@@ -148,7 +148,7 @@ class AuthController extends Controller
 
                 return response()->json([
                     'status' => 'success',
-                    'message' => '6 digit otp sent in your email',
+                    'message' => 'Otp verified',
                     'token' => $token
                 ])->cookie('token', $token);
             } else {

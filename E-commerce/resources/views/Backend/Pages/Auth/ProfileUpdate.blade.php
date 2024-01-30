@@ -4,7 +4,7 @@
 {{-- <!--=== Loader ===--> --}}
 @include('Backend.Components.Loader')
 
-{{-- <!--=== Login form ===--> --}}
+{{-- <!--=== Profile form ===--> --}}
 <div class="form-container">
     <div class="form">
         <h4 class="title">SIGN UP</h4>
