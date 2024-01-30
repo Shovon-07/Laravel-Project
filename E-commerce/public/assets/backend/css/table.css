@@ -1,12 +1,28 @@
 table {
     margin-top: 20px;
     width: 100%;
+    border: 1px solid var(--dark-2);
+    border-radius: 8px;
+    color: var(--light-3);
+}
+table thead {
+    background: var(--dark-deep);
+    color: var(--light-2);
+}
+tr {
+    border-radius: 8px;
 }
 th,td {
-    border: 1px solid var(--light-2);
     border-collapse: collapse;
     text-align: center;
     padding: 5px 0;
+    border: 1px solid var(--light-2);
+}
+table tbody .even {
+    background: #222222 !important;
+}
+table tbody .odd {
+    background: #303030 !important;
 }
 table td button {
     color: var(--light);
@@ -45,11 +61,12 @@ table .btnDevider {
     cursor: pointer;
 }
 
-.selectField {
+.selectField,
+.dataTables_length label select {
     background: transparent;
     padding: 5px 15px;
     font-size: 16px;
-    color: var(--dark-2);
+    color: var(--dark-2) !important;
     border: 1px solid var(--light-2);
     outline: none;
 }
