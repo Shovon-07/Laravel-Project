@@ -1,4 +1,8 @@
 <div class="popup hidePopUp" id="createBrandPopUp">
+    <div style="color:rgb(255, 187, 0); font-size:20px;margin-bottom:20px">
+        <h2>Create brand</h2>
+    </div>
+
     <div>
         <input type="hidden" class="categoryIdForBrnad">
         <input type="text" class="addItemsInput" id="brandName" placeholder="Brand name">

@@ -1,14 +1,15 @@
 /*___ Pop Up ___*/
 .popup {
-    backdrop-filter: blur(20px);
+    /* backdrop-filter: blur(20px); */
+    background: var(--light-ofWhite);
     width: 30%;
     padding: 20px;
     border-radius: 12px;
     box-shadow: var(--box-shadow);
     position: fixed;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 2%;
+    transform: translateX(-50%);
     text-align: center;
     display: flex;
     align-items: center;
@@ -27,11 +28,15 @@
     margin-top: 20px;
     border: none;
     border-radius: 12px;
+    /* font-size: 16px; */
+    font-weight: bold;
+    letter-spacing: 1px;
     cursor: pointer;
 }
 .popup .cancel {
     margin-top: 20px;
     cursor: pointer;
+    color: var(--dark-2);
 }
 
 .hidePopUp {

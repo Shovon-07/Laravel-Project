@@ -3,7 +3,6 @@
         <h2>Delete !</h2>
     </div>
     <div>
-        {{-- <p class="deleteCategoryMsg"></p> --}}
         <input type="hidden" class="deleteAbleCategory">
     </div>
     <button id="closePopUp" onclick="deleteCategory()">CONFIRM</button>

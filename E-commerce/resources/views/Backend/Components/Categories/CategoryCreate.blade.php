@@ -1,4 +1,7 @@
 <div class="popup hidePopUp" id="categoryCreatePopUp">
+    <div style="color:rgb(255, 187, 0); font-size:20px;margin-bottom:20px">
+        <h2>Create category</h2>
+    </div>
     <div>
         <input class="addItemsInput" type="text" id="categoryName" placeholder="Category name">
     </div>
