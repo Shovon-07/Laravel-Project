@@ -141,14 +141,13 @@
         $('.edite').on('click', function() {
             const id = $(this).data('id');
             // const data = $(this).data('data');
-            // editBrandPopUp(id);
-            console.log(id);
+            editProductPopUp(id, categoryIdForProduct, brandIdForProduct);
+            console.log(id, categoryIdForProduct, brandIdForProduct);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
-            // deleteBrandPopUp(id);
-            console.log(id);
+            deleteProductPopUp(id, categoryIdForProduct, brandIdForProduct);
         });
     }
 </script>

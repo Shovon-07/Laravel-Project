@@ -54,6 +54,20 @@ function createProductPopUp(categoryId,brandId) {
     $(".brandIdForProduct").val(brandId);
     // console.log(categoryId + " " + brandId);
 }
+
+function deleteProductPopUp(id, categoryIdForProduct, brandIdForProduct) {
+    $("#productDeletePopUp").removeClass("hidePopUp");
+    $(".deleteAbleProduct").val(id);
+    $(".deleteAbleProductsCategory").val(categoryIdForProduct);
+    $(".deleteAbleProductsBrand").val(brandIdForProduct);
+}
+
+function editProductPopUp(id, categoryIdForProduct, brandIdForProduct) {
+    $("#productEditPopUp").removeClass("hidePopUp");
+    $(".editAbleProduct").val(id);
+    $(".editAbleProductsCategory").val(categoryIdForProduct);
+    $(".editAbleProductsBrand").val(brandIdForProduct);
+}
 //___ Product section end ___//
 
 
@@ -69,6 +83,8 @@ function hidePopUp() {
     $("#brandEditPopUp").addClass("hidePopUp");
 
     $("#productCreatePopUp").addClass("hidePopUp");
+    $("#productDeletePopUp").addClass("hidePopUp");
+    $("#productEditPopUp").addClass("hidePopUp");
 }
 
 

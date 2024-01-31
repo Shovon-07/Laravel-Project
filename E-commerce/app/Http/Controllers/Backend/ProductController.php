@@ -70,54 +70,73 @@ class ProductController extends Controller
         }
     }
 
-    // public function CategoryDelete(Request $request)
-    // {
-    //     try {
-    //         $request->validate([
-    //             'categoryId' => 'required|string'
-    //         ]);
+    public function ProductDelete(Request $request)
+    {
+        try {
+            $userId = $request->headers->get('userId');
+            $productId = $request->input('productId');
+            $categoryId = $request->input('categoryId');
+            $brandId = $request->input('brandId');
 
-    //         $userId = $request->headers->get('userId');
-    //         $categoryId = $request->input('categoryId');
-    //         Product::where('id', '=', $categoryId)->where('UserId', '=', $userId)->delete();
-    //         return response()->json([
-    //             'status' => "success",
-    //             'message' => 'Category deleted'
-    //         ]);
-    //     } catch (Exception $e) {
-    //         return response()->json([
-    //             'status' => "Failed",
-    //             'message' => $e->getMessage()
-    //         ]);
-    //     }
-    // }
+            // Product::where('id', '=', $categoryId)->where('UserId', '=', $userId)->delete();
 
-    // function CategoryEdite(Request $request)
-    // {
-    //     try {
-    //         // $request->validate([
-    //         //     'categoryId' => 'required|string',
-    //         //     'categoryName' => 'required|string'
-    //         // ]);
+            Product::where('id', '=', $productId)->where('UserId', '=', $userId)->where('CategoryId', '=', $categoryId)->where('BrandId', '=', $brandId)->delete();
 
-    //         $userId = $request->headers->get('userId');
-    //         $categoryId = $request->input('categoryId');
+            return response()->json([
+                'status' => "success",
+                'message' => 'Product deleted'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => "Failed",
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
 
-    //         Product::where('id', '=', $categoryId)->where('UserId', '=', $userId)->update([
-    //             'CategoryName' => $request->input('categoryName'),
-    //         ]);
+    function ProductEdite(Request $request)
+    {
+        try {
+            $request->validate([
+                'productName' => 'required|string',
+                'productTitle' => 'required|string',
+                'productDescription' => 'required|string',
+                'productPrice' => 'required|string',
+                'productStock' => 'required|string',
+                // 'productImg' => 'required|string',
+                'categoryId' => 'required|string',
+                'brandId' => 'required|string'
+            ]);
 
-    //         return response()->json([
-    //             'status' => 'success',
-    //             'message' => 'Category updated',
-    //         ]);
-    //     } catch (Exception $e) {
-    //         return response()->json([
-    //             'status' => 'failed',
-    //             'message' => $e->getMessage()
-    //         ]);
-    //     }
-    // }
+            $userId = $request->headers->get('userId');
+            $productId = $request->input('productId');
+            $categoryId = $request->input('categoryId');
+            $brandId = $request->input('brandId');
+
+            Product::where('id', '=', $productId)->where('UserId', '=', $userId)->where('CategoryId', '=', $categoryId)->where('BrandId', '=', $brandId)->update([
+                'ProductName' => $request->input('productName'),
+                'ProductTitle' => $request->input('productTitle'),
+                'ProductDescription' => $request->input('productDescription'),
+                'ProductPrice' => $request->input('productPrice'),
+                'ProductStock' => $request->input('productStock'),
+                'ProductImg' => $request->input('productImg'),
+
+                'UserId' => $userId,
+                'CategoryId' => $categoryId,
+                'BrandId' => $brandId,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Product updated',
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
 
 
     //___ Additional ___//

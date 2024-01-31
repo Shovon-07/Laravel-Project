@@ -86,8 +86,8 @@ Route::prefix('/admin')->group(function () {
             // API
             Route::post('/product-create', 'ProductCreate');
             Route::post('/product-list', 'ProductList');
-            // Route::post('/brands-delete', 'BrandsDelete');
-            // Route::post('/brands-edite', 'BrandsEdite');
+            Route::post('/product-delete', 'ProductDelete');
+            Route::post('/product-edite', 'ProductEdite');
 
             Route::get('/brands-list-for-product', 'BrandsListForProduct');
         });
