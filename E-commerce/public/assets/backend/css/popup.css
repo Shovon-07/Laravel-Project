@@ -2,8 +2,8 @@
 .popup {
     /* backdrop-filter: blur(20px); */
     background: var(--light-ofWhite);
-    width: 30%;
-    padding: 20px;
+    width: auto;
+    padding: 20px 40px;
     border-radius: 12px;
     box-shadow: var(--box-shadow);
     position: fixed;
@@ -65,4 +65,8 @@
 .selectImg:hover {
     background: var(--blue);
     color: var(--light);
+}
+
+textarea {
+    resize: none;
 }

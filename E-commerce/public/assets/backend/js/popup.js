@@ -48,8 +48,11 @@ function editBrandPopUp(id) {
 //___ Brand section end ___//
 
 //___ Product section start ___//
-function createProductPopUp() {
-
+function createProductPopUp(categoryId,brandId) {
+    $("#productCreatePopUp").removeClass("hidePopUp");
+    $(".categoryIdForProduct").val(categoryId);
+    $(".brandIdForProduct").val(brandId);
+    // console.log(categoryId + " " + brandId);
 }
 //___ Product section end ___//
 
@@ -64,6 +67,8 @@ function hidePopUp() {
     $("#createBrandPopUp").addClass("hidePopUp");
     $("#brandDeletePopUp").addClass("hidePopUp");
     $("#brandEditPopUp").addClass("hidePopUp");
+
+    $("#productCreatePopUp").addClass("hidePopUp");
 }
 
 

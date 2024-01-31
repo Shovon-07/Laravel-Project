@@ -21,7 +21,7 @@
         </div>
     
         <div>
-            <button class="button" style="padding: 10px 20px;" onclick="createProductPopUp(ca)">Add new product</button>
+            <button class="button" style="padding: 10px 20px;" onclick="createProductPopUp(categoryIdForProduct,brandIdForProduct)">Add new product</button>
         </div>
     </div>
 
