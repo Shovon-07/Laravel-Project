@@ -47,6 +47,12 @@ function editBrandPopUp(id) {
 }
 //___ Brand section end ___//
 
+//___ Product section start ___//
+function createProductPopUp() {
+
+}
+//___ Product section end ___//
+
 
 function hidePopUp() {
     popup.classList.add("hidePopUp");
@@ -60,13 +66,14 @@ function hidePopUp() {
     $("#brandEditPopUp").addClass("hidePopUp");
 }
 
-// let closePopUp = document.querySelectorAll("#closePopUp");
-// closePopUp.forEach((item) => {
-//     item.addEventListener("click", () => {
-//         hidePopUp();
-//     });
-// });
 
 function closePopUp() {
     hidePopUp();
 }
+
+// Close pop up when click esc btn
+$(document).on('keydown', function(event) {
+    if (event.key == "Escape") {
+        hidePopUp();
+    }
+});

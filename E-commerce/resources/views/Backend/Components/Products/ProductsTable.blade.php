@@ -21,7 +21,7 @@
         </div>
     
         <div>
-            <button class="button" style="padding: 10px 20px;" onclick="cr(ca)">Add new product</button>
+            <button class="button" style="padding: 10px 20px;" onclick="createProductPopUp(ca)">Add new product</button>
         </div>
     </div>
 
@@ -52,18 +52,16 @@
 
     window.addEventListener('load', () => {
         categoryListForProduct();
-        brandListForProduct();
     });
 
     async function categoryListForProduct() {
-        showLoader();
+        // showLoader();
         const response = await axios.get("/admin/category-list");
-        hideLoader();
+        // hideLoader();
 
         let selectCategoryForProduct = $('#selectCategoryForProduct');
 
         const data = response.data['categories'];
-        let count = 1;
         data.forEach((items) => {
             let row = 
             `
@@ -75,9 +73,12 @@
     }
 
     async function brandListForProduct() {
-        showLoader();
-        const response = await axios.get("/admin/brands-list-for-product");
-        hideLoader();
+        // showLoader();
+        // const response = await axios.get("/admin/brands-list-for-product");
+        const response = await axios.post("/admin/brands-list", {
+            "categoryId" : categoryIdForProduct
+        });
+        // hideLoader();
 
         let selectBrandForProduct = $('#selectBrandForProduct');
 
@@ -94,12 +95,11 @@
 
     function getCategoryOptionsValue() {
         categoryIdForProduct = $("#selectCategoryForProduct").val();
-        console.log(categoryIdForProduct);
+        brandListForProduct();
     }
 
     function getBrandOptionsValue() {
         brandIdForProduct = $("#selectBrandForProduct").val();
-        console.log(brandIdForProduct);
         productList();
     }
 
@@ -142,11 +142,13 @@
             const id = $(this).data('id');
             // const data = $(this).data('data');
             // editBrandPopUp(id);
+            console.log(id);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
             // deleteBrandPopUp(id);
+            console.log(id);
         });
     }
 </script>

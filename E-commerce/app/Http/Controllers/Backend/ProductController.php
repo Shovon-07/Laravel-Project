@@ -125,7 +125,9 @@ class ProductController extends Controller
     {
         try {
             $userId = $request->headers->get('userId');
-            $data = Brand::where('UserId', '=', $userId)->get();
+            $categoryId = $request->input('categoryId');
+            // $data = Brand::where('UserId', '=', $userId)->get();
+            $data = Brand::where('UserId', '=', $userId)->where('CategoryId', '=', $categoryId)->get();
 
             return response()->json([
                 'status' => 'success',
