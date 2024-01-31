@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BrandsController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,8 +57,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::controller(CategoryController::class)->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
-            Route::view('/category-view', 'Backend.Pages.Dashboard.CategoryList')->name('category.view');
-            Route::view('/brands-view', 'Backend.Pages.Dashboard.BrandsList')->name('brands.view');
+            Route::view('/categories', 'Backend.Pages.Dashboard.CategoryList')->name('category.view');
 
             // API
             Route::post('/create-category', 'CreateCategory');
@@ -69,11 +69,27 @@ Route::prefix('/admin')->group(function () {
 
     Route::controller(BrandsController::class)->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
+            Route::view('/brands', 'Backend.Pages.Dashboard.BrandsList')->name('brands.view');
+
             // API
             Route::post('/create-brands', 'CreateBrands');
             Route::post('/brands-list', 'BrandsList');
             Route::post('/brands-delete', 'BrandsDelete');
             Route::post('/brands-edite', 'BrandsEdite');
+        });
+    });
+
+    Route::controller(ProductController::class)->group(function () {
+        Route::middleware(['JwtVerify'])->group(function () {
+            Route::view('/products', 'Backend.Pages.Dashboard.ProductsList')->name('products.view');
+
+            // API
+            Route::post('/product-create', 'ProductCreate');
+            Route::post('/product-list', 'ProductList');
+            // Route::post('/brands-delete', 'BrandsDelete');
+            // Route::post('/brands-edite', 'BrandsEdite');
+
+            Route::get('/brands-list-for-product', 'BrandsListForProduct');
         });
     });
 

@@ -1,8 +1,18 @@
 <div data-bs-theme="dark" style="margin-top: 20px">
     <div class="d-flex" style="justify-content: space-between;margin-bottom:30px">
         <div>
-            <select id="selectItems" class="selectField" onchange="getOptionsValue()">
+            <select id="selectCategoryForProduct" class="selectField" onchange="getCategoryOptionsValue()">
                 <option selected>Select category</option>
+                {{-- <option value="">Select category</option>
+                <option value="">Category 1</option>
+                <option value="">Category 2</option>
+                <option value="">Category 3</option> --}}
+            </select>
+        </div>
+
+        <div>
+            <select id="selectBrandForProduct" class="selectField" onchange="getBrandOptionsValue()">
+                <option selected>Select brand</option>
                 {{-- <option value="">Select category</option>
                 <option value="">Category 1</option>
                 <option value="">Category 2</option>
@@ -11,7 +21,7 @@
         </div>
     
         <div>
-            <button class="button" style="padding: 10px 20px;" onclick="createBrandPopUp(categoryIdForBrand)">Add new brand</button>
+            <button class="button" style="padding: 10px 20px;" onclick="cr(ca)">Add new product</button>
         </div>
     </div>
 
@@ -19,7 +29,7 @@
         <thead>
             <tr>
                 <th>Sl no</th>
-                <th>Brand name</th>
+                <th>Products name</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -37,39 +47,67 @@
 </div>
 
 <script>
-    let categoryIdForBrand = "";
+    let categoryIdForProduct = "";
+    let brandIdForProduct = "";
 
     window.addEventListener('load', () => {
-        categoryList();
+        categoryListForProduct();
+        brandListForProduct();
     });
 
-    async function categoryList() {
+    async function categoryListForProduct() {
         showLoader();
         const response = await axios.get("/admin/category-list");
         hideLoader();
 
-        let selectItems = $('#selectItems');
+        let selectCategoryForProduct = $('#selectCategoryForProduct');
 
         const data = response.data['categories'];
+        let count = 1;
         data.forEach((items) => {
             let row = 
             `
                 <option value="${items['id']}">${items['CategoryName']}</option>
             `;
 
-            selectItems.append(row);
+            selectCategoryForProduct.append(row);
         });
     }
 
-    function getOptionsValue() {
-        categoryIdForBrand = $("#selectItems").val(); 
-        brandList();
-    } 
-
-    async function brandList() {
+    async function brandListForProduct() {
         showLoader();
-        const response = await axios.post("/admin/brands-list", {
-            "categoryId" : categoryIdForBrand
+        const response = await axios.get("/admin/brands-list-for-product");
+        hideLoader();
+
+        let selectBrandForProduct = $('#selectBrandForProduct');
+
+        const data = response.data['brands'];
+        data.forEach((items) => {
+            let row = 
+            `
+                <option value="${items['id']}">${items['BrandName']}</option>
+            `;
+
+            selectBrandForProduct.append(row);
+        });
+    }
+
+    function getCategoryOptionsValue() {
+        categoryIdForProduct = $("#selectCategoryForProduct").val();
+        console.log(categoryIdForProduct);
+    }
+
+    function getBrandOptionsValue() {
+        brandIdForProduct = $("#selectBrandForProduct").val();
+        console.log(brandIdForProduct);
+        productList();
+    }
+
+    async function productList() {
+        showLoader();
+        const response = await axios.post("/admin/product-list", {
+            "categoryId" : categoryIdForProduct,
+            "brandId" : brandIdForProduct
         });
         hideLoader();
 
@@ -79,12 +117,12 @@
         table.DataTable().destroy();
         tableData.empty();
 
-        const data = response.data['brands'];
+        const data = response.data['products'];
         let count = 1;
         data.forEach((items) => {
             let row = `<tr>
                 <td>${count++}</td>
-                <td>${items['BrandName']}</td>
+                <td>${items['ProductTitle']}</td>
                 <td>
                     <button data-id="${items['id']}" class="edite">Edite</button>
                     <span class="btnDevider">|</span>
@@ -103,12 +141,12 @@
         $('.edite').on('click', function() {
             const id = $(this).data('id');
             // const data = $(this).data('data');
-            editBrandPopUp(id);
+            // editBrandPopUp(id);
         });
 
         $('.delete').on('click', function() {
             const id = $(this).data('id');
-            deleteBrandPopUp(id);
+            // deleteBrandPopUp(id);
         });
     }
 </script>
