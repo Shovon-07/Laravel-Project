@@ -53,11 +53,15 @@
     {{-- <script src="{{asset('assets/backend/js/bootstrap_js/bootstrap.min.js')}}"></script> --}}
     <script src="{{asset('assets/backend/js/Loader.js')}}"></script>
     <script src="{{asset('assets/backend/js/toastify.js')}}"></script>
+    <script src="{{asset('assets/backend/js/popup.js')}}"></script>
+    <script src="{{asset('assets/backend/js/chart.umd.min.js')}}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script> --}}
 
     {{-- Script --}}
     <script src="{{asset('assets/backend/js/app.js')}}"></script>
     <script src="{{asset('assets/backend/js/config.js')}}"></script>
     <script src="{{asset('assets/backend/js/popup.js')}}"></script>
+    <script src="{{asset('assets/backend/js/sellsChart.js')}}"></script>
     
 </body>
 
