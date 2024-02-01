@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('assets/backend/css/header.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/css/summery.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/css/table.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/backend/css/footer.css')}}">
     {{-- Font awesome --}}
     <link rel="stylesheet" href="{{asset('assets/backend/css/font_awesome/all.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/backend/css/font_awesome/fontawesome.min.css')}}" />
@@ -39,11 +40,10 @@
             @include('Backend.Components.Header')
             
             @yield('content')
+
+            {{-- <!-- === Footer === --> --}}
+            @include('Backend.Components.Footer')
         </div>
-
-        {{-- <!-- === Footer === --> --}}
-        {{-- @include('Backend.Components.Footer') --}}
-
     </div>
 
     {{-- Js Plugins --}}

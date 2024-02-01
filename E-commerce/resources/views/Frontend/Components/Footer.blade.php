@@ -56,10 +56,10 @@
                 <p><i class="fa-regular fa-copyright"></i> <span class="bolded">Shopping Mart</span>-All Right Reserved</p>
             </div>
             <div class="payment-img">
-                <img src="{{asset('Frontend')}}/assets/images/bkash.png">
-                <img src="{{asset('Frontend')}}/assets/images/nagad.png">
-                <img src="{{asset('Frontend')}}/assets/images/roket.png">
-                <img src="{{asset('Frontend')}}/assets/images/visa.png">
+                <img src="{{asset('assets/frontend')}}/images/bkash.png">
+                <img src="{{asset('assets/frontend')}}/images/nagad.png">
+                <img src="{{asset('assets/frontend')}}/images/roket.png">
+                <img src="{{asset('assets/frontend')}}/images/visa.png">
             </div>
         </div>
     </div>

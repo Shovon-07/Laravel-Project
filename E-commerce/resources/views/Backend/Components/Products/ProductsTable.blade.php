@@ -29,7 +29,10 @@
         <thead>
             <tr>
                 <th>Sl no</th>
-                <th>Products name</th>
+                <th>Products title</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -123,6 +126,9 @@
             let row = `<tr>
                 <td>${count++}</td>
                 <td>${items['ProductTitle']}</td>
+                <td>${items['ProductPrice']}</td>
+                <td>${items['ProductStock']}</td>
+                <td>${items['ProductImg']}</td>
                 <td>
                     <button data-id="${items['id']}" class="edite">Edite</button>
                     <span class="btnDevider">|</span>
