@@ -28,6 +28,11 @@
         categoryList();
     });
 
+    // document.querySelector(".next").addEventListener('click', () => {
+    //     // categoryList();
+    //     alert('table');
+    // });
+
     async function categoryList() {
         showLoader();
         const response = await axios.get("/admin/category-list");

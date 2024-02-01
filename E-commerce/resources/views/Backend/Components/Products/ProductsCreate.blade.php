@@ -26,6 +26,10 @@
         </div>
     </div>
     <div>
+        <label for="files" class="selectImg">Select Image</label> <br>
+        <input type="file" id="files" class="img" name="img" required style="visibility:hidden;">
+    </div>
+    <div>
         <textarea type="text" class="addItemsInput" id="productDescription" rows="5" cols="46" placeholder="Product description"></textarea>
     </div>
     <button id="closePopUp" onclick="createProduct()">CONFIRM</button>

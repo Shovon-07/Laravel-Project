@@ -1,13 +1,11 @@
 <div class="popup hidePopUp">
     <div>
-        <h3 style="margin-bottom:40px;color:var(--dark-2)">Change profile pic</h3>
+        <h3 style="margin-bottom:30px;color:var(--dark-2)">Change profile pic</h3>
     </div>
     <form action="{{route('update.profile.pic')}}" method="POST" enctype="multipart/form-data">
         <div>
-            <label for="files" class="selectImg">Select Image</label>
+            <label for="files" class="selectImg">Select Image</label> <br>
             <input type="file" id="files" class="img" name="img" required style="visibility:hidden;">
-
-            {{-- <input type="file" required id="img" name="img" placeholder="Choose profile pic"> --}}
         </div>
         <button type="submit" class="submitBtn" id="closePopUp">CONFIRM</button>
     </form>

@@ -14,9 +14,9 @@
             <select id="selectBrandForProduct" class="selectField" onchange="getBrandOptionsValue()">
                 <option selected>Select brand</option>
                 {{-- <option value="">Select category</option>
-                <option value="">Category 1</option>
-                <option value="">Category 2</option>
-                <option value="">Category 3</option> --}}
+                <option value="">Brand 1</option>
+                <option value="">Brand 2</option>
+                <option value="">Brand 3</option> --}}
             </select>
         </div>
     
