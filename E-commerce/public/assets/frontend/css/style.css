@@ -92,8 +92,7 @@
 	padding-left: 40px;
 }
 .sidebar .side-menu li .dropdown-item.active {
-	/* height: 200px; */
-	height: 100%;
+	height: 200px;
 }
 /*____ sidebar end _____*/
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    protected $fillable = ['Name', 'Email', 'Password', 'Otp', 'Img'];
+    protected $fillable = ['Name', 'Email', 'Password', 'Mobile', 'Otp', 'Img'];
     protected $hidden = ['Otp'];
-    protected $attributes = ['Otp' => 0, 'Img' => 'avater.png'];
+    protected $attributes = ['Mobile' => '', 'Otp' => 0, 'Img' => '/images/avater.png'];
 }

@@ -1,6 +1,8 @@
 table {
     margin-top: 20px;
     width: 100%;
+    border: 1px solid var(--dark-2);
+    border-radius: 8px;
     color: var(--light-3);
 }
 table thead {
@@ -14,7 +16,7 @@ th,td {
     border-collapse: collapse;
     text-align: center;
     padding: 5px 0;
-    /* border: 1px solid var(--light-2); */
+    border: 1px solid var(--light-2);
 }
 table tbody .even {
     background: #222222 !important;

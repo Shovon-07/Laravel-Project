@@ -1,6 +1,6 @@
 <div>
-    <div class="header">
-      <div class="container">
+  <div class="header">
+    <div class="container">
       <div class="searchBox">
         <i class="fa-solid fa-search"></i>
         <input type="text" placeholder="Search">
@@ -14,7 +14,9 @@
         </div>
         <div id="dropParent" class="profileBox">
           <div class="profile">
-            <img id="userImg">
+            <span id="imgParent">
+              {{-- <img id="userImg"> --}}
+            </span>
             <span id="userName">User</span>
           </div>
           <ul class="dropdown display">
@@ -27,37 +29,7 @@
   </div>
 </div>
 
-<script>
-  window.addEventListener('load', () => {
-        userData();
-  });
-
-  async function userData() {
-    showLoader();
-    const response = await axios.get("/admin/profile-data");
-    hideLoader();
-
-    if(response.data['status'] === 'success') {
-      const userData = response.data['data'];
-
-      // View profile pic
-      const dbImg = userData['Img'];
-      const imgPath = "{{asset('Uploaded_file/images/users')}}" + `/${dbImg}`;
-      document.querySelector("#userImg").src = imgPath;
-
-      // View user name
-      const dbName = userData['Name'];
-      document.querySelector("#userName").innerHTML = dbName;
-      
-    } else {
-      console.log("Oops !");
-    }
-  }
-</script>
-
-
-
-{{-- <script>
+<script type="text/javascript">
   window.addEventListener('load', () => {
     getData();
   });
@@ -67,16 +39,20 @@
     const response = await axios.get("/admin/profile-data");
     hideLoader();
 
-    if(response.data['status'] === 'success') {
-      let userData = response.data['data'];
-      document.querySelector("#userName").innerHTML = userData['lastName'];
-      
-      const img = userData['Img'];
-      let imgPath = "{{asset('Uploaded_file/Img')}}" + `/${img}`;
-      document.querySelector("#userImg").src = imgPath;
+    if(response.data['status'] === 1) {
+      const data = response.data['data'];
+    
+      // Show profile pic
+      let imgPath = "{{asset('Uploaded_file')}}" + `/${data['Img']}`;
+      let img = $('<img id="userImg">');
+      img.attr('src', imgPath);
+      img.appendTo('#imgParent');
+
+      // Show user name
+      $("#userName").html(`<span>${data['Name']}</span>`); 
 
     } else {
       response.data['message'];
-    }
+    }   
   }
-</script> --}}
+</script>

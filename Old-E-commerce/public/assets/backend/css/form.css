@@ -1,0 +1,116 @@
+/*___ Login Registration Page ___*/
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--dark);
+}
+.form-container .form .title {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.form-container .form {
+    box-shadow: var(--box-shadow);
+    padding: 30px 30px 20px 30px;
+    border-radius: 8px;
+    width: 60%;
+}
+.form-container .form input {
+    background: var(--light);
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 50px;
+    padding: 20px 30px;
+    margin: 20px 0;
+    width: 100%;
+    color: var(--dark);
+    box-shadow: var(--box-shadow);
+}
+.form-container .form .buttonDiv {
+    width: 100%;
+    text-align: center;
+}
+.form-container .form button[type="submit"] {
+    padding: 8px 0;
+    font-size: 20px;
+    width: 60%;
+    margin-top: 30px;
+}
+.form-container .form .formBottom {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 14px;
+}
+.form-container .form .formBottom a {
+    color: var(--dark-2);
+}
+.form-container .form .formBottom a:hover {
+    color: var(--main);
+}
+.form-container .form .formBottom span {
+    margin: 0 10px;
+}
+
+/* Divider */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.left,
+.right {
+    flex-basis: 48%;
+}
+
+
+
+/*__ Image from Update profile page __*/
+.form-container.d-flex {
+    flex-direction: column;
+}
+.userImgContainer {
+    width: 100px;
+    height: 110px;
+    margin: 10px auto;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+}
+/* .userImgContainer img {
+    overflow: hidden;
+} */
+.userImgContainer.overlay::after {
+    content: '';
+    background: #4b4b4b34;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.1s all;
+    border-radius: 8px;
+    transform: scale(0);
+}
+.userImgContainer .userImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: var(--light-3);
+}
+.userImgContainer .shareIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--light);
+    font-size: 25px;
+    display: none;
+}
+.userImgContainer:hover::after {
+    transform: scale(1);
+}
+.userImgContainer:hover .shareIcon {
+    display: block;
+}

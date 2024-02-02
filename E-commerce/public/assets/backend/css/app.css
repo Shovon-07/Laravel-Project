@@ -35,6 +35,9 @@ body.light {
     color: var(--light);
     background: var(--main);
 }
+::placeholder {
+    letter-spacing: normal;
+}
 
 html {
     scroll-behavior: smooth;

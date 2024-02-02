@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Dashboard</title>
-    <link rel="icon" href="{{asset('assets/backend/images/Man&Doller.png')}}">
+    <link rel="icon" href="{{asset('assets/backend/images/user.png')}}">
     {{-- Plugins --}}
     {{-- <link rel="stylesheet" href="{{asset('assets/backend/css/bootstrap_css/bootstrap.min.css')}}">
      --}}
@@ -29,12 +29,7 @@
     <div>
         {{-- <!--=== Loader ===--> --}}
         @include('Backend.Components.Loader')
-        
         @yield('content')
-
-        {{-- <!-- === Footer === --> --}}
-        {{-- @include('Backend.Components.Footer') --}}
-
     </div>
 
 {{--

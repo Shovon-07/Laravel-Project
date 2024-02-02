@@ -24,8 +24,8 @@
 
 <script>
     async function login() {
-        const email = document.querySelector("#email").value;
-        const password = document.querySelector("#password").value;
+        const email = $("#email").val();
+        const password = $("#password").val();
 
         if(email.length === 0) {
             showTost("Please enter email address");
@@ -42,7 +42,7 @@
             });
             hideLoader();
 
-            if(response.data['status'] === 'success') {
+            if(response.data['status'] === 1) {
                 showTost(response.data['message']);
                 setToken(response.data['token']);
                 setTimeout(() => {

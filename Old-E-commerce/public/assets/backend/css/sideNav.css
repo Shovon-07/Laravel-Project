@@ -1,0 +1,72 @@
+.sideNav {
+    width: 250px;
+    height: 100vh;
+    /* background: var(--light); */
+    background: var(--dark-deep);
+    backdrop-filter: blur("15px");
+    position: fixed;
+    overflow-y: scroll;
+}
+.sideNav .logo {
+    position: sticky;
+    top: 0;
+    left: 0;
+    color: var(--light);
+    background: var(--dark-deep);
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 0;
+    text-transform: uppercase;
+    cursor: default;
+    z-index: 1;
+}
+.sideNav .menu {
+    margin-top: 25px;
+}
+.sideNav .task {
+    color: var(--dark-2);
+    margin: 0 0 15px 10px;
+}
+.sideNav .menu li a {
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+.sideNav .menu li:hover .menuLink,
+.sideNav .menu li a:hover,
+.sideNav .menu li .dropdown li a:hover {
+    color: var(--main);
+}
+.sideNav .menu li a .leftIcon {
+    margin-right: 10px;
+}
+.sideNav .menu li a .rightIcon {
+    position: absolute;
+    right: 10%;
+    transition: var(--trans);
+}
+.sideNav .menu li a .rightIcon.rotate {
+    transform: rotate(90deg);
+}
+.sideNav .menu li .dropdown li {
+    margin-left: 30px;
+}
+
+.sideNav .bottom {
+    position: sticky;
+    bottom: 3%;
+    left: 10%;
+    width: 80%;
+    background: var(--main);
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 200px;
+}
+.sideNav .bottom a {
+    color: var(--light);
+    width: 100%;
+    padding: 10px 0;
+    display: inline-block;
+}

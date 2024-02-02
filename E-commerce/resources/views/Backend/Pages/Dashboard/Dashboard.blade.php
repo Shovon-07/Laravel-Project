@@ -10,8 +10,8 @@
     </section>
 @endsection
 
-<script>
+<script type="text/javascript">
     window.addEventListener('load', () => {
         sellsChart();
     });
-</script>
+ </script>

@@ -7,7 +7,7 @@
         <div class="form">
             <h3 class="title">VERIFY OTP</h3>
             <div>
-                <input type="number" id="otp" maxlength="4" placeholder="Enter 6 digit otp">
+                <input type="number" id="otp" maxlength="4" placeholder="Enter 6 digit otp" style="letter-spacing: 20px">
             </div>
             <div class="buttonDiv">
                 <button type="submit" class="button" onclick="verifyOtp()">CONFIRM</button>
@@ -18,7 +18,7 @@
     <script>
         async function verifyOtp() {
             const email = getSessionData();
-            const otp = document.querySelector("#otp").value;
+            const otp = $("#otp").val();
             
             if(otp.length === 0 || otp.length > 6) {
                 showTost("Please enter 6 digit otp");

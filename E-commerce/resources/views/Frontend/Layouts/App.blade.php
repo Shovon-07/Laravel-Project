@@ -20,10 +20,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/font_awesome/regular.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/font_awesome/fontawesome.css">
     {{-- <!-- Google icon --> --}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     {{-- <!-- OwlCarousel --> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/owl_carousel/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/css/owl_carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('assets/frontend')}}/css/owl_carousel/owl.theme.default.min.css">
 </head>
 
 <body>
@@ -36,8 +38,8 @@
 
         {{-- <!--=== Header ===--> --}}
         @include('Frontend.Components.Header')
-        
-        <div class="main-panel">            
+
+        <div class="main-panel">
             @yield('content')
         </div>
 
@@ -60,7 +62,7 @@
     <script src="{{asset('assets/frontend')}}/js/custome_jquery.js"></script>
     <script src="{{asset('assets/frontend')}}/js/carousel.js"></script>
     <script src="{{asset('assets/js/popup.js')}}"></script>
-    
+
 </body>
 
 </html>

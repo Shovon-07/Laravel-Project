@@ -21,8 +21,8 @@
     <script>
         async function updatePass() {
             const email = getSessionData();
-            const password = document.querySelector("#password").value;
-            const c_password = document.querySelector("#c_password").value;
+            const password = $("#password").val();
+            const c_password = $("#c_password").val();
 
             if(password.length < 3) {
                 showTost("Please enter a strong password minimum 3 cherecter");

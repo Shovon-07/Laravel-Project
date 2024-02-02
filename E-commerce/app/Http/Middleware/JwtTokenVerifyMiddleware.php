@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Helper\JwtToken;
+use App\Http\Helper\JwtToken;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ class JwtTokenVerifyMiddleware
     {
         // $token = $request->headers->get('token');
         $token = $request->cookie('token');
-        $result = JwtToken::VerifyToken($token);
+        $result = JwtToken::DecodeToken($token);
 
         if ($result === 'Unauthorized') {
             return redirect('/admin/');

@@ -1,0 +1,70 @@
+table {
+    margin-top: 20px;
+    width: 100%;
+    color: var(--light-3);
+}
+table thead {
+    background: var(--dark-deep);
+    color: var(--light-2);
+}
+tr {
+    border-radius: 8px;
+}
+th,td {
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px 0;
+    /* border: 1px solid var(--light-2); */
+}
+table tbody .even {
+    background: #222222 !important;
+}
+table tbody .odd {
+    background: #303030 !important;
+}
+table td button {
+    color: var(--light);
+    padding: 5px 10px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.edite {
+    background: var(--green);
+}
+.delete {
+    background: var(--main);
+}
+table .btnDevider {
+    margin: 0 10px;
+}
+
+.paginate {
+    text-align: center;
+    margin-top: 30px;
+}
+.paginate span {
+    margin: 0 20px;
+}
+.paginate button {
+    color: var(--light);
+    background-color: var(--main);
+    padding: 10px 30px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.selectField,
+.dataTables_length label select {
+    background: transparent;
+    padding: 5px 15px;
+    font-size: 16px;
+    color: var(--dark-2) !important;
+    border: 1px solid var(--light-2);
+    outline: none;
+}

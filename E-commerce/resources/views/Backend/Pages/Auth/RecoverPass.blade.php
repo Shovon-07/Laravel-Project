@@ -17,7 +17,7 @@
 
     <script>
         async function sendOtp() {
-            const email = document.querySelector("#email").value;
+            const email = $("#email").val();
             
             if(email.length === 0) {
                 showTost("Please enter email address");

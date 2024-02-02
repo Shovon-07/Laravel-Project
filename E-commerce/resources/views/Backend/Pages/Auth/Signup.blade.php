@@ -26,9 +26,13 @@
 
     <script>
         async function register() {
-            const name = document.querySelector("#name").value;
-            const email = document.querySelector("#email").value;
-            const password = document.querySelector("#password").value;
+            // const name = document.querySelector("#name").value;
+            // const email = document.querySelector("#email").value;
+            // const password = document.querySelector("#password").value;
+
+            const name = $("#name").val();
+            const email = $("#email").val();
+            const password = $("#password").val();
 
             if(name.length === 0) {
                 showTost("Please enter your name");
@@ -47,7 +51,7 @@
                 });
                 hideLoader();
                 
-                if(response.data['status'] === 'success') {
+                if(response.data['status'] === 1) {
                     showTost(response.data['message']);
                     setTimeout(() => {
                         window.location.href = "/admin/"

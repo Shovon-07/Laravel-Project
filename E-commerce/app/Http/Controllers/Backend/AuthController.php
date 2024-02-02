@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Helper\JwtToken;
 use App\Http\Controllers\Controller;
 use App\Mail\PasswordRecoverOtp;
+use App\Http\Helper\JwtToken;
 use App\Models\User;
 use Exception;
 use Hash;
@@ -30,7 +30,7 @@ class AuthController extends Controller
             ]);
 
             return response()->json([
-                'status' => 'success',
+                'status' => 1,
                 'message' => 'Registration successfull'
             ]);
         } catch (Exception $e) {
@@ -46,26 +46,24 @@ class AuthController extends Controller
         try {
             $request->validate([
                 'email' => 'required|string|email',
-                'password' => 'required|string|min:3|max:10',
+                'password' => 'required|string|min:3|max:10'
             ]);
 
             $email = $request->input('email');
             $password = $request->input('password');
             $data = User::where('Email', '=', $email)->first();
 
-            if ($data == true && Hash::check($password, $data->Password)) {
-                // Create authentication token
-                $token = JwtToken::CreateLoginToken($data->id, $data->Email);
-                // $request->headers->set('token', $token);
+            if ($data != null && Hash::check($password, $data->Password)) {
+                $token = JwtToken::CreateAuthToken($data->id, $data->Email);
 
                 return response()->json([
-                    'status' => 'success',
+                    'status' => 1,
                     'message' => 'Login successfull',
-                    'token' => $token
+                    'token' => $token,
                 ])->cookie('token', $token);
             } else {
                 return response()->json([
-                    'status' => 'failed',
+                    'status' => 0,
                     'message' => 'User not found !',
                 ]);
             }
@@ -78,7 +76,7 @@ class AuthController extends Controller
         }
     }
 
-    function Logout()
+    function Logout(Request $request)
     {
         Cookie::queue(Cookie::forget('token'));
         return redirect('/admin/');
@@ -144,7 +142,7 @@ class AuthController extends Controller
                 ]);
 
                 // Create authentication token
-                $token = JwtToken::CreateLoginToken($data->id, $data->Email);
+                $token = JwtToken::CreateAuthToken($data->id, $data->Email);
 
                 return response()->json([
                     'status' => 'success',
@@ -201,25 +199,4 @@ class AuthController extends Controller
             ]);
         }
     }
-
 }
-
-/*
-{
-    [
-        "name": "Shovon",
-        "email": "mman35230@gmail.com",
-        "password": "sho"
-    ],
-    [
-        "name": "Asik",
-        "email": "asik@gmail.com",
-        "password": "asi"
-    ],
-    [
-        "name": "Jony",
-        "email": "jony@gmail.com",
-        "password": "jon"
-    ]    
-}
-*/

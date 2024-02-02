@@ -12,10 +12,10 @@ function getSessionData() {
     return sessionStorage.getItem("data");
 }
 
-document.querySelector(".logout").addEventListener("click", () => {
-    localStorage.clear();
-    sessionStorage.clear();
-})
+// document.querySelector(".logout").addEventListener("click", () => {
+//     localStorage.clear();
+//     sessionStorage.clear();
+// })
 
 // async function Logout() {
 //     localStorage.clear();
