@@ -13,7 +13,7 @@ function changeProfilePicPopUp(prevUserImg) {
     $("#prevUserImg").val(prevUserImg);
 }
 
-//___ Change Profile Pic start ___//
+//___ Change Profile Pic end ___//
 
 //___ Category section start ___//
 // Create category
