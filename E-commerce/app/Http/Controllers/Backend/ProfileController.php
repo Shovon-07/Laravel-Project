@@ -86,7 +86,7 @@ class ProfileController extends Controller
                     ]);
                     return response()->json([
                         'status' => 1,
-                        'message' => 'Updated',
+                        'message' => 'Image updated. Please reload web page !',
                     ]);
                 }
             }

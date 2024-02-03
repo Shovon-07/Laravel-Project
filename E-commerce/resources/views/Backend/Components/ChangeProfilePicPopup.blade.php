@@ -41,7 +41,7 @@
             if(response.data['status'] === 1) {
                 successTost(response.data['message']);
                 closePopUp();
-                profileData();
+                // profileData();
             } else {
                 errorTost(response.data['message']);
             }

@@ -17,8 +17,7 @@
             'categoryId': id,
         });
 
-        let categoryNameForEdit = $("#categoryNameForEdit").val(response.data['CategoryName']);
-        console.log(id);
+        $("#categoryNameForEdit").val(response.data['CategoryName']);
     }
 
     async function editCategory() {

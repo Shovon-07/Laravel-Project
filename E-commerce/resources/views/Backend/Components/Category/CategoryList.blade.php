@@ -67,7 +67,7 @@
 
     new DataTable('#table',{
         order:[[0,'desc']],
-        lengthMenu:[5,10,15,20,30]
+        lengthMenu:[3,5,10,15,20,30]
     });
   }
 </script>
