@@ -56,7 +56,7 @@
 
     $(".edite").on("click", async function() {
       let id = $(this).data("id");
-      await fillEditForm(id);
+      await fillCategoryEditForm(id);
       editeCategoryPopUp(id);
     });
 

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,17 +56,44 @@ Route::prefix('/admin')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
             Route::view('/dashboard', 'Backend.Pages.Dashboard.Dashboard');
+            Route::view('/brands', 'Backend.Pages.Dashboard.BrandPage');
             Route::view('/categories', 'Backend.Pages.Dashboard.CategoryPage');
+            Route::view('/products', 'Backend.Pages.Dashboard.ProductPage');
         });
     });
 
     Route::controller(CategoryController::class)->group(function () {
         Route::middleware(['JwtVerify'])->group(function () {
+            // API
             Route::get('/category-list', 'CategoryList');
             Route::post('/category-by-id', 'CategoryById');
             Route::post('/create-category', 'CreateCategory');
             Route::post('/category-delete', 'CategoryDelete');
             Route::post('/category-edit', 'CategoryEdite');
+        });
+    });
+
+    Route::controller(BrandController::class)->group(function () {
+        Route::middleware(['JwtVerify'])->group(function () {
+            // API 
+            Route::get('/brand-list', 'BrandList');
+            Route::post('/brand-by-id', 'BrandById');
+            Route::post('/brand-create', 'BrandCreate');
+            Route::post('/brand-delete', 'BrandDelete');
+            Route::post('/brand-edite', 'BrandEdite');
+        });
+    });
+
+    Route::controller(ProductController::class)->group(function () {
+        Route::middleware(['JwtVerify'])->group(function () {
+            // API
+            Route::get('/product-list', 'ProductList');
+            Route::post('/product-by-id', 'ProductById');
+            Route::post('/product-create', 'ProductCreate');
+            Route::post('/product-delete', 'ProductDelete');
+            Route::post('/product-edite', 'ProductEdite');
+
+            // Route::get('/brands-list-for-product', 'BrandsListForProduct');
         });
     });
 

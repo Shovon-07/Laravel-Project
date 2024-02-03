@@ -13,10 +13,10 @@
                 <li><a href="">Baby dreses & toys</a></li>
             </ul>
         </li> --}}
+        <li><a onclick="brandPage()"><i class="fa-brands fa-slack leftIcon"></i> Brands</a></li>
         <li><a onclick="categoryPage()"><i class="fa-brands fa-dribbble leftIcon"></i> Categories</a>
         </li>
         <li><a onclick="ProductsPage()"><i class="fa-solid fa-box leftIcon"></i> Products</a></li>
-        <li><a onclick="brandPage()"><i class="fa-brands fa-slack leftIcon"></i> Brands</a></li>
         <li><a href=""><i class="fa-solid fa-truck-fast leftIcon"></i> Orders</a></li>
         <li><a href=""><i class="fa-solid fa-users leftIcon"></i> Customers</a></li>
         

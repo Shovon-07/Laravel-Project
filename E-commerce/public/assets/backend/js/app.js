@@ -2,7 +2,7 @@
 function successTost(msg) {
     Toastify({
         text: msg,
-        duration: 5000,
+        duration: 1500,
         close: true,
         gravity: "top", // `top` or `bottom`
         position: "center", // `left`, `center` or `right`
@@ -16,7 +16,7 @@ function successTost(msg) {
 function errorTost(msg) {
     Toastify({
         text: msg,
-        duration: 5000,
+        duration: 1000,
         close: true,
         gravity: "top", // `top` or `bottom`
         position: "center", // `left`, `center` or `right`

@@ -10,13 +10,18 @@
     position: fixed;
     left: 50%;
     top: 2%;
+    /* bottom: 5%; */
     transform: translateX(-50%);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow-y: scroll;
     z-index: 400000;
+}
+.popup.largePopUp {
+    height: 100%;
 }
 /* .popup .userImgContainer {
     margin: 0 0 20px 0;

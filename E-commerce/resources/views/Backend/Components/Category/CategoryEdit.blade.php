@@ -11,7 +11,7 @@
 </div>
 
 <script>
-    async function fillEditForm(id) {
+    async function fillCategoryEditForm(id) {
         // let categoryIdForEdit = $(".editAbleCategory").val();
         const response = await axios.post("/admin/category-by-id", {
             'categoryId': id,
