@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
     <table>
         <thead>
             <tr>
@@ -36,4 +36,4 @@
                     <button class="delete">Delete</button>
                 </td>
             </tr>`
-</script>
+</script> --}}

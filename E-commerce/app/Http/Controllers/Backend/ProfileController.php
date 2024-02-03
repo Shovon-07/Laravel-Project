@@ -29,57 +29,6 @@ class ProfileController extends Controller
         }
     }
 
-    // function UpdateProfile(Request $request)
-    // {
-    //     try {
-    //         $email = $request->headers->get('userEmail');
-    //         $data = User::where('email', '=', $email)->count();
-    //         if ($data != null) {
-    //             if ($request->hasFile('userImg')) {
-    //                 $img = $request->file('userImg');
-    //                 $imgName = md5(uniqid()) . '-' . time() . '-' . $img->getClientOriginalName();
-    //                 $imgUrl = 'images/user/' . $imgName;
-
-    //                 // Save image in folder
-    //                 $img->move(public_path('Uploaded_file/images/user'), $imgName);
-
-    //                 // Delete previes image
-    //                 $prevUserImg = public_path('Uploaded_file/') . $request->input('prevUserImg');
-    //                 File::delete($prevUserImg);
-
-
-    //                 User::where('email', '=', $email)->update([
-    //                     'Img' => $imgUrl
-    //                 ]);
-    //                 return response()->json([
-    //                     'status' => 1,
-    //                     'message' => 'Updated',
-    //                 ]);
-    //             } else {
-    //                 User::where('email', '=', $email)->update([
-    //                     'Name' => $request->input('name'),
-    //                     'Password' => Hash::make($request->input('password')),
-    //                     'Mobile' => $request->input('mobile'),
-    //                 ]);
-    //                 return response()->json([
-    //                     'status' => 1,
-    //                     'message' => 'Updated',
-    //                 ]);
-    //             }
-    //         } else {
-    //             return response()->json([
-    //                 'status' => 0,
-    //                 'message' => 'Something went wrong !'
-    //             ]);
-    //         }
-    //     } catch (Exception $e) {
-    //         return response()->json([
-    //             'status' => 'failed',
-    //             'message' => $e->getMessage()
-    //         ]);
-    //     }
-    // }
-
     function UpdateProfile(Request $request)
     {
         try {

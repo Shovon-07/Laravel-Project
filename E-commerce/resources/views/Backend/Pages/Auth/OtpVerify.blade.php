@@ -21,21 +21,21 @@
             const otp = $("#otp").val();
             
             if(otp.length === 0 || otp.length > 6) {
-                showTost("Please enter 6 digit otp");
+                errorTost("Please enter 6 digit otp");
             } else {
                 showLoader();
                 const response = await axios.post("/admin/verify-otp", {"email":email,"otp": otp});
                 hideLoader();
 
                 if(response.data['status'] === 'success') {
-                    showTost(response.data['message']);
+                    successTost(response.data['message']);
                     setToken(response.data['token']);
                                     
                     setTimeout(() => {
                         window.location.href = "/admin/update-password";
                     }, 1000);
                 } else {
-                    showTost(response.data['message']);
+                    errorTost(response.data['message']);
                 }
             }
         }

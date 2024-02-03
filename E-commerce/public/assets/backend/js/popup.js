@@ -16,22 +16,19 @@ function changeProfilePicPopUp(prevUserImg) {
 //___ Change Profile Pic end ___//
 
 //___ Category section start ___//
-// Create category
-// function createCategoryPopUp() {
-//     $("#categoryCreatePopUp").removeClass("hidePopUp");
-// }
+function createCategoryPopUp() {
+    $("#categoryCreatePopUp").removeClass("hidePopUp");
+}
 
-// Delete category
-// function deleteCategoryPopUp(id) {
-//     $("#categoryDeletePopUp").removeClass("hidePopUp");
-//     $(".deleteAbleCategory").val(id);
-// }
+function deleteCategoryPopUp(id) {
+    $("#categoryDeletePopUp").removeClass("hidePopUp");
+    $(".deleteAbleCategory").val(id);
+}
 
-// Edit category
-// function editeCategoryPopUp(id) {
-//     $("#categoryEditPopUp").removeClass("hidePopUp");
-//     $(".editAbleCategory").val(id);
-// }
+function editeCategoryPopUp(id) {
+    $("#categoryEditPopUp").removeClass("hidePopUp");
+    $(".editAbleCategory").val(id);
+}
 
 //___ Category section end ___//
 
@@ -84,9 +81,9 @@ function hidePopUp() {
 
     // popup.classList.add("hidePopUp");
 
-    // $("#categoryCreatePopUp").addClass("hidePopUp");
-    // $("#categoryDeletePopUp").addClass("hidePopUp");
-    // $("#categoryEditPopUp").addClass("hidePopUp");
+    $("#categoryCreatePopUp").addClass("hidePopUp");
+    $("#categoryDeletePopUp").addClass("hidePopUp");
+    $("#categoryEditPopUp").addClass("hidePopUp");
     
     // $("#createBrandPopUp").addClass("hidePopUp");
     // $("#brandDeletePopUp").addClass("hidePopUp");

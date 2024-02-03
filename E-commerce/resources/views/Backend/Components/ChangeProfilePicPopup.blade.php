@@ -22,7 +22,7 @@
         const prevUserImg = document.querySelector("#prevUserImg").value;
 
         if(userImg == null) {
-            showTost('No image selected');
+            errorTost('No image selected');
         } else {
             let formData = new FormData();
             formData.append('userImg', userImg);
@@ -39,21 +39,12 @@
             hideLoader();
 
             if(response.data['status'] === 1) {
-                showTost(response.data['message']);
+                successTost(response.data['message']);
                 closePopUp();
                 profileData();
             } else {
-                showTost(response.data['message']);
+                errorTost(response.data['message']);
             }
         }        
     }
-    
-    // const img = document.querySelector(".img").value;
-    // document.querySelector(".submitBtn").addEventListener('click', () => {
-    //     if (img.length === 0) {
-    //         showTost("You don't select any image");
-    //     } else {
-    //         showTost(`Selected ${img}`);
-    //     }
-    // });
 </script>

@@ -74,20 +74,19 @@
             const password = $("#password").val();
 
             if(name.length === 0) {
-                showTost("Please enter your name");
+                errorTost("Please enter your name");
             } else if(email.length === 0) {
-                showTost("Please enter your email address");
+                errorTost("Please enter your email address");
             } else {
                 showLoader();
-                // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
                 const response = await axios.post("/admin/update-profile", {"name":name,"email":email,"mobile":mobile,"password":password});
                 hideLoader();
 
-                if(response.data['status'] === 'success') {
-                    showTost(response.data['message']);
+                if(response.data['status'] === 1) {
+                    successTost(response.data['message']);
                     profileData();
                 } else {
-                    showTost(response.data['message']);
+                    errorTost(response.data['message']);
                 }
             }
         }

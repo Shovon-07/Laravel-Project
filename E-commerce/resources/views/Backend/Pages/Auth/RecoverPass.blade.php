@@ -20,21 +20,21 @@
             const email = $("#email").val();
             
             if(email.length === 0) {
-                showTost("Please enter email address");
+                errorTost("Please enter email address");
             } else {
                 showLoader();
                 const response = await axios.post("/admin/send-otp", {'email': email});
                 hideLoader();
 
                 if(response.data['status']==='success') {
-                    showTost(response.data['message']);
+                    successTost(response.data['message']);
                     setSessionData(response.data['email']);
                     
                     setTimeout(() => {
                         window.location.href = "/admin/verify-otp";
                     }, 1000);
                 } else {
-                    showTost(response.data['message']);
+                    errorTost(response.data['message']);
                 }
             }
         }

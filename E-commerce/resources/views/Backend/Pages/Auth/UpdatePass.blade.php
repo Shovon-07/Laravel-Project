@@ -25,18 +25,18 @@
             const c_password = $("#c_password").val();
 
             if(password.length < 3) {
-                showTost("Please enter a strong password minimum 3 cherecter");
+                errorTost("Please enter a strong password minimum 3 cherecter");
             } else if(password.length > 6) {
-                showTost("Please enter a strong password maximum 6 cherecter");
+                errorTost("Please enter a strong password maximum 6 cherecter");
             } else if(password !== c_password) {
-                showTost("Password not matched");
+                errorTost("Password not matched");
             } else {
                 showLoader();
                 const response = await axios.post("/admin/update-password", {"email":email,"password" : password});
                 hideLoader();
 
                 if(response.data['status'] === 'success') {
-                    showTost(response.data['message']);
+                    successTost(response.data['message']);
                     
                     sessionStorage.clear();
                     localStorage.clear();
@@ -45,7 +45,7 @@
                         window.location.href = '/admin/';
                     }, 1000);
                 } else {
-                    showTost(response.data['message']);
+                    errorTost(response.data['message']);
                 }
             }
         }

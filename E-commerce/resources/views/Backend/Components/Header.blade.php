@@ -35,9 +35,7 @@
   });
 
   async function getData() {
-    showLoader();
     const response = await axios.get("/admin/profile-data");
-    hideLoader();
 
     if(response.data['status'] === 1) {
       const data = response.data['data'];

@@ -51,17 +51,17 @@
         const password = document.querySelector("#password").value;
 
         if(firstName <= 0) {
-            showTost("Please enter first name");
+            errorTost("Please enter first name");
         } else if(lastName <= 0) {
-            showTost("Please enter last name");
+            errorTost("Please enter last name");
         } else if(email <= 0) {
-            showTost("Please enter email address");
+            errorTost("Please enter email address");
         } else if(mobile <= 0) {
-            showTost("Please enter mobile number");
+            errorTost("Please enter mobile number");
         } else if(address <= 0) {
-            showTost("Please enter your address");
+            errorTost("Please enter your address");
         } else if(password <= 0) {
-            showTost("Please enter a strong password");
+            errorTost("Please enter a strong password");
         } else {
             showLoader();
             const response = await axios.post("/admin/sign-up",{
@@ -74,12 +74,12 @@
             });
             hideLoader();
             if(response.data['status'] === 'success') {
-                showTost(response.data['message']);
+                successTost(response.data['message']);
                 setTimeout(() => {
                     window.location.href = "/admin/"
                 }, 1000);
             } else {
-                showTost(response.data['message']);
+                errorTost(response.data['message']);
             }
         }
         

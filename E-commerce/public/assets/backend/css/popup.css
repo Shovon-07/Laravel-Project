@@ -25,6 +25,7 @@
     background: var(--btn-gradient);
     color: var(--light);
     padding: 10px 30px;
+    margin-top: 20px;
     /* width: 30%; */
     border: none;
     border-radius: 12px;
@@ -50,7 +51,8 @@
     font-size: 18px;
     border: none;
     outline: none;
-    border: 1px solid var(--green);
+    /* border: 1px solid var(--green); */
+    box-shadow: var(--box-shadow);
     border-radius: 8px;
 }
 

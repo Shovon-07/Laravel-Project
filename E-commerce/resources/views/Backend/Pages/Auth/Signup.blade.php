@@ -35,13 +35,13 @@
             const password = $("#password").val();
 
             if(name.length === 0) {
-                showTost("Please enter your name");
+                errorTost("Please enter your name");
             } else if(email.length === 0) {
-                showTost("Please enter your email address");
+                errorTost("Please enter your email address");
             } else if(password.length < 3) {
-                showTost("Please enter a strong password minimum 3 cherecter");
+                errorTost("Please enter a strong password minimum 3 cherecter");
             } else if(password.length > 6) {
-                showTost("Please enter a strong password maximum 6 cherecter");
+                errorTost("Please enter a strong password maximum 6 cherecter");
             } else {
                 showLoader();
                 const response = await axios.post("/admin/sign-up",{
@@ -52,12 +52,12 @@
                 hideLoader();
                 
                 if(response.data['status'] === 1) {
-                    showTost(response.data['message']);
+                    successTost(response.data['message']);
                     setTimeout(() => {
                         window.location.href = "/admin/"
                     }, 1000);
                 } else {
-                    showTost(response.data['message']);
+                    errorTost(response.data['message']);
                 }
             }
         }
