@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Frontend\ProcessImgController;
 
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BrandController;

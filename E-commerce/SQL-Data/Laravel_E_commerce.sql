@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 03, 2024 at 05:30 AM
+-- Generation Time: Feb 03, 2024 at 05:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `Laravel_E_commerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `BrandName` varchar(50) NOT NULL,
+  `UserId` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `BrandName`, `UserId`, `created_at`, `updated_at`) VALUES
+(1, 'Apple', 1, '2024-02-03 05:40:50', '2024-02-03 06:18:36'),
+(2, 'Samsung', 1, '2024-02-03 05:42:28', '2024-02-03 05:42:28'),
+(3, 'HP', 1, '2024-02-03 05:56:06', '2024-02-03 05:56:06'),
+(5, 'Asus', 1, '2024-02-03 06:11:25', '2024-02-03 06:11:30'),
+(7, 'Kodomo', 1, '2024-02-03 07:06:26', '2024-02-03 07:06:26'),
+(8, 'Chu chu', 1, '2024-02-03 08:37:06', '2024-02-03 08:37:17'),
+(9, 'Stylo', 1, '2024-02-03 09:06:14', '2024-02-03 09:06:14');
 
 -- --------------------------------------------------------
 
@@ -77,7 +104,9 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (2, '2024_02_02_022402_create_users_table', 1),
-(3, '2024_02_03_021250_create_categories_table', 2);
+(3, '2024_02_03_021250_create_categories_table', 2),
+(4, '2024_02_03_112647_create_brands_table', 3),
+(5, '2024_02_03_122240_create_products_table', 4);
 
 -- --------------------------------------------------------
 
@@ -97,6 +126,36 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ProductName` varchar(50) NOT NULL,
+  `ProductTitle` varchar(50) NOT NULL,
+  `ProductPrice` varchar(20) NOT NULL,
+  `ProductStock` varchar(20) NOT NULL,
+  `ProductDescription` longtext NOT NULL,
+  `ProductImg` varchar(255) DEFAULT NULL,
+  `UserId` bigint(20) UNSIGNED NOT NULL,
+  `CategoryId` bigint(20) UNSIGNED NOT NULL,
+  `BrandId` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `ProductName`, `ProductTitle`, `ProductPrice`, `ProductStock`, `ProductDescription`, `ProductImg`, `UserId`, `CategoryId`, `BrandId`, `created_at`, `updated_at`) VALUES
+(1, 'Desktop', 'Mac desktop 3.90 GHZ', '250000', '10', 'Mac desktop 3.90 GHZ aaaaad dddddd', 'images/products/b02ac61596b1d1f248ba39d14cfb3804-1706969010-icons8-alert-48.png', 1, 1, 1, '2024-02-03 08:03:30', '2024-02-03 08:03:30'),
+(2, 'Desktop', 'Rayzen desktop 3.90 GHZ', '150000', '30', 'Rayzen desktop 3.90 GHZ dd', 'images/products/c32e695e1e088f7e673969928fe1d655-1706969080-dark-forest.jpeg', 1, 1, 3, '2024-02-03 08:04:40', '2024-02-03 08:04:40'),
+(3, 'Panjabi', 'Mens new panjabi', '1590', '300', 'Mens new panjabi', 'images/products/32ca089822ada8c15c31b85b6936dbe4-1706972832-sittingdesk.png', 1, 2, 9, '2024-02-03 09:07:12', '2024-02-03 10:28:42');
 
 -- --------------------------------------------------------
 
@@ -130,6 +189,13 @@ INSERT INTO `users` (`id`, `Name`, `Email`, `Password`, `Mobile`, `Img`, `Otp`, 
 --
 
 --
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `brands_userid_foreign` (`UserId`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -151,6 +217,15 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_userid_foreign` (`UserId`),
+  ADD KEY `products_categoryid_foreign` (`CategoryId`),
+  ADD KEY `products_brandid_foreign` (`BrandId`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -162,22 +237,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -190,10 +277,24 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `brands`
+--
+ALTER TABLE `brands`
+  ADD CONSTRAINT `brands_userid_foreign` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `categories`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_userid_foreign` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_brandid_foreign` FOREIGN KEY (`BrandId`) REFERENCES `brands` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_categoryid_foreign` FOREIGN KEY (`CategoryId`) REFERENCES `categories` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_userid_foreign` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
