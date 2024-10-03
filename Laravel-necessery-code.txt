@@ -13,15 +13,34 @@ if ($img != null) {
 }
 --------------------------------------------------------
 //___ Multiple image uploade ___//
-$img = $req->file('images');
-if ($img != null) {
-    foreach ($img as $imgs) {
-        $imgOriginalName = $imgs->getClientOriginalName();
-        $imgExt = $imgs->getClientOriginalExtension();
-        $imgName = "Multiple_photo-" . md5(uniqid()) . '-' . time() . '-' . $imgOriginalName . '.' . $imgExt;
-        $imgs->move(public_path('Uploaded_images'), $imgName);
+public function MultipleImageStore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'project_id' => 'required',
+            'gallery_image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        if (!$validator->fails()) {
+            $id = $request->input("project_id");
+            $images = $request->file("gallery_image");
+            $imageData = [];
+
+            foreach ($images as $image) {
+                $new_name = "Gallery/" . time() . "_" . rand() . "." . $image->getClientOriginalExtension();
+                $image->move(public_path("/Images/Gallery"), $new_name);
+
+                $imageData[] = [
+                    "Project_id" => $id,
+                    "Gallery_img" => $new_name
+                ];
+            }
+
+            Gallery::insert($imageData);
+            return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
+        }
     }
-}
 
 //_______________ Image uploade end _______________//
 
